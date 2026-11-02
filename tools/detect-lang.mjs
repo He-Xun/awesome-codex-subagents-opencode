@@ -30,21 +30,15 @@ export function availableLanguages() {
     .sort();
 }
 
-/** Collect locale candidates from most to least specific. */
-function localeCandidates() {
-  const candidates = [];
+/** Environment locale hints, in priority order. LANGUAGE may be a `:` list. */
+function envLocaleHints() {
+  const hints = [];
   for (const key of ["LC_ALL", "LC_MESSAGES", "LANG", "LANGUAGE"]) {
     const v = process.env[key];
     if (!v) continue;
-    // LANGUAGE may be a colon-separated priority list.
-    for (const part of v.split(":")) candidates.push(part);
+    for (const part of v.split(":")) if (part) hints.push(part);
   }
-  try {
-    candidates.push(Intl.DateTimeFormat().resolvedOptions().locale);
-  } catch {
-    // Intl unavailable; fall through to the fallback.
-  }
-  return candidates.filter(Boolean);
+  return hints;
 }
 
 /** "zh-CN" -> ["zh-CN", "zh"]; "pt_BR.UTF-8" -> ["pt-BR", "pt"]. */
@@ -72,18 +66,40 @@ export function detectLanguage(override, available = availableLanguages()) {
     return { lang: FALLBACK, reason: `override "${override}" has no table`, detected: override };
   }
 
-  for (const raw of localeCandidates()) {
+  // Environment hints win over Intl: an explicit LANG/LC_ALL is the user telling
+  // us what they want. If those are set but unsupported, we fall back to English
+  // rather than silently re-deriving a different locale from Intl.
+  const envHints = envLocaleHints();
+
+  for (const raw of envHints) {
     for (const code of normalize(raw)) {
-      if (available.includes(code)) {
-        return { lang: code, reason: `system locale ${raw}`, detected: raw };
-      }
+      if (available.includes(code)) return { lang: code, reason: `environment locale ${raw}`, detected: raw };
     }
+  }
+
+  let intl;
+  try {
+    intl = Intl.DateTimeFormat().resolvedOptions().locale;
+  } catch {
+    intl = null;
+  }
+
+  if (envHints.length > 0) {
+    return {
+      lang: FALLBACK,
+      reason: `no table for environment locale ${envHints[0]}`,
+      detected: envHints[0],
+    };
+  }
+
+  for (const code of normalize(intl ?? "")) {
+    if (available.includes(code)) return { lang: code, reason: `system locale ${intl}`, detected: intl };
   }
 
   return {
     lang: FALLBACK,
-    reason: localeCandidates()[0] ? "no table for system locale" : "no locale detected",
-    detected: localeCandidates()[0] ?? null,
+    reason: intl ? `no table for system locale ${intl}` : "no locale detected",
+    detected: intl ?? null,
   };
 }
 

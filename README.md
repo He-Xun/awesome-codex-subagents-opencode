@@ -155,13 +155,19 @@ translation table matches**:
 3. The locale reported by `Intl`
 4. Fallback → English
 
+Available out of the box: **English (en) · 简体中文 (zh) · Español (es) · Русский (ru) · 한국어 (ko)**.
+
+> When `LANG` or `LC_ALL` is set but has no table, the result is English — not a second-guessed
+> locale derived from `Intl`. An explicit environment hint is treated as intent.
+
 ```bash
 node install.mjs                          # zh on a Chinese system, en elsewhere
 node install.mjs --lang=en                # force English
 node install.mjs --only=reviewer,debugger # install a subset
 ```
 
-Measured behavior: `zh-CN` → zh; `en_US` → en; `ko_KR` (no table) → en.
+Measured behavior: `zh-CN` → zh; `es_ES` → es; `ru_RU` → ru; `ko_KR` → ko; `en_US` → en;
+`de_DE` (no table) → en.
 
 ### Switching later
 
@@ -193,6 +199,14 @@ Create `tools/i18n/<code>.json`, keyed by agent name:
 
 No code changes needed — `install.mjs` and `switch-lang.mjs` pick it up automatically.
 Agents missing an entry keep their English description.
+
+Translation conventions used by the bundled tables (keep them if you contribute one):
+
+| Language | Form | Pattern |
+| --- | --- | --- |
+| `es` | formal `usted` only — never `tú`/`vosotros` | `Úselo cuando …` |
+| `ru` | formal `вы` — never `ты` | `Используйте, когда …` |
+| `ko` | formal `-십시오` / `-합니다`, never `반말` | `…할 때 사용하십시오.` |
 
 ---
 

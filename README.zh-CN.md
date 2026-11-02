@@ -146,13 +146,19 @@ node tools/codex-subagents-to-opencode.mjs ../src/categories agents
 3. `Intl` 报告的系统 locale
 4. 回退 → 英语
 
+内置语言：**English (en) · 简体中文 (zh) · Español (es) · Русский (ru) · 한국어 (ko)**。
+
+> 当 `LANG` 或 `LC_ALL` 已设置但没有对应译表时，结果是英语，而不是再从 `Intl` 推断另一个
+> locale。显式设置了环境变量，就按用户意图处理。
+
 ```bash
 node install.mjs                          # 中文系统装 zh，其他装 en
 node install.mjs --lang=en                # 强制英文
 node install.mjs --only=reviewer,debugger # 只装部分
 ```
 
-实测行为：`zh-CN` → zh；`en_US` → en；`ko_KR`（无译表）→ en。
+实测行为：`zh-CN` → zh；`es_ES` → es；`ru_RU` → ru；`ko_KR` → ko；`en_US` → en；
+`de_DE`（无译表）→ en。
 
 ### 随时切换
 
@@ -182,6 +188,14 @@ node tools/switch-lang.mjs --to=zh --dry                            # 预演
 ```
 
 无需改代码，`install.mjs` / `switch-lang.mjs` 会自动发现。缺条目时该 agent 保留英文。
+
+内置译表遵循的敬语规范（贡献新语言时请沿用）：
+
+| 语言 | 体裁 | 句式 |
+| --- | --- | --- |
+| `es` | 仅用正式体 `usted`，不用 `tú`/`vosotros` | `Úselo cuando …` |
+| `ru` | 仅用 `вы` 敬语，不用 `ты` | `Используйте, когда …` |
+| `ko` | 仅用 `-십시오` / `-합니다` 正式体，不用 반말 | `…할 때 사용하십시오.` |
 
 ---
 

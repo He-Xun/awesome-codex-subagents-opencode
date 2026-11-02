@@ -103,6 +103,41 @@ if (fs.existsSync(I18N_DIR)) {
       if (typeof v !== "string" || !v.trim()) add("error", `${file}: empty translation for "${k}"`);
     }
     if (!quiet) console.log(`translation ${lang}: ${Object.keys(table).length} entries`);
+
+    // Formality guard: bundled tables must stay in the formal register, since
+    // mixing in informal forms makes the agent descriptions inconsistent.
+    //
+    // Word boundaries are written with Unicode-aware lookarounds because \b is
+    // ASCII-only in JS and fails on Cyrillic/Hangul. The words are interpolated
+    // from a plain literal so exactly one backslash reaches the regex source.
+    const word = (alts) => new RegExp(String.raw`(?<!\p{L})(?:${alts})(?!\p{L})`, "iu");
+    const INFORMAL = {
+      es: [
+        [word("tú|vosotros|vosotras"), "informal pronoun"],
+        [word("puedes|debes|haz|usa|utiliza|necesitas|tienes"), "informal verb form"],
+      ],
+      ru: [
+        [word("ты|тебе|твой|твоя|твоё|твои|тебя"), "informal pronoun"],
+        // Only imperatives addressing the reader directly. Impersonal "нужно"
+        // and third-person "должен" are legitimate and must not match.
+        [word("можешь|сделай|используй|проверь|попробуй"), "informal verb form"],
+      ],
+      ko: [
+        // Korean is agglutinative: endings attach directly to the stem with no
+        // space, so word-boundary matching does not work here. Match known
+        // informal endings as substrings instead. "너" is checked with a
+        // boundary because it also appears inside words like "컨테이너".
+        [/(해라|하자|해줘|할래|할게)/, "informal verb ending"],
+        [/(?<!컨테이)너(?![가-힣])/, "informal pronoun"],
+        [/(한다|이다)\.\s*$/, "plain form ending"],
+      ],
+    };
+    for (const [re, label] of INFORMAL[lang] ?? []) {
+      const hits = Object.entries(table).filter(([, v]) => re.test(v));
+      if (hits.length) {
+        add("error", `${file}: ${hits.length} entr(ies) use ${label}, e.g. "${hits[0][0]}"`);
+      }
+    }
   }
 }
 
