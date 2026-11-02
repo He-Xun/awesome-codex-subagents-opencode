@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs implementation or debugging of model-backed application features, agent flows, or evaluation hooks."
 mode: subagent
-reasoningEffort: high
 color: success
 permission:
   edit: allow

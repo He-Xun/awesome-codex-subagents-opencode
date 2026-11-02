@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs practical machine learning implementation across feature engineering, inference wiring, and model-backed application logic."
 mode: subagent
-reasoningEffort: high
 color: success
 permission:
   edit: allow

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs technically accurate solution positioning, customer-question handling, or implementation tradeoff explanation for pre-sales contexts."
 mode: subagent
-reasoningEffort: medium
 color: primary
 permission:
   edit: deny

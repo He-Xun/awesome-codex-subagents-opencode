@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs a React-focused agent for component behavior, state flow, rendering bugs, or modern React patterns."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

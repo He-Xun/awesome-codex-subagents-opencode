@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs PowerShell module structure, command design, packaging, or profile architecture work."
 mode: subagent
-reasoningEffort: high
 color: secondary
 permission:
   edit: allow

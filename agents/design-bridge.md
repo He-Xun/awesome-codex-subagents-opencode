@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs a DESIGN.md (e.g. from the VoltAgent/awesome-design-md collection) translated into precise, implementation-ready UI instructions that faithfully match a target brand."
 mode: subagent
-reasoningEffort: high
 color: info
 permission:
   edit: allow

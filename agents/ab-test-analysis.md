@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs analysis of A/B test results, interpretation of p-values and confidence intervals, statistical significance checks, or a principled ship/no-ship decision."
 mode: subagent
-reasoningEffort: high
 color: info
 permission:
   edit: deny

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs evidence-grounded answers from published research, including methods, results, sample sizes, and quality-weighted synthesis."
 mode: subagent
-reasoningEffort: medium
 color: info
 permission:
   edit: deny

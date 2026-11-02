@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs cloud architecture review across compute, storage, networking, reliability, or multi-service design."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

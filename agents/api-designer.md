@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs API contract design, evolution planning, or compatibility review before implementation starts."
 mode: subagent
-reasoningEffort: high
 color: info
 permission:
   edit: deny

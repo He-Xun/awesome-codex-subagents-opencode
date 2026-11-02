@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs network-path analysis, service connectivity debugging, load-balancer review, or infrastructure network design input."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs legal-risk spotting in product or engineering behavior, especially around terms, data handling, or externally visible commitments."
 mode: subagent
-reasoningEffort: high
 color: primary
 permission:
   edit: deny

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs growth loop design, PLG mechanics analysis, or diagnosis of why acquisition is linear instead of compounding."
 mode: subagent
-reasoningEffort: medium
 color: primary
 permission:
   edit: deny

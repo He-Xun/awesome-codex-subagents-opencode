@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs an idea pressure-tested with brutal honesty — competitor teardown, market validation, fatal-flaw hunting, and clear go or no-go guidance before building."
 mode: subagent
-reasoningEffort: high
 color: info
 permission:
   edit: deny

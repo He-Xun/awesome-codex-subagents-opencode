@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs a modernization path for older code, frameworks, or architecture without losing behavioral safety."
 mode: subagent
-reasoningEffort: high
 color: secondary
 permission:
   edit: deny

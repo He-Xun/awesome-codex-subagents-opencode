@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs help with branching strategy, merge flow, release branching, or repository collaboration conventions."
 mode: subagent
-reasoningEffort: medium
 color: secondary
 permission:
   edit: deny

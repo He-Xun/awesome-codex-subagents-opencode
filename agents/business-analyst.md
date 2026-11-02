@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs requirements clarified, scope normalized, or acceptance criteria extracted from messy inputs before engineering work starts."
 mode: subagent
-reasoningEffort: high
 color: primary
 permission:
   edit: deny

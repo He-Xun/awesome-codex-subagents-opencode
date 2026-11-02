@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Expo / React Native mobile work — navigation, native modules, performance, EAS builds, or store deployment."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

@@ -1,7 +1,6 @@
 ---
 description: Use when a task needs scoped frontend implementation or UI bug fixes with production-level behavior and quality.
 mode: subagent
-reasoningEffort: high
 color: info
 permission:
   edit: allow

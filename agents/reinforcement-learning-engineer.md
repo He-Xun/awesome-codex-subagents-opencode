@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs RL environment design, policy training, reward engineering, or deployment of decision-making agents."
 mode: subagent
-reasoningEffort: high
 color: success
 permission:
   edit: allow

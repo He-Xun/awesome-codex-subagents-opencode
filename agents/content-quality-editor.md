@@ -1,7 +1,6 @@
 ---
 description: "Use before publishing AI-generated content — blog posts, READMEs, release notes, commit messages, PR descriptions, docs, or social posts. Strips AI patterns and applies a final quality pass."
 mode: subagent
-reasoningEffort: medium
 color: primary
 permission:
   edit: allow

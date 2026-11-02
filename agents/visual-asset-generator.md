@@ -1,7 +1,6 @@
 ---
 description: "Use when a project needs production-ready visual assets: app icons, favicons, OG images, logos, or wordmarks. Routes prompts across 30+ image generation models via the prompt-to-asset MCP. Zero API key required for first run via free tiers."
 mode: subagent
-reasoningEffort: medium
 color: secondary
 permission:
   edit: deny

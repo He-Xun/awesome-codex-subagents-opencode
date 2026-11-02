@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs platform roadmap, adoption strategy, success metrics, and stakeholder alignment for internal platform work."
 mode: subagent
-reasoningEffort: medium
 color: secondary
 permission:
   edit: deny

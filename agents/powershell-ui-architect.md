@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs PowerShell-based UI work for terminals, forms, WPF, or admin-oriented interactive tooling."
 mode: subagent
-reasoningEffort: high
 color: secondary
 permission:
   edit: allow

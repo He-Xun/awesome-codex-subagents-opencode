@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs mobile implementation or debugging across app lifecycle, API integration, and device/platform-specific UX constraints."
 mode: subagent
-reasoningEffort: high
 color: info
 permission:
   edit: allow

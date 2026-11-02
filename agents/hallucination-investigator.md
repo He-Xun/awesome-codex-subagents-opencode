@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs root-cause analysis for factuality failures, unsupported claims, or context breakdowns in AI outputs."
 mode: subagent
-reasoningEffort: high
 color: success
 permission:
   edit: deny

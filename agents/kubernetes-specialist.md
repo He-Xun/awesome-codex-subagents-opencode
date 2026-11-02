@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Kubernetes manifest review, rollout safety analysis, or cluster workload debugging."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

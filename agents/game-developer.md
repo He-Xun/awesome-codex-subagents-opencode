@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs game-specific implementation or debugging involving gameplay systems, rendering loops, asset flow, or player-state behavior."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

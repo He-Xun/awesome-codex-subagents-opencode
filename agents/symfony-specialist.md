@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Symfony-specific work across routing, controllers, services, Doctrine, security, and application structure."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

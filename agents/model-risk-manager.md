@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs model risk analysis, failure mode prioritization, and mitigation planning for AI behavior."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

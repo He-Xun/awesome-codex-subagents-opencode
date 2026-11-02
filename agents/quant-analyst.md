@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs quantitative analysis of models, strategies, simulations, or numeric decision logic."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: deny

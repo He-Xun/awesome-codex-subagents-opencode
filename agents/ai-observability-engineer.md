@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs AI-native traces, metrics, logging, and debugging signals for LLM or agent systems in production."
 mode: subagent
-reasoningEffort: high
 color: success
 permission:
   edit: deny

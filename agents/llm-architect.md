@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs architecture review for prompts, tool use, retrieval, evaluation, or multi-step LLM workflows."
 mode: subagent
-reasoningEffort: high
 color: success
 permission:
   edit: deny

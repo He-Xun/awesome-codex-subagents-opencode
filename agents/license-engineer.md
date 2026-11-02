@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs software licensing architecture — OSI selection, dependency compliance, dual-licensing, or risk and liability strategy."
 mode: subagent
-reasoningEffort: high
 color: primary
 permission:
   edit: deny

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs market landscape, positioning, or demand-side research tied to a technical product or category."
 mode: subagent
-reasoningEffort: medium
 color: info
 permission:
   edit: deny

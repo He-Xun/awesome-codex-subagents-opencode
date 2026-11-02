@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs concrete UI decisions, interaction design, and implementation-ready design guidance before or during development."
 mode: subagent
-reasoningEffort: high
 color: info
 permission:
   edit: deny

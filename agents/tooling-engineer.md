@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs internal developer tooling, scripts, automation glue, or workflow support utilities."
 mode: subagent
-reasoningEffort: medium
 color: secondary
 permission:
   edit: allow

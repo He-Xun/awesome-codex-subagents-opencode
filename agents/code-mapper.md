@@ -1,7 +1,6 @@
 ---
 description: "Use when the parent agent needs a high-confidence map of code paths, ownership boundaries, and execution flow before changes are made."
 mode: subagent
-reasoningEffort: medium
 color: info
 permission:
   edit: deny

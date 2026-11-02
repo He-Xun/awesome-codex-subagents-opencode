@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs dependency mapping, milestone planning, sequencing, or delivery-risk coordination across multiple workstreams."
 mode: subagent
-reasoningEffort: high
 color: primary
 permission:
   edit: deny

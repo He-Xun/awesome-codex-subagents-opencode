@@ -1,7 +1,6 @@
 ---
 description: Use when a task needs UI feedback synthesized into actionable product and implementation guidance.
 mode: subagent
-reasoningEffort: high
 color: primary
 permission:
   edit: deny

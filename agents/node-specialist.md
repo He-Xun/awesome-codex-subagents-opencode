@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Node.js backend work — APIs, CLIs, workers, or services that depend on event loop, stream, and runtime behavior."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Microsoft 365 administration help across Exchange Online, Teams, SharePoint, identity, or tenant-level automation."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: deny

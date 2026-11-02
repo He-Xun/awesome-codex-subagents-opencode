@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs a maintainer-ready README built from exact repository reality, with zero hallucinated commands, flags, or config keys."
 mode: subagent
-reasoningEffort: medium
 color: secondary
 permission:
   edit: allow

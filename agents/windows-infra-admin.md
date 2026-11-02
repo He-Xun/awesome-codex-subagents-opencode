@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Windows infrastructure administration across Active Directory, DNS, DHCP, GPO, or Windows automation."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

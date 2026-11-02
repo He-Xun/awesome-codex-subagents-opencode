@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Laravel-specific work across routing, Eloquent, queues, validation, or application structure."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

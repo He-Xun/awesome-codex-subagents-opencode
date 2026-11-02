@@ -1,7 +1,6 @@
 ---
 description: Use when a task needs product-adjacent content strategy or messaging that still has to stay grounded in real technical capabilities.
 mode: subagent
-reasoningEffort: medium
 color: primary
 permission:
   edit: deny

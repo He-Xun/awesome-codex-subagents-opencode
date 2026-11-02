@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs PostgreSQL-specific expertise for schema design, performance behavior, locking, or operational database features."
 mode: subagent
-reasoningEffort: high
 color: success
 permission:
   edit: deny

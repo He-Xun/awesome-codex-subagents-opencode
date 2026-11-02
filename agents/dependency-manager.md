@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs dependency upgrades, package graph analysis, version-policy cleanup, or third-party library risk assessment."
 mode: subagent
-reasoningEffort: medium
 color: secondary
 permission:
   edit: allow

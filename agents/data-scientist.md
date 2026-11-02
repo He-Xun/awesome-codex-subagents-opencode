@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs statistical reasoning, experiment interpretation, feature analysis, or model-oriented data exploration."
 mode: subagent
-reasoningEffort: high
 color: success
 permission:
   edit: deny

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs prompt revision, instruction design, eval-oriented prompt comparison, or prompt-output contract tightening."
 mode: subagent
-reasoningEffort: high
 color: success
 permission:
   edit: deny

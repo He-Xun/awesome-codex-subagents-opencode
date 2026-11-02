@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs infrastructure and platform security engineering across IAM, secrets, network controls, or hardening work."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

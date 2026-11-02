@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Angular-specific help for component architecture, dependency injection, routing, signals, or enterprise application structure."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

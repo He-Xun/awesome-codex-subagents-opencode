@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs work on MCP servers, MCP clients, tool wiring, or protocol-aware integrations."
 mode: subagent
-reasoningEffort: high
 color: secondary
 permission:
   edit: allow

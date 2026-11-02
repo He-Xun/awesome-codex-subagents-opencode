@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs documentation-backed verification of APIs, version-specific behavior, or framework options."
 mode: subagent
-reasoningEffort: medium
 color: info
 permission:
   edit: deny

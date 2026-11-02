@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs process facilitation, iteration planning, or workflow friction analysis for an engineering team."
 mode: subagent
-reasoningEffort: medium
 color: primary
 permission:
   edit: deny

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs explicit risk analysis for product, operational, financial, or architectural decisions."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: deny

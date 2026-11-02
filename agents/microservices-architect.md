@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs service-boundary design, inter-service contract review, or distributed-system architecture decisions."
 mode: subagent
-reasoningEffort: high
 color: info
 permission:
   edit: deny

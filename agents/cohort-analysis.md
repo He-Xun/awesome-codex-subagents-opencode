@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs retention analysis, cohort behavior comparison, activation-metric discovery, or diagnosis of how user groups perform over time."
 mode: subagent
-reasoningEffort: high
 color: info
 permission:
   edit: deny

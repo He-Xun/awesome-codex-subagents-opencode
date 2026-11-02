@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs a product backlog groomed, refined, or cleaned up — sprint readiness, estimation, and zombie-story cleanup."
 mode: subagent
-reasoningEffort: medium
 color: primary
 permission:
   edit: deny

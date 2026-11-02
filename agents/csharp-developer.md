@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs C# or .NET application work involving services, APIs, async flows, or application architecture."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

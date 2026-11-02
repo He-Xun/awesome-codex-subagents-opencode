@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs a structured investigation of a technical topic, implementation approach, or design question."
 mode: subagent
-reasoningEffort: high
 color: info
 permission:
   edit: deny

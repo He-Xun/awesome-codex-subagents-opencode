@@ -93,9 +93,51 @@ Codex 的 `sandbox_mode` 是沙箱级强制，OpenCode 的 `permission` 是 allo
 | `--all` | 连 Codex 专用 agent 也一并转换 |
 | `--dry` | 只打印报告，不写文件 |
 | `--model-map=k=v,...` | 覆盖模型映射 |
+| `--lang=zh` | 把 `description` 本地化成中文，正文保持英文 |
+| `--keep-reasoning` | 保留 `reasoningEffort` 字段 |
 
 默认跳过 `agent-installer`、`workflow-orchestrator`：它们的 prompt 讲的是
 "往 `~/.codex/agents/` 里装文件"，移植到 OpenCode 后语义为空。
+
+---
+
+## 中文本地化（`--lang=zh`）
+
+```bash
+node tools/codex-subagents-to-opencode.mjs <src> agents-zh --lang=zh
+```
+
+**只翻译 `description`，不翻译 prompt 正文。** 译表在 `tools/i18n/zh.json`，
+按 agent 名索引，可直接编辑增补。
+
+### 为什么不全量汉化
+
+先看实测数据。同一份内容的中英对照测试：
+
+| 分词器 | 英文 | 中文 | 差值 |
+| --- | --- | --- | --- |
+| GPT-4o (o200k) | 1196 | 1479 | +23.7% |
+| DeepSeek-V2 | 1324 | 1427 | +7.8% |
+| GLM-4 | 1202 | 1307 | +8.7% |
+| Qwen 2.5 | 1203 | 1351 | +12.3% |
+
+来源：[Chinese vs. English Tokens](https://markhuang.ai/blog/chinese-token-myth)。
+
+国产模型的分词器对中文友好得多（从 +24% 降到 +8%），但**方向从未逆转：中文更费 token**。
+原因是英文可以整词压成单个 token，而汉字基本一字一 token 或更多。
+
+换算到本仓库：中文 description 字符数少 66%，但 token 数**增加约 50%**（字符密度高）。
+全量汉化正文会让 327k 字符的 prompt 再涨约 8%。
+
+所以：**汉化的价值是可读性和触发准确性，不是省 token。** 想省 token 应该精简数量，
+而不是换语言。
+
+### 对国产模型的额外调整
+
+- `reasoningEffort` 是 OpenAI 系请求参数，GLM / DeepSeek / Qwen / MiMo 通常忽略。
+  **默认不再输出**，需要时用 `--keep-reasoning` 恢复。
+- 若给特定 agent 钉模型，用 `--model-map`，例如
+  `--model-map=gpt-6.1-sol=<provider>/<model-id>`。
 
 ---
 
@@ -123,8 +165,11 @@ Codex 的 `sandbox_mode` 是沙箱级强制，OpenCode 的 `permission` 是 allo
 .
 ├── tools/
 │   ├── codex-subagents-to-opencode.mjs   # 转换器（零依赖）
-│   └── analyze-subagents.mjs             # 产物分析脚本
-├── agents/                                # 生成的 174 个 OpenCode agent
+│   ├── i18n/zh.json                      # description 中文译表
+│   ├── analyze-subagents.mjs             # 产物分析
+│   ├── compare-lang.mjs                  # 中英文 token 成本对比
+│   └── verify-load.mjs                   # 验证 OpenCode 能否正确加载
+├── agents/                                # 生成的 174 个 OpenCode agent（英文 description）
 ├── README.md
 └── LICENSE
 ```

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Flutter expertise for widget behavior, state management, rendering issues, or mobile cross-platform implementation."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

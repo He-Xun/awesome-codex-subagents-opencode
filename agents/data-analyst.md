@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs data interpretation, metric breakdown, trend explanation, or decision support from existing analytics outputs."
 mode: subagent
-reasoningEffort: medium
 color: success
 permission:
   edit: deny

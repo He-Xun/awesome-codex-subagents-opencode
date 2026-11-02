@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Ruby on Rails expertise for models, controllers, jobs, callbacks, or convention-driven application changes."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

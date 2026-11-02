@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs end-to-end Azure Databricks platform architecture across lakehouse design, governance, compute, security, networking, reliability, cost, Lakebase, and Databricks Apps."
 mode: subagent
-reasoningEffort: high
 color: success
 permission:
   edit: deny

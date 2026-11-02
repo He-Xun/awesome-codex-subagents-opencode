@@ -1,7 +1,6 @@
 ---
 description: "Use when multiple agents have returned findings and the parent agent needs a distilled, non-redundant synthesis."
 mode: subagent
-reasoningEffort: medium
 color: warning
 permission:
   edit: deny

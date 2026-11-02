@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs adversarial review of an application path for exploitability, abuse cases, or practical attack surface analysis."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

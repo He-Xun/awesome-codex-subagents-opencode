@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs deployment workflow changes, release strategy updates, or rollout and rollback safety analysis."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: allow

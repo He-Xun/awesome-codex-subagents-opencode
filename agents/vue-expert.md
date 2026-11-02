@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Vue expertise for component behavior, Composition API patterns, routing, or state and rendering issues."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

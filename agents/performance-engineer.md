@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs performance investigation for slow requests, hot paths, rendering regressions, or scalability bottlenecks."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

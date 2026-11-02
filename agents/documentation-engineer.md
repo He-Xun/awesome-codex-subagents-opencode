@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs technical documentation that must stay faithful to current code, tooling, and operator workflows."
 mode: subagent
-reasoningEffort: medium
 color: secondary
 permission:
   edit: allow

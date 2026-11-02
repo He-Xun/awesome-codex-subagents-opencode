@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs ML system implementation work across training pipelines, feature flow, model serving, or inference integration."
 mode: subagent
-reasoningEffort: high
 color: success
 permission:
   edit: allow

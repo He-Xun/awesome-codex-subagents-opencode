@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs implementation of automated tests, test harness improvements, or targeted regression coverage."
 mode: subagent
-reasoningEffort: medium
 color: error
 permission:
   edit: allow

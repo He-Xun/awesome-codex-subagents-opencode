@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs browser-based reproduction, UI evidence gathering, or client-side debugging through a browser MCP server."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: allow

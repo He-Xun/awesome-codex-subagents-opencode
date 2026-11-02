@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs PHP expertise for application logic, framework integration, runtime debugging, or server-side code evolution."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

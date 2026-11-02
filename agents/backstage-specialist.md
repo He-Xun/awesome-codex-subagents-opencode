@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Backstage architecture, catalog, plugin, template, or adoption guidance for an internal developer platform."
 mode: subagent
-reasoningEffort: high
 color: secondary
 permission:
   edit: deny

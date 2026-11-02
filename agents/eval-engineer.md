@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs evaluation design for prompts, retrieval, tools, or multi-step agent workflows."
 mode: subagent
-reasoningEffort: high
 color: success
 permission:
   edit: deny

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task involves healthcare administration: revenue cycle management, HIPAA/compliance auditing, medical coding (ICD-10, CPT, DRGs), CMS cost reports, payer contract analysis, quality improvement, clinical operations, health IT/interoperability, population health, or pharmacy benefits."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

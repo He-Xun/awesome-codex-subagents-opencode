@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs a grounded comparison of tools, products, libraries, or implementation options."
 mode: subagent
-reasoningEffort: medium
 color: info
 permission:
   edit: deny

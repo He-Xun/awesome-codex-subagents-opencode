@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs rapid operational triage across CI, deployments, infrastructure automation, and service delivery failures."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

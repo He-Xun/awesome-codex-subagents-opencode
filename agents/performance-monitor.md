@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs ongoing performance-signal interpretation across build, runtime, or operational metrics before deeper optimization starts."
 mode: subagent
-reasoningEffort: medium
 color: warning
 permission:
   edit: deny

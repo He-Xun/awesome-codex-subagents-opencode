@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Django-specific work across models, views, forms, ORM behavior, or admin and middleware flows."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs internal developer platform architecture, service boundaries, and self-service control-plane design."
 mode: subagent
-reasoningEffort: high
 color: secondary
 permission:
   edit: deny

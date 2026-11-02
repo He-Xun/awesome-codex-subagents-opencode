@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs compliance-oriented review of controls, auditability, policy alignment, or evidence gaps in a regulated workflow."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

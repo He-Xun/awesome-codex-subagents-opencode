@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Active Directory security review across identity boundaries, delegation, GPO exposure, or directory hardening."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

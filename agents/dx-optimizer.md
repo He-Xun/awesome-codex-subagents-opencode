@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs developer-experience improvements in setup time, local workflows, feedback loops, or day-to-day tooling friction."
 mode: subagent
-reasoningEffort: high
 color: secondary
 permission:
   edit: deny

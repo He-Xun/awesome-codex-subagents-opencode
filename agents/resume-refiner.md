@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs a professional resume, CV, or LinkedIn profile reviewed, refined, or optimized for clarity, impact, and role alignment."
 mode: subagent
-reasoningEffort: medium
 color: primary
 permission:
   edit: allow

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs an accessibility audit of UI changes, interaction flows, or component behavior."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

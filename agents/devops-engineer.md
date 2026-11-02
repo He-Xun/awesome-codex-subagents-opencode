@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs CI, deployment pipeline, release automation, or environment configuration work."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: allow

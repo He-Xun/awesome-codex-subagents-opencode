@@ -1,7 +1,6 @@
 ---
 description: Use when the parent agent needs help choosing subagents and dividing a larger task into clean delegated threads.
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

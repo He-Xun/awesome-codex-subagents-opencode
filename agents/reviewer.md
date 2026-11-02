@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs PR-style review focused on correctness, security, behavior regressions, and missing tests."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

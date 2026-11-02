@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs consumer-facing API documentation generated from the real implementation, schema, and examples."
 mode: subagent
-reasoningEffort: medium
 color: accent
 permission:
   edit: allow

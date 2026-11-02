@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Windows PowerShell 5.1 expertise for legacy automation, full .NET Framework interop, or Windows administration scripts."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

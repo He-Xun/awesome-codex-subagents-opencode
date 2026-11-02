@@ -1,7 +1,6 @@
 ---
 description: "Use when a pull request, module, security boundary, or product flow needs a coverage-gated, multi-pass deliberative review where every unit is graded and false positives are retracted before reporting."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

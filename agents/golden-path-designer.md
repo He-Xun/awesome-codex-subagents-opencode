@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs an opinionated, low-friction golden path for service creation, deployment, or operations."
 mode: subagent
-reasoningEffort: high
 color: secondary
 permission:
   edit: deny

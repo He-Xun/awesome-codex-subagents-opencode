@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs IoT system work involving devices, telemetry, edge communication, or cloud-device coordination."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

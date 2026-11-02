@@ -1,7 +1,6 @@
 ---
 description: Use when a task needs prose to be checked for AI writing patterns and rewritten to sound natural and human.
 mode: subagent
-reasoningEffort: medium
 color: error
 permission:
   edit: allow

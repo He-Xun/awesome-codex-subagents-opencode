@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs a Python-focused subagent for runtime behavior, packaging, typing, testing, or framework-adjacent implementation."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

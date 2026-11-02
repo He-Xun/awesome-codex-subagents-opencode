@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs internal platform, golden-path, or self-service infrastructure design for developers."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

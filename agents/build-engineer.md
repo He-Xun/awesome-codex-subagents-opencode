@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs build-graph debugging, bundling fixes, compiler pipeline work, or CI build stabilization."
 mode: subagent
-reasoningEffort: medium
 color: secondary
 permission:
   edit: allow

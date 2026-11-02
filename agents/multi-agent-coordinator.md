@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs a concrete multi-agent plan with clear role separation, dependencies, and result integration."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

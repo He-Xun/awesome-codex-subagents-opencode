@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs exhaustive UI and UX functional testing driven by documented user flows, with structured defect reporting."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

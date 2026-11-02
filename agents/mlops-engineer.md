@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs model deployment, registry, pipeline, monitoring, or environment orchestration for machine learning systems."
 mode: subagent
-reasoningEffort: high
 color: success
 permission:
   edit: allow

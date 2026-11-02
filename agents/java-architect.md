@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Java application or service architecture help across framework boundaries, JVM behavior, or large codebase structure."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

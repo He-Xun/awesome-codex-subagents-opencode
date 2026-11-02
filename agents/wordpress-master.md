@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs WordPress-specific implementation or debugging across themes, plugins, content architecture, or operational site behavior."
 mode: subagent
-reasoningEffort: high
 color: primary
 permission:
   edit: allow

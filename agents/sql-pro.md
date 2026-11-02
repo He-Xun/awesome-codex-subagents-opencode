@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs SQL query design, query review, schema-aware debugging, or database migration analysis."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: deny

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Terraform module design, plan review, state-aware change analysis, or IaC refactoring."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

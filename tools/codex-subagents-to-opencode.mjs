@@ -295,6 +295,21 @@ function normalizeDescription(desc) {
   return desc.replace(/\bCodex\b/g, "the parent agent");
 }
 
+const I18N_DIR = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1")), "i18n");
+
+/**
+ * Load a description translation table, e.g. tools/i18n/zh.json.
+ * The table keys on the agent name; values are full replacement descriptions.
+ */
+function loadTranslations(lang) {
+  if (!lang || lang === "en") return null;
+  const file = path.join(I18N_DIR, `${lang}.json`);
+  if (!fs.existsSync(file)) {
+    throw new Error(`No translation table for --lang=${lang} (expected ${file})`);
+  }
+  return JSON.parse(fs.readFileSync(file, "utf8"));
+}
+
 /**
  * Rewrite a prompt that assumes a vendor-hosted MCP server into one that uses
  * tools the user actually has. Kept as targeted text substitution so the rest
@@ -351,7 +366,13 @@ function convertOne(file, opts) {
 
   const codexModel = toml.model;
   const mappedModel = resolveModel(codexModel, opts.modelMap);
-  const reasoningEffort = REASONING_MAP[toml.model_reasoning_effort] ? toml.model_reasoning_effort : undefined;
+  // reasoningEffort is an OpenAI-style request parameter that domestic model
+  // providers (GLM, DeepSeek, Qwen, MiMo) generally ignore. Emit it only when
+  // the user asked to keep provider-specific options.
+  const reasoningEffort =
+    opts.keepReasoning && REASONING_MAP[toml.model_reasoning_effort]
+      ? toml.model_reasoning_effort
+      : undefined;
 
   const body = normalizeBody(toml.developer_instructions ?? "");
 
@@ -376,7 +397,7 @@ function convertOne(file, opts) {
   const needsMcp = mcpServers.some((s) => s.kind === "external");
 
   const meta = {
-    description: normalizeDescription(toml.description || `${name} subagent`),
+    description: opts.translations?.[name] ?? normalizeDescription(toml.description || `${name} subagent`),
     model: mappedModel,
     reasoningEffort,
     color: CATEGORY_COLORS[category] ?? undefined,
@@ -412,12 +433,16 @@ function parseArgs(argv) {
     skip: [...DEFAULT_SKIP],
     // Empty by default: no agent gets a hard-coded model. See resolveModel().
     modelMap: {},
+    lang: "en",
+    keepReasoning: false,
   };
   for (const a of argv) {
     if (a.startsWith("--only=")) flags.only = a.slice(7).split(",").map((s) => s.trim()).filter(Boolean);
     else if (a.startsWith("--category=")) flags.categories = a.slice(11).split(",");
     else if (a === "--dry") flags.dry = true;
     else if (a === "--all") flags.skip = [];
+    else if (a === "--keep-reasoning") flags.keepReasoning = true;
+    else if (a.startsWith("--lang=")) flags.lang = a.slice(7).trim();
     else if (a.startsWith("--skip=")) flags.skip = a.slice(7).split(",").map((s) => s.trim()).filter(Boolean);
     else if (a.startsWith("--model-map=")) {
       // e.g. --model-map=gpt-6.1-sol=anthropic/claude-sonnet-5,gpt-6-luna=anthropic/claude-haiku-5
@@ -460,7 +485,12 @@ function main() {
   };
   walk(src);
 
-  const opts = { outDir: path.resolve(outDir), modelMap: flags.modelMap };
+  const opts = {
+    outDir: path.resolve(outDir),
+    modelMap: flags.modelMap,
+    keepReasoning: flags.keepReasoning,
+    translations: loadTranslations(flags.lang),
+  };
 
   const results = [];
   const errors = [];
@@ -524,6 +554,15 @@ function main() {
     for (const r of collapsed) bySource[r.collapsedModel] = (bySource[r.collapsedModel] || 0) + 1;
     for (const [m, n] of Object.entries(bySource)) console.log(`  ${String(n).padStart(3)} × source model "${m}"`);
     console.log("  Tip: pass --model-map=<sourceModel>=<provider>/<model> to pin one instead.");
+  }
+
+  if (flags.lang !== "en") {
+    const translated = results.filter((r) => opts.translations?.[r.name]).length;
+    console.log(`\nLocalized descriptions (--lang=${flags.lang}): ${translated}/${results.length}`);
+    if (translated < results.length) {
+      const missing = results.filter((r) => !opts.translations?.[r.name]).map((r) => r.name);
+      console.log(`  Untranslated (falling back to English): ${missing.join(", ")}`);
+    }
   }
 
   const byCategory = {};

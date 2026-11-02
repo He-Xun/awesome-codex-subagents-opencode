@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Spring Boot expertise for service behavior, configuration, data access, or enterprise API implementation."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

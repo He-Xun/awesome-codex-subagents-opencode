@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs an AI governance review covering controls, accountability, risk ownership, and deployment readiness."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

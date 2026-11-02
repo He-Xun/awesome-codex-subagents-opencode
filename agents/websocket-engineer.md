@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs real-time transport and state work across WebSocket lifecycle, message contracts, and reconnect/failure behavior."
 mode: subagent
-reasoningEffort: high
 color: info
 permission:
   edit: allow

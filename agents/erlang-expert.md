@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Erlang/OTP and rebar3 expertise for BEAM processes, testing, releases, upgrades, or distributed runtime behavior."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

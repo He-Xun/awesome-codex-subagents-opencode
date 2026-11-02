@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs repository-wide refactor governance with weighted risk prioritization, diff previews, and explicit approval gates before execution."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs test strategy, acceptance coverage planning, or risk-based QA guidance for a feature or release."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

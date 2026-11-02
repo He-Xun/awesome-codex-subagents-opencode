@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs database performance analysis for query plans, schema design, indexing, or data access patterns."
 mode: subagent
-reasoningEffort: high
 color: success
 permission:
   edit: deny

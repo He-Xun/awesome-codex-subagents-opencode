@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs app-level mobile product work across screens, state, API integration, and release-sensitive mobile behavior."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

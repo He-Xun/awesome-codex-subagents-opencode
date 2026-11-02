@@ -1,0 +1,2632 @@
+{
+  "generatedAt": "2026-11-02T08:33:28.172Z",
+  "source": "C:\\Users\\harrison\\AppData\\Local\\Temp\\opencode\\awesome-codex-subagents\\categories",
+  "total": 174,
+  "agents": [
+    {
+      "name": "api-designer",
+      "category": "01-core-development",
+      "description": "需要在动手实现前完成 API 契约设计、演进规划或兼容性评审时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1678
+    },
+    {
+      "name": "backend-developer",
+      "category": "01-core-development",
+      "description": "在归属代码路径已明确后，需要做一个范围受限的后端实现或修复后端缺陷时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1542
+    },
+    {
+      "name": "code-mapper",
+      "category": "01-core-development",
+      "description": "上级 agent 需要在改动前获得一份高可信的代码路径、归属边界与执行流地图时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1094
+    },
+    {
+      "name": "design-bridge",
+      "category": "01-core-development",
+      "description": "需要把 DESIGN.md（例如来自 VoltAgent/awesome-design-md 集合）翻译成精确、可直接实现的 UI 指令，并忠实还原目标品牌时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2062
+    },
+    {
+      "name": "electron-pro",
+      "category": "01-core-development",
+      "description": "需要 Electron 专项实现或调试，涉及主进程/渲染进程/preload 边界、打包或桌面运行时行为时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1381
+    },
+    {
+      "name": "frontend-developer",
+      "category": "01-core-development",
+      "description": "需要范围受限的前端实现或 UI 缺陷修复，并达到生产级行为与质量时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1286
+    },
+    {
+      "name": "fullstack-developer",
+      "category": "01-core-development",
+      "description": "当单个有边界的功能或缺陷横跨前后端，且应由一个执行者端到端负责时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1227
+    },
+    {
+      "name": "graphql-architect",
+      "category": "01-core-development",
+      "description": "需要 GraphQL 的 schema 演进、resolver 架构、federation 设计，或分布式图的性能与安全评审时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1718
+    },
+    {
+      "name": "microservices-architect",
+      "category": "01-core-development",
+      "description": "需要服务边界设计、服务间契约评审或分布式系统架构决策时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1493
+    },
+    {
+      "name": "mobile-developer",
+      "category": "01-core-development",
+      "description": "需要移动端实现或调试，涉及应用生命周期、API 集成与设备/平台特有的 UX 约束时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1121
+    },
+    {
+      "name": "ui-designer",
+      "category": "01-core-development",
+      "description": "需要具体的 UI 决策、交互设计，或在开发前/开发中提供可直接实现的设计指导时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1133
+    },
+    {
+      "name": "ui-fixer",
+      "category": "01-core-development",
+      "description": "当 UI 问题已被复现，且上级 agent 需要最小且安全的补丁时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 975
+    },
+    {
+      "name": "websocket-engineer",
+      "category": "01-core-development",
+      "description": "需要实时传输与状态处理，涉及 WebSocket 生命周期、消息契约与重连/故障行为时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1185
+    },
+    {
+      "name": "angular-architect",
+      "category": "02-language-specialists",
+      "description": "需要 Angular 专项支持，涉及组件架构、依赖注入、路由、signals 或企业级应用结构时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2001
+    },
+    {
+      "name": "cpp-pro",
+      "category": "02-language-specialists",
+      "description": "需要 C++ 支持，涉及性能敏感代码、内存所有权、并发或系统级集成时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2001
+    },
+    {
+      "name": "csharp-developer",
+      "category": "02-language-specialists",
+      "description": "需要 C# 或 .NET 应用开发，涉及服务、API、异步流程或应用架构时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1949
+    },
+    {
+      "name": "django-developer",
+      "category": "02-language-specialists",
+      "description": "需要 Django 专项工作，涉及模型、视图、表单、ORM 行为，或 admin 与中间件流程时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1984
+    },
+    {
+      "name": "dotnet-core-expert",
+      "category": "02-language-specialists",
+      "description": "需要现代 .NET 与 ASP.NET Core 专长，涉及 API、托管、中间件或跨平台应用行为时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1874
+    },
+    {
+      "name": "dotnet-framework-4.8-expert",
+      "category": "02-language-specialists",
+      "description": "需要 .NET Framework 4.8 专长，涉及遗留企业应用、兼容性约束或绑定 Windows 的集成时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1904
+    },
+    {
+      "name": "elixir-expert",
+      "category": "02-language-specialists",
+      "description": "需要 Elixir 与 OTP 专长，涉及进程、监督树、容错或 Phoenix 应用行为时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1888
+    },
+    {
+      "name": "erlang-expert",
+      "category": "02-language-specialists",
+      "description": "需要 Erlang/OTP 与 rebar3 专长，涉及 BEAM 进程、测试、发布、升级或分布式运行时行为时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2629
+    },
+    {
+      "name": "expo-react-native-expert",
+      "category": "02-language-specialists",
+      "description": "需要 Expo / React Native 移动开发，涉及导航、原生模块、性能、EAS 构建或应用商店发布时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1987
+    },
+    {
+      "name": "fastapi-developer",
+      "category": "02-language-specialists",
+      "description": "需要 FastAPI 实现，涉及异步端点、Pydantic v2 契约、依赖注入或 ASGI 部署行为时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1987
+    },
+    {
+      "name": "flutter-expert",
+      "category": "02-language-specialists",
+      "description": "需要 Flutter 专长，涉及 widget 行为、状态管理、渲染问题或移动跨平台实现时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1914
+    },
+    {
+      "name": "golang-pro",
+      "category": "02-language-specialists",
+      "description": "需要 Go 专长，涉及并发、服务实现、接口、工具链或性能敏感的后端路径时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1852
+    },
+    {
+      "name": "java-architect",
+      "category": "02-language-specialists",
+      "description": "需要 Java 应用或服务架构支持，涉及框架边界、JVM 行为或大型代码库结构时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1883
+    },
+    {
+      "name": "javascript-pro",
+      "category": "02-language-specialists",
+      "description": "需要以 JavaScript 为主的工作，涉及运行时行为、浏览器或 Node 执行，或非 TypeScript 主导的应用层代码时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1848
+    },
+    {
+      "name": "kotlin-specialist",
+      "category": "02-language-specialists",
+      "description": "需要 Kotlin 专长，涉及 JVM 应用、Android 代码、协程或现代强类型服务逻辑时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1900
+    },
+    {
+      "name": "laravel-specialist",
+      "category": "02-language-specialists",
+      "description": "需要 Laravel 专项工作，涉及路由、Eloquent、队列、校验或应用结构时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1894
+    },
+    {
+      "name": "nextjs-developer",
+      "category": "02-language-specialists",
+      "description": "需要 Next.js 专项工作，涉及路由、渲染模式、server actions、数据获取或对部署敏感的前端行为时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1903
+    },
+    {
+      "name": "node-specialist",
+      "category": "02-language-specialists",
+      "description": "需要 Node.js 后端工作——依赖事件循环、流与运行时行为的 API、CLI、worker 或服务。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1932
+    },
+    {
+      "name": "php-pro",
+      "category": "02-language-specialists",
+      "description": "需要 PHP 专长，涉及应用逻辑、框架集成、运行时调试或服务端代码演进时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1893
+    },
+    {
+      "name": "powershell-5.1-expert",
+      "category": "02-language-specialists",
+      "description": "需要 Windows PowerShell 5.1 专长，涉及遗留自动化、完整 .NET Framework 互操作或 Windows 管理脚本时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1917
+    },
+    {
+      "name": "powershell-7-expert",
+      "category": "02-language-specialists",
+      "description": "需要现代 PowerShell 7 专长，涉及跨平台自动化、脚本或基于 .NET 的运维工具时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1920
+    },
+    {
+      "name": "python-pro",
+      "category": "02-language-specialists",
+      "description": "需要 Python 专项子 agent，涉及运行时行为、打包、类型标注、测试或贴近框架的实现时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1888
+    },
+    {
+      "name": "rails-expert",
+      "category": "02-language-specialists",
+      "description": "需要 Ruby on Rails 专长，涉及模型、控制器、Job、回调或约定驱动的应用改动时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1898
+    },
+    {
+      "name": "react-specialist",
+      "category": "02-language-specialists",
+      "description": "需要 React 专项 agent，涉及组件行为、状态流、渲染缺陷或现代 React 模式时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1905
+    },
+    {
+      "name": "rust-engineer",
+      "category": "02-language-specialists",
+      "description": "需要 Rust 专长，涉及大量所有权约束的系统代码、异步运行时行为或性能敏感实现时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1891
+    },
+    {
+      "name": "spring-boot-engineer",
+      "category": "02-language-specialists",
+      "description": "需要 Spring Boot 专长，涉及服务行为、配置、数据访问或企业级 API 实现时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1879
+    },
+    {
+      "name": "sql-pro",
+      "category": "02-language-specialists",
+      "description": "需要 SQL 查询设计、查询评审、结合 schema 的调试或数据库迁移分析时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1840
+    },
+    {
+      "name": "swift-expert",
+      "category": "02-language-specialists",
+      "description": "需要 Swift 专长，涉及 iOS 或 macOS 代码、异步流程、Apple 平台 API 或强类型应用逻辑时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1799
+    },
+    {
+      "name": "symfony-specialist",
+      "category": "02-language-specialists",
+      "description": "需要 Symfony 专项工作，涉及路由、控制器、服务、Doctrine、安全与应用结构时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1956
+    },
+    {
+      "name": "typescript-pro",
+      "category": "02-language-specialists",
+      "description": "需要强 TypeScript 支持，涉及类型、接口、重构或编译器驱动的修复时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1834
+    },
+    {
+      "name": "vue-expert",
+      "category": "02-language-specialists",
+      "description": "需要 Vue 专长，涉及组件行为、Composition API 模式、路由或状态与渲染问题时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1877
+    },
+    {
+      "name": "azure-infra-engineer",
+      "category": "03-infrastructure",
+      "description": "需要 Azure 专项的基础设施评审或实现，涉及资源、网络、身份或自动化时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2203
+    },
+    {
+      "name": "cloud-architect",
+      "category": "03-infrastructure",
+      "description": "需要云架构评审，覆盖计算、存储、网络、可靠性或多服务设计时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2108
+    },
+    {
+      "name": "database-administrator",
+      "category": "03-infrastructure",
+      "description": "需要对数据库运维做评审，覆盖可用性、备份、恢复、权限或运行时健康度时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2095
+    },
+    {
+      "name": "deployment-engineer",
+      "category": "03-infrastructure",
+      "description": "需要调整部署流程、更新发布策略，或分析灰度与回滚安全性时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2089
+    },
+    {
+      "name": "devops-engineer",
+      "category": "03-infrastructure",
+      "description": "需要处理 CI、部署流水线、发布自动化或环境配置时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2078
+    },
+    {
+      "name": "devops-incident-responder",
+      "category": "03-infrastructure",
+      "description": "需要对 CI、部署、基础设施自动化与服务交付故障做快速运维排查时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2078
+    },
+    {
+      "name": "docker-expert",
+      "category": "03-infrastructure",
+      "description": "需要评审 Dockerfile、优化镜像、修复多阶段构建或调试容器运行时问题时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2089
+    },
+    {
+      "name": "incident-responder",
+      "category": "03-infrastructure",
+      "description": "需要对生产事故做全面排查、制定止血方案，或做以证据为驱动的根因分析时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2045
+    },
+    {
+      "name": "kubernetes-specialist",
+      "category": "03-infrastructure",
+      "description": "需要评审 Kubernetes 清单、分析发布安全性或调试集群工作负载时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2063
+    },
+    {
+      "name": "network-engineer",
+      "category": "03-infrastructure",
+      "description": "需要网络路径分析、服务连通性调试、负载均衡评审，或基础设施网络设计输入时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2108
+    },
+    {
+      "name": "platform-engineer",
+      "category": "03-infrastructure",
+      "description": "需要面向开发者的内部平台、金路径或自助式基础设施设计时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2010
+    },
+    {
+      "name": "security-engineer",
+      "category": "03-infrastructure",
+      "description": "需要基础设施与平台安全工程，覆盖 IAM、密钥、网络控制或加固工作时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2113
+    },
+    {
+      "name": "sre-engineer",
+      "category": "03-infrastructure",
+      "description": "需要可靠性工程工作，涉及 SLO、告警、错误预算、运维安全性或服务韧性时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2066
+    },
+    {
+      "name": "terraform-engineer",
+      "category": "03-infrastructure",
+      "description": "需要 Terraform 模块设计、plan 评审、结合 state 的变更分析或 IaC 重构时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2005
+    },
+    {
+      "name": "terragrunt-expert",
+      "category": "03-infrastructure",
+      "description": "需要 Terragrunt 专项支持，涉及模块编排、环境分层、依赖接线或 DRY 基础设施结构时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1993
+    },
+    {
+      "name": "windows-infra-admin",
+      "category": "03-infrastructure",
+      "description": "需要 Windows 基础设施管理，涉及 Active Directory、DNS、DHCP、GPO 或 Windows 自动化时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2093
+    },
+    {
+      "name": "accessibility-tester",
+      "category": "04-quality-security",
+      "description": "需要对 UI 改动、交互流程或组件行为做无障碍审计时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2019
+    },
+    {
+      "name": "ad-security-reviewer",
+      "category": "04-quality-security",
+      "description": "需要审查 Active Directory 安全，覆盖身份边界、委派、GPO 暴露面或目录加固时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2081
+    },
+    {
+      "name": "ai-writing-auditor",
+      "category": "04-quality-security",
+      "description": "需要检查文本中的 AI 写作痕迹并改写成自然的人类语感时使用。",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2110
+    },
+    {
+      "name": "anti-ui-slop-reviewer",
+      "category": "04-quality-security",
+      "description": "Web 或 iOS 界面需要做一次针对 AI 同质化套路、层级、交互状态、响应式行为、无障碍信号或设计系统漂移的产品级终审时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2189
+    },
+    {
+      "name": "architect-reviewer",
+      "category": "04-quality-security",
+      "description": "需要做架构评审，关注耦合、系统边界、长期可维护性或设计一致性时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1928
+    },
+    {
+      "name": "browser-debugger",
+      "category": "04-quality-security",
+      "description": "需要通过浏览器 MCP 服务做基于浏览器的复现、收集 UI 证据或调试客户端问题时使用。",
+      "needsMcp": true,
+      "mcpServers": [
+        {
+          "name": "chrome_devtools",
+          "url": "http://localhost:3000/mcp",
+          "startupTimeoutSec": 20,
+          "kind": "external",
+          "note": "Must be configured in opencode.json before this agent is used."
+        }
+      ],
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1954
+    },
+    {
+      "name": "chaos-engineer",
+      "category": "04-quality-security",
+      "description": "需要做韧性分析，涉及依赖故障、降级模式、恢复行为或受控故障注入方案时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1949
+    },
+    {
+      "name": "code-reviewer",
+      "category": "04-quality-security",
+      "description": "需要在正确性之外做更全面的代码健康度评审，覆盖可维护性、设计清晰度与高风险实现选择时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1862
+    },
+    {
+      "name": "compliance-auditor",
+      "category": "04-quality-security",
+      "description": "需要对受监管流程中的控制措施、可审计性、策略对齐或证据缺口做合规评审时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1989
+    },
+    {
+      "name": "debugger",
+      "category": "04-quality-security",
+      "description": "需要跨代码路径、堆栈、运行时行为或失败测试做深度缺陷定位时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1959
+    },
+    {
+      "name": "error-detective",
+      "category": "04-quality-security",
+      "description": "需要通过日志、异常或堆栈快速锁定最可能的故障来源时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1888
+    },
+    {
+      "name": "gdpr-ccpa-compliance",
+      "category": "04-quality-security",
+      "description": "需要对数据实践、同意流程或数据主体权利处理做 GDPR 或 CCPA/CPRA 合规审查时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2314
+    },
+    {
+      "name": "penetration-tester",
+      "category": "04-quality-security",
+      "description": "需要对某条应用路径做对抗性评审，寻找可利用点、滥用场景或实际攻击面时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2032
+    },
+    {
+      "name": "performance-engineer",
+      "category": "04-quality-security",
+      "description": "需要排查性能问题，涉及慢请求、热点路径、渲染退化或扩展性瓶颈时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1948
+    },
+    {
+      "name": "ponder-reviewer",
+      "category": "04-quality-security",
+      "description": "当 PR、模块、安全边界或产品流程需要经过覆盖率门控的多轮审慎评审——每个单元都被评级、误报在汇报前被撤回——时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 3178
+    },
+    {
+      "name": "powershell-security-hardening",
+      "category": "04-quality-security",
+      "description": "需要 PowerShell 相关加固，涉及脚本安全性、管理自动化、执行控制或 Windows 安全态势时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2008
+    },
+    {
+      "name": "qa-expert",
+      "category": "04-quality-security",
+      "description": "需要为某个功能或版本制定测试策略、规划验收覆盖，或提供基于风险的质量保证建议时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1952
+    },
+    {
+      "name": "reviewer",
+      "category": "04-quality-security",
+      "description": "需要 PR 式评审，聚焦正确性、安全性、行为回归与测试缺失时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1837
+    },
+    {
+      "name": "security-auditor",
+      "category": "04-quality-security",
+      "description": "需要对代码、认证流程、密钥处理、输入校验或基础设施配置做聚焦的安全评审时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1900
+    },
+    {
+      "name": "test-automator",
+      "category": "04-quality-security",
+      "description": "需要实现自动化测试、改进测试脚手架或补充有针对性的回归覆盖时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1916
+    },
+    {
+      "name": "ui-ux-tester",
+      "category": "04-quality-security",
+      "description": "需要依据文档化的用户流程做全面的 UI 与 UX 功能测试，并给出结构化缺陷报告时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2274
+    },
+    {
+      "name": "ai-engineer",
+      "category": "05-data-ai",
+      "description": "需要实现或调试由模型驱动的应用功能、agent 流程或评估钩子时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2063
+    },
+    {
+      "name": "azure-databricks-platform-architect",
+      "category": "05-data-ai",
+      "description": "需要端到端的 Azure Databricks 平台架构设计，覆盖湖仓设计、治理、计算、安全、网络、可靠性、成本、Lakebase 与 Databricks Apps 时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 5570
+    },
+    {
+      "name": "data-analyst",
+      "category": "05-data-ai",
+      "description": "需要基于已有分析产物做数据解读、指标拆解、趋势解释或决策支持时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1856
+    },
+    {
+      "name": "data-engineer",
+      "category": "05-data-ai",
+      "description": "需要实现或调试 ETL、数据摄入、转换、数仓或数据管道时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1850
+    },
+    {
+      "name": "data-scientist",
+      "category": "05-data-ai",
+      "description": "需要统计推理、实验解读、特征分析或面向模型的数据探索时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1804
+    },
+    {
+      "name": "database-optimizer",
+      "category": "05-data-ai",
+      "description": "需要做数据库性能分析，涉及查询计划、schema 设计、索引或数据访问模式时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1735
+    },
+    {
+      "name": "llm-architect",
+      "category": "05-data-ai",
+      "description": "需要对 prompt、工具调用、检索、评估或多步 LLM 工作流做架构评审时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1816
+    },
+    {
+      "name": "machine-learning-engineer",
+      "category": "05-data-ai",
+      "description": "需要 ML 系统实现，涉及训练流水线、特征流转、模型服务或推理集成时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1806
+    },
+    {
+      "name": "ml-engineer",
+      "category": "05-data-ai",
+      "description": "需要落地的机器学习实现，涉及特征工程、推理接线与模型驱动的应用逻辑时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1827
+    },
+    {
+      "name": "mlops-engineer",
+      "category": "05-data-ai",
+      "description": "需要为机器学习系统做模型部署、模型注册、流水线、监控或环境编排时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1848
+    },
+    {
+      "name": "nlp-engineer",
+      "category": "05-data-ai",
+      "description": "需要 NLP 专项实现或分析，涉及文本处理、向量化、排序或与语言模型相邻的流水线时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1871
+    },
+    {
+      "name": "postgres-pro",
+      "category": "05-data-ai",
+      "description": "需要 PostgreSQL 专长，涉及 schema 设计、性能行为、锁或运维级数据库特性时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1859
+    },
+    {
+      "name": "prompt-engineer",
+      "category": "05-data-ai",
+      "description": "需要修订 prompt、设计指令、做面向评估的 prompt 对比，或收紧 prompt 与输出的契约时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1779
+    },
+    {
+      "name": "reinforcement-learning-engineer",
+      "category": "05-data-ai",
+      "description": "需要设计 RL 环境、训练策略、设计奖励函数，或部署决策型 agent 时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2409
+    },
+    {
+      "name": "build-engineer",
+      "category": "06-developer-experience",
+      "description": "需要调试构建图、修复打包问题、处理编译器流水线或稳定 CI 构建时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1819
+    },
+    {
+      "name": "cli-developer",
+      "category": "06-developer-experience",
+      "description": "需要开发命令行界面功能、评审 CLI 体验、调整参数解析或改进面向 shell 的工作流时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1816
+    },
+    {
+      "name": "dependency-manager",
+      "category": "06-developer-experience",
+      "description": "需要做依赖升级、包依赖图分析、版本策略清理或第三方库风险评估时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1786
+    },
+    {
+      "name": "documentation-engineer",
+      "category": "06-developer-experience",
+      "description": "需要编写必须与当前代码、工具链和运维流程保持一致的技术文档时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1810
+    },
+    {
+      "name": "dx-optimizer",
+      "category": "06-developer-experience",
+      "description": "需要改善开发者体验，涉及环境搭建耗时、本地工作流、反馈回路或日常工具摩擦时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1843
+    },
+    {
+      "name": "git-workflow-manager",
+      "category": "06-developer-experience",
+      "description": "需要制定分支策略、合并流程、发布分支或仓库协作规范时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1776
+    },
+    {
+      "name": "legacy-modernizer",
+      "category": "06-developer-experience",
+      "description": "需要为老旧代码、框架或架构制定现代化路径，同时不牺牲行为安全性时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1798
+    },
+    {
+      "name": "mcp-developer",
+      "category": "06-developer-experience",
+      "description": "需要开发或调试 MCP server、MCP client、工具接线或协议感知集成时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1793
+    },
+    {
+      "name": "powershell-module-architect",
+      "category": "06-developer-experience",
+      "description": "需要 PowerShell 模块结构、命令设计、打包或 profile 架构方面的工作时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1801
+    },
+    {
+      "name": "powershell-ui-architect",
+      "category": "06-developer-experience",
+      "description": "需要 PowerShell 构建的 UI，涉及终端、表单、WPF 或面向管理的交互式工具时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1863
+    },
+    {
+      "name": "readme-generator",
+      "category": "06-developer-experience",
+      "description": "需要基于仓库真实情况生成可直接交付维护者的 README，且不含任何臆造的命令、参数或配置项时使用。",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2280
+    },
+    {
+      "name": "refactoring-specialist",
+      "category": "06-developer-experience",
+      "description": "需要做低风险的结构性重构，在保持行为不变的前提下提升可读性、模块化或可维护性时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1745
+    },
+    {
+      "name": "slack-expert",
+      "category": "06-developer-experience",
+      "description": "需要 Slack 平台开发，涉及机器人、交互组件、事件、工作流或 Slack 特有集成行为时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1779
+    },
+    {
+      "name": "tooling-engineer",
+      "category": "06-developer-experience",
+      "description": "需要内部开发者工具、脚本、自动化胶水或工作流辅助工具时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1819
+    },
+    {
+      "name": "visual-asset-generator",
+      "category": "06-developer-experience",
+      "description": "项目需要可直接用于生产的视觉素材时使用：应用图标、favicon、OG 图、logo 或文字标识。通过 prompt-to-asset MCP 在 30+ 图像生成模型中分流。首次运行通过免费额度无需 API key。",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1876
+    },
+    {
+      "name": "api-documenter",
+      "category": "07-specialized-domains",
+      "description": "需要基于真实实现、schema 和示例生成面向调用方的 API 文档时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1842
+    },
+    {
+      "name": "blockchain-developer",
+      "category": "07-specialized-domains",
+      "description": "需要区块链或 Web3 的实现与评审，涉及智能合约集成、钱包流程或交易生命周期处理时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1893
+    },
+    {
+      "name": "embedded-systems",
+      "category": "07-specialized-domains",
+      "description": "需要嵌入式或贴近硬件的开发，涉及设备约束、固件边界、时序或底层集成时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1856
+    },
+    {
+      "name": "fintech-engineer",
+      "category": "07-specialized-domains",
+      "description": "需要金融系统工程，涉及账本、对账、转账、清结算或合规敏感的事务流程时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1857
+    },
+    {
+      "name": "game-developer",
+      "category": "07-specialized-domains",
+      "description": "需要游戏专项实现或调试，涉及玩法系统、渲染循环、资源流转或玩家状态行为时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1856
+    },
+    {
+      "name": "healthcare-admin",
+      "category": "07-specialized-domains",
+      "description": "任务涉及医疗行政事务时使用：收入周期管理、HIPAA/合规审计、病历编码（ICD-10、CPT、DRG）、CMS 成本报告、支付方合同分析、质量改进、临床运营、医疗 IT/互操作性、人群健康或药品福利。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2412
+    },
+    {
+      "name": "hipaa-compliance",
+      "category": "07-specialized-domains",
+      "description": "需要对医疗产品做 HIPAA 合规审查，涉及 Business Associate 范围、BAA 需求、PHI 处理、防护措施或泄露响应时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2509
+    },
+    {
+      "name": "iot-engineer",
+      "category": "07-specialized-domains",
+      "description": "需要 IoT 系统开发，涉及设备、遥测、边缘通信或云端与设备协同时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1899
+    },
+    {
+      "name": "m365-admin",
+      "category": "07-specialized-domains",
+      "description": "需要 Microsoft 365 管理支持，涉及 Exchange Online、Teams、SharePoint、身份或租户级自动化时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1829
+    },
+    {
+      "name": "mobile-app-developer",
+      "category": "07-specialized-domains",
+      "description": "需要应用层面的移动产品工作，涉及页面、状态、API 集成与发布敏感的移动端行为时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1828
+    },
+    {
+      "name": "payment-integration",
+      "category": "07-specialized-domains",
+      "description": "需要评审或实现支付流程，涉及结算页、幂等性、webhook、重试或清结算状态处理时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1867
+    },
+    {
+      "name": "quant-analyst",
+      "category": "07-specialized-domains",
+      "description": "需要对模型、策略、模拟或数值决策逻辑做量化分析时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1807
+    },
+    {
+      "name": "risk-manager",
+      "category": "07-specialized-domains",
+      "description": "需要对产品、运维、财务或架构决策做明确的风险分析时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1828
+    },
+    {
+      "name": "seo-specialist",
+      "category": "07-specialized-domains",
+      "description": "需要围绕搜索的技术评审，覆盖可抓取性、元数据、渲染、信息架构或内容可发现性时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1909
+    },
+    {
+      "name": "assumption-mapping",
+      "category": "08-business-product",
+      "description": "需要在投入工程资源前，暴露并排序产品想法、功能或策略中的高风险假设时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2311
+    },
+    {
+      "name": "backlog-grooming",
+      "category": "08-business-product",
+      "description": "需要梳理、细化或清理产品 backlog，涉及迭代就绪度、估算或僵尸需求清理时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2248
+    },
+    {
+      "name": "business-analyst",
+      "category": "08-business-product",
+      "description": "需要在工程开工前把模糊需求澄清、把范围规范化或提取验收标准时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1765
+    },
+    {
+      "name": "content-marketer",
+      "category": "08-business-product",
+      "description": "需要贴近产品的内容策略或文案表达，且必须与技术实际能力相符时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1746
+    },
+    {
+      "name": "content-quality-editor",
+      "category": "08-business-product",
+      "description": "在发布 AI 生成内容前使用——博客、README、发布说明、提交信息、PR 描述、文档或社交媒体文案。会清除 AI 痕迹并做最后一轮质量打磨。",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2245
+    },
+    {
+      "name": "customer-success-manager",
+      "category": "08-business-product",
+      "description": "需要从工程上下文中提炼支持模式、分析采纳风险或给出面向客户的操作建议时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1840
+    },
+    {
+      "name": "growth-loops",
+      "category": "08-business-product",
+      "description": "需要设计增长循环、分析 PLG 机制，或诊断获客为何是线性而非复利增长时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2271
+    },
+    {
+      "name": "legal-advisor",
+      "category": "08-business-product",
+      "description": "需要在产品或工程行为中识别法律风险，尤其是条款、数据处理或对外承诺相关部分时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1787
+    },
+    {
+      "name": "license-engineer",
+      "category": "08-business-product",
+      "description": "需要软件许可架构设计，涉及 OSI 许可证选型、依赖合规、双许可或风险与责任策略时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2598
+    },
+    {
+      "name": "product-manager",
+      "category": "08-business-product",
+      "description": "需要基于工程现实与用户影响做产品框定、优先级排序或功能塑形时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1734
+    },
+    {
+      "name": "project-manager",
+      "category": "08-business-product",
+      "description": "需要梳理依赖、规划里程碑、排定顺序，或跨多条工作流协调交付风险时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1634
+    },
+    {
+      "name": "resume-refiner",
+      "category": "08-business-product",
+      "description": "需要评审、打磨或优化简历、CV 或 LinkedIn 资料，使其更清晰、更有影响力并与目标岗位匹配时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2186
+    },
+    {
+      "name": "sales-engineer",
+      "category": "08-business-product",
+      "description": "需要在售前场景中做技术准确的方案定位、应对客户提问，或解释实现权衡时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1795
+    },
+    {
+      "name": "scrum-master",
+      "category": "08-business-product",
+      "description": "需要为工程团队做流程引导、迭代规划或工作流摩擦分析时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1689
+    },
+    {
+      "name": "technical-writer",
+      "category": "08-business-product",
+      "description": "需要基于真实代码变更撰写发布说明、迁移说明、上手材料或面向开发者的文字时使用。",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1680
+    },
+    {
+      "name": "ux-researcher",
+      "category": "08-business-product",
+      "description": "需要把 UI 反馈综合成可落地的产品与实现指导时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1676
+    },
+    {
+      "name": "wordpress-master",
+      "category": "08-business-product",
+      "description": "需要 WordPress 专项实现或调试，涉及主题、插件、内容架构或站点运维行为时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1722
+    },
+    {
+      "name": "agent-organizer",
+      "category": "09-meta-orchestration",
+      "description": "上级 agent 需要帮助挑选子 agent、把大任务拆成清晰可委派的并行线程时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1732
+    },
+    {
+      "name": "codebase-orchestrator",
+      "category": "09-meta-orchestration",
+      "description": "需要对全仓库重构做治理，包含加权风险排序、diff 预览与执行前的显式审批关卡时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2299
+    },
+    {
+      "name": "context-manager",
+      "category": "09-meta-orchestration",
+      "description": "需要一份精简的项目上下文摘要，供其他子 agent 在深入工作前依赖时使用。",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1714
+    },
+    {
+      "name": "error-coordinator",
+      "category": "09-meta-orchestration",
+      "description": "多个错误或症状需要归类、排序，并分派给合适的调试或评审 agent 时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1608
+    },
+    {
+      "name": "it-ops-orchestrator",
+      "category": "09-meta-orchestration",
+      "description": "需要跨基础设施、事故响应、身份、终端与管理流程做协同的运维规划时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1695
+    },
+    {
+      "name": "knowledge-synthesizer",
+      "category": "09-meta-orchestration",
+      "description": "当多个 agent 已返回结论，上级 agent 需要一份去冗余的精炼综合时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1655
+    },
+    {
+      "name": "multi-agent-coordinator",
+      "category": "09-meta-orchestration",
+      "description": "需要一份具体的多 agent 方案，包含清晰的角色划分、依赖关系与结果汇总方式时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1727
+    },
+    {
+      "name": "performance-monitor",
+      "category": "09-meta-orchestration",
+      "description": "需要在深入优化前，对构建、运行时或运维指标做持续的性能信号解读时使用。",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1690
+    },
+    {
+      "name": "task-distributor",
+      "category": "09-meta-orchestration",
+      "description": "当宽泛任务需要拆成边界清晰的具体子任务，交给多个 agent 或协作者时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1686
+    },
+    {
+      "name": "ab-test-analysis",
+      "category": "10-research-analysis",
+      "description": "需要分析 A/B 测试结果、解读 p 值与置信区间、做显著性检验，或据此给出有依据的上线/不上线决策时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2085
+    },
+    {
+      "name": "cohort-analysis",
+      "category": "10-research-analysis",
+      "description": "需要做留存分析、同期群行为对比、激活指标挖掘，或诊断不同用户群随时间的表现时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1965
+    },
+    {
+      "name": "competitive-analyst",
+      "category": "10-research-analysis",
+      "description": "需要对工具、产品、库或实现方案做有依据的横向对比时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1674
+    },
+    {
+      "name": "data-researcher",
+      "category": "10-research-analysis",
+      "description": "需要围绕数据集、指标、数据管道或有证据支撑的量化问题做资料收集与综合时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1598
+    },
+    {
+      "name": "docs-researcher",
+      "category": "10-research-analysis",
+      "description": "需要以文档为依据核验 API、特定版本行为或框架选项时使用。",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1600
+    },
+    {
+      "name": "first-principles-thinking",
+      "category": "10-research-analysis",
+      "description": "需要质疑既有假设、把复杂问题拆解到本质，或摆脱惯例与类比从零重建方案时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1894
+    },
+    {
+      "name": "market-researcher",
+      "category": "10-research-analysis",
+      "description": "需要与技术产品或品类相关的市场格局、定位或需求侧研究时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1660
+    },
+    {
+      "name": "project-idea-validator",
+      "category": "10-research-analysis",
+      "description": "需要以毫不留情的方式检验一个想法——竞品拆解、市场验证、致命缺陷排查，并在动手前给出明确的 go/no-go 判断。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2683
+    },
+    {
+      "name": "research-analyst",
+      "category": "10-research-analysis",
+      "description": "需要对技术主题、实现方案或设计问题做结构化调研时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1561
+    },
+    {
+      "name": "scientific-literature-researcher",
+      "category": "10-research-analysis",
+      "description": "需要从已发表研究中给出有证据支撑的答案，包含方法、结果、样本量与按质量加权的综合时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2163
+    },
+    {
+      "name": "search-specialist",
+      "category": "10-research-analysis",
+      "description": "需要在深入分析前，对代码库或外部资料做快速、高信号密度的搜索时使用。",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1543
+    },
+    {
+      "name": "trend-analyst",
+      "category": "10-research-analysis",
+      "description": "需要就技术变迁、采纳模式或新兴实现方向做趋势综合时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1589
+    },
+    {
+      "name": "ai-governance-auditor",
+      "category": "11-ai-governance-safety",
+      "description": "需要做 AI 治理审查，覆盖控制措施、问责机制、风险归属与上线 readiness 时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1448
+    },
+    {
+      "name": "model-risk-manager",
+      "category": "11-ai-governance-safety",
+      "description": "需要做模型风险分析、失败模式排序，并制定针对 AI 行为的缓解方案时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1401
+    },
+    {
+      "name": "policy-guardrail-designer",
+      "category": "11-ai-governance-safety",
+      "description": "需要为 AI 系统设计可强制执行的 prompt、工具、工作流或审批护栏时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1369
+    },
+    {
+      "name": "responsible-ai-reviewer",
+      "category": "11-ai-governance-safety",
+      "description": "需要评审 AI 功能中的公平性、透明度、滥用风险与人工监督设计时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1402
+    },
+    {
+      "name": "backstage-specialist",
+      "category": "12-platform-engineering-idp",
+      "description": "需要 Backstage 的架构、catalog、插件、模板或落地推广建议，用于内部开发者平台时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1453
+    },
+    {
+      "name": "golden-path-designer",
+      "category": "12-platform-engineering-idp",
+      "description": "需要为服务创建、部署或运维设计一条有主张、低摩擦的金路径时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1456
+    },
+    {
+      "name": "idp-architect",
+      "category": "12-platform-engineering-idp",
+      "description": "需要内部开发者平台的架构、服务边界与自助式控制面设计时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1466
+    },
+    {
+      "name": "platform-product-manager",
+      "category": "12-platform-engineering-idp",
+      "description": "需要为内部平台工作规划路线图、采纳策略、成功指标与干系人对齐时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1404
+    },
+    {
+      "name": "ai-observability-engineer",
+      "category": "13-llmops-evals-observability",
+      "description": "需要为生产环境中的 LLM 或 agent 系统补齐链路追踪、指标、日志与调试信号时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1627
+    },
+    {
+      "name": "eval-engineer",
+      "category": "13-llmops-evals-observability",
+      "description": "需要为 prompt、检索、工具或多步 agent 工作流设计评估时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1353
+    },
+    {
+      "name": "hallucination-investigator",
+      "category": "13-llmops-evals-observability",
+      "description": "需要对 AI 输出中的事实性错误、无依据论断或上下文断裂做根因分析时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1443
+    },
+    {
+      "name": "prompt-regression-tester",
+      "category": "13-llmops-evals-observability",
+      "description": "需要为 AI 系统中的 prompt、模型、工具或工作流变更补充回归覆盖时使用。",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1336
+    }
+  ],
+  "errors": [],
+  "skipped": [
+    "agent-installer",
+    "workflow-orchestrator"
+  ]
+}

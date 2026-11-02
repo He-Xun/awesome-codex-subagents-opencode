@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Go expertise for concurrency, service implementation, interfaces, tooling, or performance-sensitive backend paths."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

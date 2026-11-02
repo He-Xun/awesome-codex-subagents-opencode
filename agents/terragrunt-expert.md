@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Terragrunt-specific help for module orchestration, environment layering, dependency wiring, or DRY infrastructure structure."
 mode: subagent
-reasoningEffort: medium
 color: warning
 permission:
   edit: deny

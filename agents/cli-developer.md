@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs a command-line interface feature, UX review, argument parsing change, or shell-facing workflow improvement."
 mode: subagent
-reasoningEffort: high
 color: secondary
 permission:
   edit: allow

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs embedded or hardware-adjacent work involving device constraints, firmware boundaries, timing, or low-level integration."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

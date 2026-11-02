@@ -1,7 +1,6 @@
 ---
 description: "Use when multiple errors or symptoms need to be grouped, prioritized, and assigned to the right debugging or review agents."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

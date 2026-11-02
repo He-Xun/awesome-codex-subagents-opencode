@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs blockchain or Web3 implementation and review across smart-contract integration, wallet flows, or transaction lifecycle handling."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

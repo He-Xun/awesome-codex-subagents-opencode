@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Slack platform work involving bots, interactivity, events, workflows, or Slack-specific integration behavior."
 mode: subagent
-reasoningEffort: high
 color: secondary
 permission:
   edit: allow

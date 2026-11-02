@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Rust expertise for ownership-heavy systems code, async runtime behavior, or performance-sensitive implementation."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs FastAPI implementation — async endpoints, Pydantic v2 contracts, dependency injection, or ASGI deployment behavior."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

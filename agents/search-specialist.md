@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs fast, high-signal searching of the codebase or external sources before deeper analysis begins."
 mode: subagent
-reasoningEffort: medium
 color: info
 permission:
   edit: deny

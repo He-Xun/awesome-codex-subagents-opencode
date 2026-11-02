@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs ETL, ingestion, transformation, warehouse, or data-pipeline implementation and debugging."
 mode: subagent
-reasoningEffort: high
 color: success
 permission:
   edit: allow

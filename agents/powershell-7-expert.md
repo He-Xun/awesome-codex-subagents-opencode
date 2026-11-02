@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs modern PowerShell 7 expertise for cross-platform automation, scripting, or .NET-based operational tooling."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

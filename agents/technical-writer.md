@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs release notes, migration notes, onboarding material, or developer-facing prose derived from real code changes."
 mode: subagent
-reasoningEffort: medium
 color: primary
 permission:
   edit: allow

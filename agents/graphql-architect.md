@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs GraphQL schema evolution, resolver architecture, federation design, or distributed graph performance/security review."
 mode: subagent
-reasoningEffort: high
 color: info
 permission:
   edit: deny

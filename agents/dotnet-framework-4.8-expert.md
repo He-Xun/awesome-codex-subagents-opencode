@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs .NET Framework 4.8 expertise for legacy enterprise applications, compatibility constraints, or Windows-bound integrations."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

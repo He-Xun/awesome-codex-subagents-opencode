@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Kotlin expertise for JVM applications, Android code, coroutines, or modern strongly typed service logic."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

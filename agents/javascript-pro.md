@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs JavaScript-focused work for runtime behavior, browser or Node execution, or application-level code that is not TypeScript-led."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

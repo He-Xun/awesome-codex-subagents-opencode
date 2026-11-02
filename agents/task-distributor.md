@@ -1,7 +1,6 @@
 ---
 description: Use when a broad task needs to be broken into concrete sub-tasks with clear boundaries for multiple agents or contributors.
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

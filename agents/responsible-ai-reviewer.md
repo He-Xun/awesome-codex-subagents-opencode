@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs review of fairness, transparency, misuse risk, and human-oversight design in AI features."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

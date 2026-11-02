@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs trend synthesis across technology shifts, adoption patterns, or emerging implementation directions."
 mode: subagent
-reasoningEffort: medium
 color: info
 permission:
   edit: deny

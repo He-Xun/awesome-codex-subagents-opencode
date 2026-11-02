@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs enforceable prompt, tool, workflow, or approval guardrails for AI systems."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

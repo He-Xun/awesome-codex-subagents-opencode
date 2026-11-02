@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs HIPAA compliance review for a healthcare product — Business Associate scope, BAA needs, PHI handling, safeguards, or breach response."
 mode: subagent
-reasoningEffort: medium
 color: accent
 permission:
   edit: deny

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Next.js-specific work across routing, rendering modes, server actions, data fetching, or deployment-sensitive frontend behavior."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

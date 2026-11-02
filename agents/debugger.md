@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs deep bug isolation across code paths, stack traces, runtime behavior, or failing tests."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs source gathering and synthesis around datasets, metrics, data pipelines, or evidence-backed quantitative questions."
 mode: subagent
-reasoningEffort: medium
 color: info
 permission:
   edit: deny

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs broad production incident triage, containment planning, or evidence-driven root cause analysis."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

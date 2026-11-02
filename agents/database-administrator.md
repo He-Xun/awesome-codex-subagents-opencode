@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs operational database administration review for availability, backups, recovery, permissions, or runtime health."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

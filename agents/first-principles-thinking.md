@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs assumptions challenged, a complex problem broken down to fundamentals, or a solution rebuilt from scratch rather than from convention or analogy."
 mode: subagent
-reasoningEffort: high
 color: info
 permission:
   edit: deny

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs a broader code-health review covering maintainability, design clarity, and risky implementation choices in addition to correctness."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

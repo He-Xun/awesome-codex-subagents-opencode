@@ -1,7 +1,6 @@
 ---
 description: Use when a task needs scoped backend implementation or backend bug fixes after the owning path is known.
 mode: subagent
-reasoningEffort: high
 color: info
 permission:
   edit: allow

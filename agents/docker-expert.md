@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Dockerfile review, image optimization, multi-stage build fixes, or container runtime debugging."
 mode: subagent
-reasoningEffort: medium
 color: warning
 permission:
   edit: allow

@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs product framing, prioritization, or feature-shaping based on engineering reality and user impact."
 mode: subagent
-reasoningEffort: high
 color: primary
 permission:
   edit: deny

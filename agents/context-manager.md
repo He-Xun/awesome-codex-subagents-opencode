@@ -1,7 +1,6 @@
 ---
 description: Use when a task needs a compact project context summary that other subagents can rely on before deeper work begins.
 mode: subagent
-reasoningEffort: medium
 color: warning
 permission:
   edit: deny

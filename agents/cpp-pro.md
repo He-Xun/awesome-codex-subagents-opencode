@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs C++ work involving performance-sensitive code, memory ownership, concurrency, or systems-level integration."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

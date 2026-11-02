@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs regression coverage for prompt, model, tool, or workflow changes in an AI system."
 mode: subagent
-reasoningEffort: medium
 color: success
 permission:
   edit: deny

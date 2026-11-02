@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs search-focused technical review across crawlability, metadata, rendering, information architecture, or content discoverability."
 mode: subagent
-reasoningEffort: medium
 color: accent
 permission:
   edit: deny

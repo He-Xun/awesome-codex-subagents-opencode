@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs reliability engineering work involving SLOs, alerting, error budgets, operational safety, or service resilience."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

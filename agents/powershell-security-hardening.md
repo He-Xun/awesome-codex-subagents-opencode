@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs PowerShell-focused hardening across script safety, admin automation, execution controls, or Windows security posture."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

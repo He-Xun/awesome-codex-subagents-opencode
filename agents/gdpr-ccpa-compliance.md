@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs GDPR or CCPA/CPRA compliance review of data practices, consent flows, or data-subject rights handling."
 mode: subagent
-reasoningEffort: medium
 color: error
 permission:
   edit: deny

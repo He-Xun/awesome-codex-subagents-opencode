@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Azure-specific infrastructure review or implementation across resources, networking, identity, or automation."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

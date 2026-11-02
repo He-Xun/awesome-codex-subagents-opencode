@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs payment-flow review or implementation for checkout, idempotency, webhooks, retries, or settlement state handling."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

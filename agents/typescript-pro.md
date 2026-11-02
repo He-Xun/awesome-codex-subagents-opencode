@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs strong TypeScript help for types, interfaces, refactors, or compiler-driven fixes."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

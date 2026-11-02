@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Electron-specific implementation or debugging across main/renderer/preload boundaries, packaging, and desktop runtime behavior."
 mode: subagent
-reasoningEffort: high
 color: info
 permission:
   edit: allow

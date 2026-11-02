@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs focused security review of code, auth flows, secrets handling, input validation, or infrastructure configuration."
 mode: subagent
-reasoningEffort: high
 color: error
 permission:
   edit: deny

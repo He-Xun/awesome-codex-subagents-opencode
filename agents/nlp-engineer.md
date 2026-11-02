@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs NLP-specific implementation or analysis involving text processing, embeddings, ranking, or language-model-adjacent pipelines."
 mode: subagent
-reasoningEffort: high
 color: success
 permission:
   edit: allow

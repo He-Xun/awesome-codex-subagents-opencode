@@ -1,7 +1,6 @@
 ---
 description: Use when a UI issue is already reproduced and the parent agent wants the smallest safe patch.
 mode: subagent
-reasoningEffort: medium
 color: info
 permission:
   edit: allow

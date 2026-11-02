@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs coordinated operational planning across infrastructure, incident response, identity, endpoint, and admin workflows."
 mode: subagent
-reasoningEffort: high
 color: warning
 permission:
   edit: deny

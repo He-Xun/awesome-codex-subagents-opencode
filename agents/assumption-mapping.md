@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs to surface and prioritize risky assumptions in a product idea, feature, or strategy before engineering invests in building it."
 mode: subagent
-reasoningEffort: medium
 color: primary
 permission:
   edit: deny

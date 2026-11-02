@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Swift expertise for iOS or macOS code, async flows, Apple platform APIs, or strongly typed application logic."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

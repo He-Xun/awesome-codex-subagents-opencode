@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs financial systems engineering across ledgers, reconciliation, transfers, settlement, or compliance-sensitive transactional flows."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

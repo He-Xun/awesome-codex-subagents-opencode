@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs Elixir and OTP expertise for processes, supervision, fault tolerance, or Phoenix application behavior."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

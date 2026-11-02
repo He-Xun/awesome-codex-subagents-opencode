@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs support-pattern synthesis, adoption risk analysis, or customer-facing operational guidance from engineering context."
 mode: subagent
-reasoningEffort: medium
 color: primary
 permission:
   edit: deny

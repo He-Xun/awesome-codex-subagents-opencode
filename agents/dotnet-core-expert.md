@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs modern .NET and ASP.NET Core expertise for APIs, hosting, middleware, or cross-platform application behavior."
 mode: subagent
-reasoningEffort: high
 color: accent
 permission:
   edit: allow

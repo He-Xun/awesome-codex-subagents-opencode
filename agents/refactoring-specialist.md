@@ -1,7 +1,6 @@
 ---
 description: "Use when a task needs a low-risk structural refactor that preserves behavior while improving readability, modularity, or maintainability."
 mode: subagent
-reasoningEffort: high
 color: secondary
 permission:
   edit: allow
