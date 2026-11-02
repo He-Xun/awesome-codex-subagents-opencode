@@ -22,7 +22,6 @@ jobs:
 
       - name: Validate agents, translations and presets
         run: node tools/validate.mjs
-
       # The generated output must be reproducible: if regenerating from the
       # upstream source ever produces a different tree, the committed agents/
       # are stale or were edited by hand.

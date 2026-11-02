@@ -122,6 +122,42 @@ if (fs.existsSync(PRESET_DIR)) {
   }
 }
 
+// --- README translations stay structurally aligned -----------------------
+const READMES = ["README.md", "README.zh-CN.md"];
+const existingReadmes = READMES.filter((f) => fs.existsSync(f));
+if (existingReadmes.length > 1) {
+  const stats = existingReadmes.map((f) => {
+    const s = fs.readFileSync(f, "utf8");
+    return {
+      file: f,
+      headings: (s.match(/^#+ .*$/gm) ?? []).length,
+      depth: (s.match(/^#+/gm) ?? []).map((x) => x.length).join(","),
+      tables: (s.match(/^\| *---/gm) ?? []).length,
+      fences: (s.match(/^```/gm) ?? []).length,
+    };
+  });
+  const base = stats[0];
+  for (const s of stats.slice(1)) {
+    if (s.headings !== base.headings) {
+      add("error", `${s.file}: ${s.headings} headings but ${base.file} has ${base.headings}`);
+    }
+    if (s.depth !== base.depth) add("error", `${s.file}: heading structure differs from ${base.file}`);
+    if (s.tables !== base.tables) add("error", `${s.file}: ${s.tables} tables but ${base.file} has ${base.tables}`);
+    if (s.fences !== base.fences) add("error", `${s.file}: ${s.fences} code fences but ${base.file} has ${base.fences}`);
+  }
+  // Every README must link to the others.
+  for (const f of existingReadmes) {
+    const s = fs.readFileSync(f, "utf8");
+    for (const other of existingReadmes) {
+      if (other === f) continue;
+      if (!s.includes(`(${other.startsWith("./") ? other : `./${other}`})`)) {
+        add("error", `${f}: does not link to ${other}`);
+      }
+    }
+  }
+  if (!quiet) console.log(`readmes: ${existingReadmes.join(", ")} (structure aligned)`);
+}
+
 // --- manifest -------------------------------------------------------------
 const manifestPath = path.join(AGENTS_DIR, "_manifest.json");
 if (fs.existsSync(manifestPath)) {

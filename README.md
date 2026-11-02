@@ -1,117 +1,126 @@
 # awesome-codex-subagents → OpenCode
 
-> **174 个专家 agent，一条命令装进 OpenCode。**
+**English** | [简体中文](./README.zh-CN.md)
 
-OpenCode 自带的 subagent 只有 `general` 和 `explore` 两个。当你需要一次真正到位的
-PR 级代码审查、一份能落地的威胁建模、一次跨文件的架构重构规划，往往只能靠主 agent
-一边读上下文一边现编——既占上下文，质量也不稳定。
+> **174 expert agents, installed into OpenCode with one command.**
 
-这个仓库把它变成了开箱即用的东西：
+OpenCode ships with only two built-in subagents: `general` and `explore`. When you need a
+thorough PR-level code review, a threat model that holds up, or a cross-file refactoring
+plan, you are left improvising inside the main agent — burning context and producing
+inconsistent results.
+
+This repository turns that into something you can just install:
 
 ```bash
 node tools/install.mjs
 ```
 
-装完重启 OpenCode，敲 `@reviewer` 就能让一个只读的审查者独立跑完整个 diff，只把结论
-带回你的对话。它不会污染主上下文，也不会顺手改你的文件。
+Restart OpenCode, type `@reviewer`, and a read-only reviewer works through the entire diff
+in its own session and brings back only the conclusions. It won't fill your context, and it
+can't touch your files.
 
-## 它解决什么问题
+## What it solves
 
-| 痛点 | 这个仓库的做法 |
+| Pain point | What this repo does |
 | --- | --- |
-| 长任务把主上下文塞满 | 每个 agent 在独立子会话里跑，只回传结论 |
-| 审查类工作容易越界改代码 | 99 个只读 agent 用 `permission` 硬性限制，连写文件都不允许 |
-| 换模型就得改一堆配置 | **一个模型都不写死**，subagent 自动继承你当前的模型 |
-| `@` 菜单全是英文看不懂 | 中文系统自动装中文描述，也可随时切换 |
-| 不知道自己该用哪个 | 按领域分组，从 `debugger` 到 `hipaa-compliance` 都有 |
+| Long tasks flood the main context | Every agent runs in an isolated child session and returns only its findings |
+| Review work tends to edit code | 99 read-only agents are hard-limited by `permission` — they cannot write files at all |
+| Switching models means editing configs | **Not one model is hard-coded**; subagents inherit whatever model you are using |
+| The `@` menu is unreadable in your language | Descriptions are localized automatically, and you can switch languages at any time |
+| You don't know which agent to pick | Grouped by domain, from `debugger` to `hipaa-compliance` |
 
-## 覆盖范围
+## Coverage
 
-174 个 agent，覆盖 13 个领域：
+174 agents across 13 domains:
 
-| 领域 | 代表 agent |
+| Domain | Representative agents |
 | --- | --- |
-| 核心开发 | `backend-developer` `frontend-developer` `code-mapper` |
-| 语言与框架 | `python-pro` `typescript-pro` `golang-pro` `rust-engineer` …31 个 |
-| 基础设施 | `kubernetes-specialist` `terraform-engineer` `docker-expert` |
-| 质量与安全 | `reviewer` `security-auditor` `debugger` `test-automator` |
-| 数据与 AI | `data-engineer` `ml-engineer` `eval-engineer` |
-| LLM 工程 | `llm-architect` `prompt-engineer` `mcp-developer` |
-| 设计与产品 | `ui-designer` `product-manager` `ux-researcher` |
-| 专项领域 | `fintech-engineer` `payment-integration` `blockchain-developer` |
-| 合规法务 | `hipaa-compliance` `gdpr-ccpa-compliance` `license-engineer` |
+| Core development | `backend-developer` `frontend-developer` `code-mapper` |
+| Languages & frameworks | `python-pro` `typescript-pro` `golang-pro` `rust-engineer` … 31 total |
+| Infrastructure | `kubernetes-specialist` `terraform-engineer` `docker-expert` |
+| Quality & security | `reviewer` `security-auditor` `debugger` `test-automator` |
+| Data & AI | `data-engineer` `ml-engineer` `eval-engineer` |
+| LLM engineering | `llm-architect` `prompt-engineer` `mcp-developer` |
+| Design & product | `ui-designer` `product-manager` `ux-researcher` |
+| Specialized | `fintech-engineer` `payment-integration` `blockchain-developer` |
+| Compliance & legal | `hipaa-compliance` `gdpr-ccpa-compliance` `license-engineer` |
 
-完整清单见 [`agents/`](./agents)。
+See [`agents/`](./agents) for the full list.
 
 ---
 
-## 快速开始
+## Quick start
 
 ```bash
 git clone https://github.com/He-Xun/awesome-codex-subagents-opencode.git
 cd awesome-codex-subagents-opencode
 
-# 安装到当前项目（会自动按系统语言选择 description 语言）
+# Install into the current project (picks the description language from your system locale)
 node tools/install.mjs
 
-# 或安装到全局
+# Or install globally
 node tools/install.mjs --global
 ```
 
-重启 OpenCode 后即可用 `@agent名` 调用。零依赖，只需 Node 18+。
+Restart OpenCode, then invoke agents with `@agent-name`. Zero dependencies, Node 18+.
 
-### 用 npm 脚本
-
-```bash
-npm run install:global      # 装到全局
-npm run install:local       # 装到当前项目
-npm run verify              # 校验所有产物
-npm run switch -- --to=en   # 切换描述语言
-npm run presets             # 查看可用预设
-```
-
-### 只装需要的子集
-
-174 个全装会让 `@` 菜单很长，也会稀释模型的自动选择。推荐用预设：
+### Using npm scripts
 
 ```bash
-node tools/install.mjs --list-presets     # 查看预设
-node tools/install.mjs --preset=minimal   # 只装 10 个最高频的
+npm run install:global      # install globally
+npm run install:local       # install into the current project
+npm run verify              # validate all generated artifacts
+npm run switch -- --to=en   # switch description language
+npm run presets             # list available presets
 ```
 
-| 预设 | 数量 | 内容 |
+### Installing only what you need
+
+Installing all 174 makes the `@` menu long and dilutes automated selection. Presets are the
+practical choice:
+
+```bash
+node tools/install.mjs --list-presets     # list presets
+node tools/install.mjs --preset=minimal   # install the 10 most common
+```
+
+| Preset | Count | Contents |
 | --- | --- | --- |
-| `minimal` | 10 | 审查、定位、改代码、写测试 |
-| `web` | 15 | 前端 / UI / 可访问性 |
-| `backend` | 17 | 服务端 / 数据库 / 基础设施 |
+| `minimal` | 10 | review, debug, edit, test |
+| `web` | 15 | frontend / UI / accessibility |
+| `backend` | 17 | server / database / infrastructure |
 
-预设就是纯文本名单（`presets/*.txt`），可以直接改或加新的。
+Presets are plain text lists under `presets/` — edit them or add your own.
 
-## 三个设计取舍
+## Three design decisions
 
-这三点决定了它和"直接把文件复制过来"的差别：
+These are what separate this repo from simply copying the files over:
 
-**1. 不写死模型。** 源仓库每个 agent 都绑定了 `gpt-6.1-sol`，这个模型在你的 provider
-上大概率不存在，硬套过去等于 174 个 agent 全部不可用。本仓库**完全不输出 `model` 字段**，
-让 subagent 继承调用方的模型——换 provider、换模型都不用重新生成。
+**1. No hard-coded models.** Every upstream agent pins `gpt-6.1-sol`, a model that almost
+certainly does not exist on your provider — binding to it would make all 174 agents unusable.
+This repo emits **no `model` field at all**, so subagents inherit the caller's model. Change
+provider or model without regenerating anything.
 
-**2. MCP 依赖去厂商化。** 源仓库有 agent 绑定 OpenAI 自家的文档服务。这里替换成通用的
-`websearch` + `webfetch`，任何厂商的文档都能查。
+**2. Vendor-neutral MCP.** Upstream, one agent is tied to OpenAI's own documentation service.
+Here it uses the generic `websearch` + `webfetch` tools, so documentation from any vendor is
+reachable.
 
-**3. 语言只翻描述，不翻正文。** 详见下方[为什么](#为什么只翻译-description)——中文
-反而更费 token，全量汉化是负优化。
+**3. Only descriptions are translated, never the prompt body.** See
+[why](#why-only-descriptions-are-translated) — Chinese actually costs *more* tokens than
+English, so translating the full prompts would be a pessimization.
 
 ---
 
-## 项目来源
+## Provenance
 
-本仓库是 [VoltAgent/awesome-codex-subagents](https://github.com/VoltAgent/awesome-codex-subagents)
-（6.4k star）的 OpenCode 移植版。上游提供的是 Codex 格式的 `.toml` 定义，本项目将其
-转换为 OpenCode 的 Markdown agent 格式，并解决了上述三个移植问题。
+This is an OpenCode port of [VoltAgent/awesome-codex-subagents](https://github.com/VoltAgent/awesome-codex-subagents)
+(6.4k stars). Upstream ships Codex-format `.toml` definitions; this project converts them to
+OpenCode's Markdown agent format and resolves the three porting problems above.
 
-**只做格式适配，不改写 prompt 语义**：正文原文照搬，便于上游更新时重新生成。
+**Format adaptation only — prompt semantics are untouched**: bodies are copied verbatim so
+they can be regenerated cleanly when upstream changes.
 
-上游更新后重新生成：
+To regenerate after an upstream update:
 
 ```bash
 git clone --depth 1 https://github.com/VoltAgent/awesome-codex-subagents.git ../src
@@ -120,43 +129,46 @@ node tools/codex-subagents-to-opencode.mjs ../src/categories agents
 
 ---
 
-## 描述语言：随系统自动选择，可随时切换
+## Description language: detected automatically, switchable at any time
 
-**prompt 正文始终是英文**，只有 `description`（也就是 `@` 菜单里显示的那一行）会跟着语言变化。
+**Prompt bodies are always English.** Only the `description` — the line shown in the `@` menu —
+follows the language setting.
 
-### 安装时自动检测
+### Detected at install time
 
-`tools/install.mjs` 按以下顺序决定语言，**没有匹配译表时回退到英语**：
+`tools/install.mjs` resolves the language in this order, **falling back to English when no
+translation table matches**:
 
-1. `--lang=xx` 或环境变量 `OPENCODE_SUBAGENTS_LANG`
+1. `--lang=xx` or the `OPENCODE_SUBAGENTS_LANG` environment variable
 2. `LC_ALL` / `LC_MESSAGES` / `LANG` / `LANGUAGE`
-3. `Intl` 报告的系统 locale
-4. 回退 → 英语
+3. The locale reported by `Intl`
+4. Fallback → English
 
 ```bash
-node tools/install.mjs                    # 中文系统装 zh，其他装 en
-node tools/install.mjs --lang=en          # 强制英文
-node tools/install.mjs --only=reviewer,debugger   # 只装部分
+node tools/install.mjs                    # zh on a Chinese system, en elsewhere
+node tools/install.mjs --lang=en          # force English
+node tools/install.mjs --only=reviewer,debugger   # install a subset
 ```
 
-实测行为：`zh-CN` → zh；`en_US` → en；`ko_KR`（无译表）→ en。
+Measured behavior: `zh-CN` → zh; `en_US` → en; `ko_KR` (no table) → en.
 
-### 随时切换
+### Switching later
 
 ```bash
-node tools/switch-lang.mjs --list                              # 查看可用语言
-node tools/switch-lang.mjs --to=zh                             # 切中文
-node tools/switch-lang.mjs --to=en                             # 切回英文
-node tools/switch-lang.mjs --to=zh --dir=~/.config/opencode/agents   # 指定目录
-node tools/switch-lang.mjs --to=zh --dry                       # 预演
+node tools/switch-lang.mjs --list                                   # available languages
+node tools/switch-lang.mjs --to=zh                                  # switch to Chinese
+node tools/switch-lang.mjs --to=en                                  # switch back
+node tools/switch-lang.mjs --to=zh --dir=~/.config/opencode/agents  # explicit directory
+node tools/switch-lang.mjs --to=zh --dry                            # preview
 ```
 
-切换器**只改写 frontmatter 里的 description 那一行**，正文和权限原样保留，并保持原有的引号风格，
-因此中英来回切换不会产生多余 diff（已验证 174 个文件往返 0 差异）。
+The switcher **rewrites only the frontmatter `description` line**. Bodies and permissions are
+untouched, and the original quoting style is preserved — so switching en → zh → en produces
+no spurious diff (verified: 174 files, zero differences).
 
-### 添加新语言
+### Adding a language
 
-在 `tools/i18n/` 下新建 `<语言码>.json`，键为 agent 名：
+Create `tools/i18n/<code>.json`, keyed by agent name:
 
 ```json
 {
@@ -165,183 +177,192 @@ node tools/switch-lang.mjs --to=zh --dry                       # 预演
 }
 ```
 
-无需改代码，`install.mjs` / `switch-lang.mjs` 会自动发现。缺条目时该 agent 保留英文。
+No code changes needed — `install.mjs` and `switch-lang.mjs` pick it up automatically.
+Agents missing an entry keep their English description.
 
 ---
 
-## 为什么只翻译 description
+## Why only descriptions are translated
 
-先看实测数据。同一份内容的中英对照：
+Measured on the same content, English versus Chinese:
 
-| 分词器 | 英文 | 中文 | 差值 |
+| Tokenizer | English | Chinese | Difference |
 | --- | --- | --- | --- |
 | GPT-4o (o200k) | 1196 | 1479 | +23.7% |
 | DeepSeek-V2 | 1324 | 1427 | +7.8% |
 | GLM-4 | 1202 | 1307 | +8.7% |
 | Qwen 2.5 | 1203 | 1351 | +12.3% |
 
-来源：[Chinese vs. English Tokens](https://markhuang.ai/blog/chinese-token-myth)。
+Source: [Chinese vs. English Tokens](https://markhuang.ai/blog/chinese-token-myth).
 
-国产模型分词器对中文友好得多（从 +24% 降到 +8%），但**方向从未逆转：中文更费 token**。
-英文可以整词压成单个 token，汉字基本一字一 token 或更多。
+Chinese-origin tokenizers handle Chinese far better (from +24% down to +8%), but **the
+direction never reverses: Chinese costs more tokens**. English words collapse into single
+tokens; Chinese characters generally cost one token each, sometimes more.
 
-换算到本仓库：中文 description 字符数少 66%，但 token 数**增加约 50%**。全量汉化正文会让
-327k 字符的 prompt 再涨约 8%。
+Scaled to this repo: Chinese descriptions use 66% fewer characters but **about 50% more
+tokens**. Translating the prompt bodies would add roughly another 8% on top of 327k
+characters.
 
-所以：**语言的价值是可读性和触发准确性，不是省 token。** 想省 token 应该精简 agent 数量，
-而不是换语言。
+So: **the value of localization is readability and selection accuracy, not saving tokens.**
+To save tokens, install fewer agents — don't switch language.
 
 ---
 
-## 设计细节
+## Design details
 
-### 1. 不写死模型
+### 1. No hard-coded models
 
-源文件里的 `model = "gpt-6.1-sol"` 是 Codex 专用模型，换到 OpenCode 上大概率不存在。
-转换器**完全不输出 `model` 字段**，让 subagent 继承调用方 agent 的模型 —— 这是 OpenCode
-的文档行为，好处是与 provider 无关，换模型不用重跑转换。
+Upstream's `model = "gpt-6.1-sol"` is a Codex-specific model that most OpenCode providers
+don't expose. The converter **emits no `model` field**, letting the subagent inherit the
+calling agent's model — documented OpenCode behavior, and provider-agnostic.
 
-需要给特定 agent 钉死模型时：
+To pin a model for specific agents:
 
 ```bash
 node tools/codex-subagents-to-opencode.mjs <src> agents \
   --model-map=gpt-6.1-sol=anthropic/claude-sonnet-5,gpt-6-luna=anthropic/claude-haiku-5
 ```
 
-### 2. MCP 依赖去厂商化
+### 2. Vendor-neutral MCP
 
-Codex 允许在 agent 文件内联 `[mcp_servers.NAME]`，OpenCode 不允许（必须写在
-`opencode.json`）。仓库里的两个依赖处理如下：
+Codex allows an inline `[mcp_servers.NAME]` table in an agent file; OpenCode requires MCP
+servers in `opencode.json` instead. The two upstream dependencies:
 
-| 源 MCP | 处理 | 原因 |
+| Upstream MCP | Handling | Reason |
 | --- | --- | --- |
-| `openaiDeveloperDocs`（docs-researcher） | 替换为 `websearch` + `webfetch` | 无需 API key，但只索引 OpenAI 自家文档，与通用适配相悖 |
-| `chrome_devtools`（browser-debugger） | 保留依赖 | 本身开源，且无通用替代品 |
+| `openaiDeveloperDocs` (docs-researcher) | Replaced with `websearch` + `webfetch` | Needs no API key, but only indexes OpenAI's own docs, which defeats the purpose of a general port |
+| `chrome_devtools` (browser-debugger) | Dependency kept | Open source, and there is no general substitute |
 
-替换规则集中在 `MCP_REPLACEMENTS` 常量，需要时可扩展。
+Rules live in the `MCP_REPLACEMENTS` constant and are easy to extend.
 
-### 3. 权限映射
+### 3. Permission mapping
 
-Codex 的 `sandbox_mode` 是沙箱级强制，OpenCode 的 `permission` 是 allow/ask/deny 三级：
+Codex's `sandbox_mode` is sandbox-level enforcement; OpenCode's `permission` is allow/ask/deny:
 
 | Codex | OpenCode |
 | --- | --- |
 | `read-only` | `edit: deny`, `bash: deny` |
 | `workspace-write` | `edit: allow`, `bash: allow` |
 
-174 个 agent 中 99 个只读、75 个可写。
+99 of the 174 agents are read-only, 75 can write.
 
-**例外**：有 3 个只读 agent 的核心工作离不开执行命令 —— `debugger` 要看 stack trace 和
-失败测试、`performance-engineer` 要跑测量、`security-auditor` 要复现问题。它们设成
-`bash: ask`（每条命令仍需你批准），既保持只读语义，又不至于完全不可用。
-名单在 `READ_ONLY_NEEDS_SHELL` 常量里。
+**Exception**: three read-only agents cannot do their job without running commands —
+`debugger` needs stack traces and failing tests, `performance-engineer` needs measurements,
+`security-auditor` needs reproduction. They get `bash: ask` (every command still requires
+your approval), which keeps the read-only guarantee while making them usable. The list is
+the `READ_ONLY_NEEDS_SHELL` constant.
 
 ---
 
-## 字段映射
+## Field mapping
 
 | Codex (`.toml`) | OpenCode (`.md`) |
 | --- | --- |
-| `name` | 文件名 `xxx.md`（同时是 agent id） |
-| `description` | frontmatter `description` |
-| `model` | **不输出**，继承父 agent（可用 `--model-map` 覆盖） |
-| `model_reasoning_effort` | frontmatter `reasoningEffort` |
-| `developer_instructions` | 正文（prompt，原文保留） |
-| `sandbox_mode` | frontmatter `permission` |
-| `[mcp_servers.*]` | 不进入文件，转换报告里列出 |
-| 分类目录 | frontmatter `color`（仅视觉区分） |
+| `name` | File name `xxx.md` (also the agent id) |
+| `description` | Frontmatter `description` |
+| `model` | **Not emitted**, inherits the parent agent (override with `--model-map`) |
+| `model_reasoning_effort` | Frontmatter `reasoningEffort` |
+| `developer_instructions` | Body (prompt, copied verbatim) |
+| `sandbox_mode` | Frontmatter `permission` |
+| `[mcp_servers.*]` | Not written to the file; listed in the conversion report |
+| Category directory | Frontmatter `color` (visual differentiation only) |
 
-正文中的 `Codex` 会被替换为 `the parent agent`，避免提示词指向另一个产品。
+`Codex` in prompt bodies is replaced with `the parent agent` so prompts don't point at
+another product.
 
 ---
 
-## CLI 参数
+## CLI reference
 
-| 参数 | 说明 |
+| Flag | Description |
 | --- | --- |
-| `--only=reviewer,debugger` | 只转换指定 agent |
-| `--category=04,05` | 按分类目录前缀过滤 |
-| `--skip=a,b` | 追加要跳过的 agent |
-| `--all` | 连 Codex 专用 agent 也一并转换 |
-| `--dry` | 只打印报告，不写文件 |
-| `--model-map=k=v,...` | 覆盖模型映射 |
-| `--lang=zh` | 把 `description` 本地化成中文，正文保持英文（默认自动检测，见上） |
-| `--keep-reasoning` | 保留 `reasoningEffort` 字段 |
+| `--only=reviewer,debugger` | Convert only the named agents |
+| `--category=04,05` | Filter by category directory prefix |
+| `--skip=a,b` | Additional agents to skip |
+| `--all` | Include Codex-specific agents too |
+| `--dry` | Print the report without writing files |
+| `--model-map=k=v,...` | Override model mapping |
+| `--lang=zh` | Localize `description` (auto-detected by default, see above) |
+| `--keep-reasoning` | Keep the `reasoningEffort` field |
 
-默认跳过 `agent-installer`、`workflow-orchestrator`：它们的 prompt 讲的是
-"往 `~/.codex/agents/` 里装文件"，移植到 OpenCode 后语义为空。
-
----
-
-## 对国产模型的额外调整
-
-- `reasoningEffort` 是 OpenAI 系请求参数，GLM / DeepSeek / Qwen / MiMo 通常忽略。
-  **默认不再输出**，需要时用 `--keep-reasoning` 恢复。
-- 若给特定 agent 钉模型，用 `--model-map`，例如
-  `--model-map=gpt-6.1-sol=<provider>/<model-id>`。
-
+`agent-installer` and `workflow-orchestrator` are skipped by default: their prompts describe
+copying files into `~/.codex/agents/`, which is meaningless after the port.
 
 ---
 
-## 已知限制
+## Notes for Chinese-origin models
 
-1. **自动触发很弱（平台机制）**。OpenCode 把 subagent 列表以 `id: description` 拼进 task
-   工具的 description，只靠文本让模型自行判断。内置 `explore` 的 description 带具体例句，
-   更容易被选中。174 个候选会稀释信号 —— 这是 OpenCode 的行为，不是转换问题。
-   建议要么用 `--only` 只装常用子集，要么始终 `@agent名` 手动调用。
-
-2. **常驻上下文成本**。全量安装会让 task 工具描述增加约 7.5k token。
-
-3. **prompt 同质化**。源仓库 174 份 prompt 共用一个模板
-  （`Working mode / Focus on / Quality checks / Return`），长度 129/174 落在 1–2k 字符区间，
-   差异主要在领域词汇。不要期待它们之间有精细分工。
-
-4. **`browser-debugger` 需要 chrome-devtools MCP**（默认 `localhost:3000/mcp`）。
-   未配置时该 agent 会被加载但缺少工具。
+- `reasoningEffort` is an OpenAI-style request parameter that GLM / DeepSeek / Qwen / MiMo
+  generally ignore. It is **no longer emitted by default**; restore it with `--keep-reasoning`.
+- To pin a model for specific agents, use `--model-map`, e.g.
+  `--model-map=gpt-6.1-sol=<provider>/<model-id>`.
 
 ---
 
-## 仓库结构
+## Known limitations
+
+1. **Automatic triggering is weak (platform behavior).** OpenCode appends the subagent list
+   to the task tool's description as `id: description` lines, leaving the model to decide on
+   text alone. The built-in `explore` agent has concrete examples in its description and
+   therefore wins more often. 174 candidates dilute the signal — this is OpenCode's behavior,
+   not a conversion problem. Either install a smaller subset, or invoke agents explicitly
+   with `@agent-name`.
+
+2. **Resident context cost.** Installing everything adds roughly 7.5k tokens to the task tool
+   description.
+
+3. **Homogeneous prompts.** The 174 upstream prompts share one template
+   (`Working mode / Focus on / Quality checks / Return`), and 129 of 174 fall between 1–2k
+   characters. Differences are mostly domain vocabulary. Don't expect fine-grained
+   separation between them.
+
+4. **`browser-debugger` needs the chrome-devtools MCP** (default `localhost:3000/mcp`).
+   Without it the agent still loads, but lacks tools.
+
+---
+
+## Repository layout
 
 ```
 .
 ├── tools/
-│   ├── install.mjs                       # 安装（系统语言 + 预设）
-│   ├── switch-lang.mjs                   # 随时切换 description 语言
-│   ├── detect-lang.mjs                   # 语言检测（含回退到英语）
-│   ├── validate.mjs                      # 校验产物、译表、预设（CI 用）
-│   ├── i18n/{en,zh}.json                 # description 译表，加语言只需加文件
-│   ├── codex-subagents-to-opencode.mjs   # 从上游 TOML 重新生成 agents/
-│   ├── analyze-subagents.mjs             # 产物分析
-│   ├── compare-lang.mjs                  # 中英文 token 成本对比
-│   └── verify-load.mjs                   # 验证 OpenCode 能否正确加载
-├── presets/{minimal,web,backend}.txt     # 装哪些 agent 的预设名单
-├── agents/                                # 174 个 OpenCode agent（英文基准）
+│   ├── install.mjs                       # install (locale + presets)
+│   ├── switch-lang.mjs                   # switch description language on demand
+│   ├── detect-lang.mjs                   # locale detection with English fallback
+│   ├── validate.mjs                      # validate artifacts, tables, presets (CI)
+│   ├── i18n/{en,zh}.json                 # description tables; add a file to add a language
+│   ├── codex-subagents-to-opencode.mjs   # regenerate agents/ from upstream TOML
+│   ├── analyze-subagents.mjs             # artifact analysis
+│   ├── compare-lang.mjs                  # English vs. Chinese token cost
+│   └── verify-load.mjs                   # check that OpenCode loads the agents
+├── presets/{minimal,web,backend}.txt     # which agents to install
+├── agents/                                # 174 OpenCode agents (English baseline)
 ├── .github/workflows/validate.yml         # CI
 ├── package.json
-├── README.md
+├── README.md                              # this file (English)├── README.zh-CN.md                        # 简体中文
 └── LICENSE
 ```
 
-`agents/` 是英文基准版本，可以直接复制到任意 OpenCode 项目使用。
-想换描述语言用 `switch-lang.mjs`，不要手动改。
+`agents/` is the English baseline and can be copied into any OpenCode project directly.
+To change description language, use `switch-lang.mjs` rather than editing files by hand.
 
-## 校验
+## Validation
 
 ```bash
 npm run verify
 ```
 
-检查 frontmatter 合法性、`mode: subagent`、无硬编码 model、权限键有效、prompt 完整且无
-`Codex` 残留、译表与 agent 一一对应、预设引用的 agent 都存在。
+Checks frontmatter validity, `mode: subagent`, absence of hard-coded models, valid permission
+keys, intact prompts with no leftover `Codex` wording, one-to-one coverage between translation
+tables and agents, and that every preset references existing agents.
 
-CI 在 Node 18 / 20 / 22 上运行，并额外验证「从上游重新生成的结果与提交版本一致」，
-防止产物悄悄漂移。
+CI runs on Node 18 / 20 / 22 and additionally verifies that regenerating from upstream
+reproduces the committed tree exactly, so artifacts cannot drift silently.
 
 ---
 
-## 许可证
+## License
 
-本仓库的转换脚本与 README 以 MIT 发布。
-`agents/` 下的内容派生自 [VoltAgent/awesome-codex-subagents](https://github.com/VoltAgent/awesome-codex-subagents)，
-同样为 MIT，版权归原作者及贡献者所有。
+The conversion scripts and README are released under MIT.
+The contents of `agents/` are derived from [VoltAgent/awesome-codex-subagents](https://github.com/VoltAgent/awesome-codex-subagents),
+also MIT-licensed; copyright belongs to its original authors and contributors.
