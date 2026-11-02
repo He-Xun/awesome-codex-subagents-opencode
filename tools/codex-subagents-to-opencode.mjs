@@ -21,6 +21,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { detectLanguage } from "./detect-lang.mjs";
 
 // ---------------------------------------------------------------------------
 // Minimal TOML reader for the subset used by awesome-codex-subagents.
@@ -310,6 +311,7 @@ function loadTranslations(lang) {
   return JSON.parse(fs.readFileSync(file, "utf8"));
 }
 
+
 /**
  * Rewrite a prompt that assumes a vendor-hosted MCP server into one that uses
  * tools the user actually has. Kept as targeted text substitution so the rest
@@ -433,7 +435,8 @@ function parseArgs(argv) {
     skip: [...DEFAULT_SKIP],
     // Empty by default: no agent gets a hard-coded model. See resolveModel().
     modelMap: {},
-    lang: "en",
+    // null means "detect from the system locale, falling back to English".
+    lang: null,
     keepReasoning: false,
   };
   for (const a of argv) {
@@ -485,11 +488,15 @@ function main() {
   };
   walk(src);
 
+  // Resolve the description language: explicit --lang wins, otherwise follow the
+  // system locale and fall back to English when no table matches.
+  const lang = detectLanguage(flags.lang ?? process.env.OPENCODE_SUBAGENTS_LANG);
+
   const opts = {
     outDir: path.resolve(outDir),
     modelMap: flags.modelMap,
     keepReasoning: flags.keepReasoning,
-    translations: loadTranslations(flags.lang),
+    translations: loadTranslations(lang.lang),
   };
 
   const results = [];
@@ -556,13 +563,15 @@ function main() {
     console.log("  Tip: pass --model-map=<sourceModel>=<provider>/<model> to pin one instead.");
   }
 
-  if (flags.lang !== "en") {
+  if (lang.lang !== "en") {
     const translated = results.filter((r) => opts.translations?.[r.name]).length;
-    console.log(`\nLocalized descriptions (--lang=${flags.lang}): ${translated}/${results.length}`);
+    console.log(`\nLocalized descriptions (${lang.lang}, ${lang.reason}): ${translated}/${results.length}`);
     if (translated < results.length) {
       const missing = results.filter((r) => !opts.translations?.[r.name]).map((r) => r.name);
       console.log(`  Untranslated (falling back to English): ${missing.join(", ")}`);
     }
+  } else {
+    console.log(`\nDescriptions: English (${lang.reason})`);
   }
 
   const byCategory = {};
