@@ -230,6 +230,33 @@ const REASONING_MAP = {
  */
 const READ_ONLY_NEEDS_SHELL = new Set(["debugger", "performance-engineer", "security-auditor"]);
 
+/**
+ * Writable agents whose deliverable is a document, a review or a recommendation
+ * rather than a code change. They still may edit files (that is their output),
+ * but running arbitrary shell commands is disproportionate to their job, so
+ * they ask first. Grouped by why: writers produce text, reviewers produce
+ * findings, architects produce advice that someone else implements.
+ */
+const ADVISORY_WRITABLE = new Set([
+  // text deliverables
+  "technical-writer",
+  "documentation-engineer",
+  "api-documenter",
+  "readme-generator",
+  "resume-refiner",
+  "design-bridge",
+  // prose review and cleanup
+  "ai-writing-auditor",
+  "content-quality-editor",
+  // architecture advice; implementation is a different agent's job
+  "angular-architect",
+  "java-architect",
+  // language experts that very often answer a question rather than change code.
+  // They stay writable, but a shell command should be a deliberate choice.
+  "powershell-5.1-expert",
+  "powershell-7-expert",
+]);
+
 function permissionFor(sandboxMode, agentName) {
   if (sandboxMode === "read-only") {
     return {
@@ -242,7 +269,7 @@ function permissionFor(sandboxMode, agentName) {
   }
   return {
     edit: "allow",
-    bash: "allow",
+    bash: ADVISORY_WRITABLE.has(agentName) ? "ask" : "allow",
     webfetch: "allow",
     websearch: "allow",
     task: "allow",

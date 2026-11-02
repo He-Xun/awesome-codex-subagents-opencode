@@ -46,8 +46,7 @@ const agents = fs
 if (agents.length === 0) add("error", "no agent files found");
 
 const MIN_BODY = 200;
-for (const name of agents) {
-  const s = fs.readFileSync(path.join(AGENTS_DIR, `${name}.md`), "utf8");
+for (const name of agents) {  const s = fs.readFileSync(path.join(AGENTS_DIR, `${name}.md`), "utf8");
 
   if (!s.startsWith("---\n")) {
     add("error", `${name}: file does not start with YAML frontmatter`);
@@ -154,6 +153,43 @@ if (fs.existsSync(PRESET_DIR)) {
     if (names.length === 0) add("error", `${file}: preset is empty`);
     const dupes = names.filter((n, i) => names.indexOf(n) !== i);
     if (dupes.length) add("warn", `${file}: duplicate entries ${[...new Set(dupes)].join(", ")}`);
+  }
+}
+
+// --- permission policy -----------------------------------------------------
+// Agents whose deliverable is advice or a document must not run shell commands
+// without approval; agents that change code may. This encodes the intent so a
+// regenerated or hand-edited file cannot silently widen its permissions.
+const MUST_ASK_SHELL = new Set([
+  // read-only agents that still need to execute commands to gather evidence
+  "debugger",
+  "performance-engineer",
+  "security-auditor",
+  // writers and reviewers whose output is text, not code
+  "technical-writer",
+  "documentation-engineer",
+  "api-documenter",
+  "readme-generator",
+  "resume-refiner",
+  "design-bridge",
+  "ai-writing-auditor",
+  "content-quality-editor",
+  // architects and language experts that mostly advise
+  "angular-architect",
+  "java-architect",
+  "powershell-5.1-expert",
+  "powershell-7-expert",
+]);
+
+for (const name of agents) {
+  const s = fs.readFileSync(path.join(AGENTS_DIR, `${name}.md`), "utf8");
+  const fm = s.slice(4, s.indexOf("\n---", 4));
+  const bash = (fm.match(/^ {2}bash: (\w+)/m) ?? [])[1];
+  if (MUST_ASK_SHELL.has(name) && bash !== "ask") {
+    add("error", `${name}: must use "bash: ask" (got "${bash}")`);
+  }
+  if (!MUST_ASK_SHELL.has(name) && bash === "deny" && /^ {2}edit: allow/m.test(fm)) {
+    add("warn", `${name}: writable agent with "bash: deny" cannot run any command`);
   }
 }
 

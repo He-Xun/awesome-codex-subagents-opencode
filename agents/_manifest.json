@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-02T09:42:54.096Z",
+  "generatedAt": "2026-11-02T10:51:25.407Z",
   "source": "C:\\Users\\harrison\\AppData\\Local\\Temp\\opencode\\awesome-codex-subagents\\categories",
   "total": 174,
   "agents": [
@@ -56,7 +56,7 @@
       "sourceModel": "gpt-6.1-sol",
       "permission": {
         "edit": "allow",
-        "bash": "allow",
+        "bash": "ask",
         "webfetch": "allow",
         "websearch": "allow",
         "task": "allow"
@@ -206,7 +206,7 @@
       "sourceModel": "gpt-6.1-sol",
       "permission": {
         "edit": "allow",
-        "bash": "allow",
+        "bash": "ask",
         "webfetch": "allow",
         "websearch": "allow",
         "task": "allow"
@@ -386,7 +386,7 @@
       "sourceModel": "gpt-6.1-sol",
       "permission": {
         "edit": "allow",
-        "bash": "allow",
+        "bash": "ask",
         "webfetch": "allow",
         "websearch": "allow",
         "task": "allow"
@@ -491,7 +491,7 @@
       "sourceModel": "gpt-6.1-sol",
       "permission": {
         "edit": "allow",
-        "bash": "allow",
+        "bash": "ask",
         "webfetch": "allow",
         "websearch": "allow",
         "task": "allow"
@@ -506,7 +506,7 @@
       "sourceModel": "gpt-6.1-sol",
       "permission": {
         "edit": "allow",
-        "bash": "allow",
+        "bash": "ask",
         "webfetch": "allow",
         "websearch": "allow",
         "task": "allow"
@@ -941,7 +941,7 @@
       "sourceModel": "gpt-6-luna",
       "permission": {
         "edit": "allow",
-        "bash": "allow",
+        "bash": "ask",
         "webfetch": "allow",
         "websearch": "allow",
         "task": "allow"
@@ -1491,7 +1491,7 @@
       "sourceModel": "gpt-6.1-sol",
       "permission": {
         "edit": "allow",
-        "bash": "allow",
+        "bash": "ask",
         "webfetch": "allow",
         "websearch": "allow",
         "task": "allow"
@@ -1596,7 +1596,7 @@
       "sourceModel": "gpt-6-luna",
       "permission": {
         "edit": "allow",
-        "bash": "allow",
+        "bash": "ask",
         "webfetch": "allow",
         "websearch": "allow",
         "task": "allow"
@@ -1671,7 +1671,7 @@
       "sourceModel": "gpt-6.1-sol",
       "permission": {
         "edit": "allow",
-        "bash": "allow",
+        "bash": "ask",
         "webfetch": "allow",
         "websearch": "allow",
         "task": "allow"
@@ -1941,7 +1941,7 @@
       "sourceModel": "gpt-6-luna",
       "permission": {
         "edit": "allow",
-        "bash": "allow",
+        "bash": "ask",
         "webfetch": "allow",
         "websearch": "allow",
         "task": "allow"
@@ -2046,7 +2046,7 @@
       "sourceModel": "gpt-6.1-sol",
       "permission": {
         "edit": "allow",
-        "bash": "allow",
+        "bash": "ask",
         "webfetch": "allow",
         "websearch": "allow",
         "task": "allow"
@@ -2091,7 +2091,7 @@
       "sourceModel": "gpt-6-luna",
       "permission": {
         "edit": "allow",
-        "bash": "allow",
+        "bash": "ask",
         "webfetch": "allow",
         "websearch": "allow",
         "task": "allow"
