@@ -12,7 +12,9 @@ inconsistent results.
 This repository turns that into something you can just install:
 
 ```bash
-node tools/install.mjs
+git clone https://github.com/He-Xun/awesome-codex-subagents-opencode.git
+cd awesome-codex-subagents-opencode
+node install.mjs --global
 ```
 
 Restart OpenCode, type `@reviewer`, and a read-only reviewer works through the entire diff
@@ -51,20 +53,28 @@ See [`agents/`](./agents) for the full list.
 
 ## Quick start
 
+Every command below assumes you are **inside the cloned repository**. Clone it once:
+
 ```bash
 git clone https://github.com/He-Xun/awesome-codex-subagents-opencode.git
 cd awesome-codex-subagents-opencode
+```
 
-# Install into the current project (picks the description language from your system locale)
-node tools/install.mjs
+Then install into the current project, or globally:
 
-# Or install globally
-node tools/install.mjs --global
+```bash
+node install.mjs            # -> ./.opencode/agents in the project you run it from
+node install.mjs --global   # -> ~/.config/opencode/agents (all projects)
 ```
 
 Restart OpenCode, then invoke agents with `@agent-name`. Zero dependencies, Node 18+.
 
+> The scripts resolve their own paths, so `node /path/to/repo/install.mjs --global` also works
+> from any directory without `cd`.
+
 ### Using npm scripts
+
+Run from the repository root:
 
 ```bash
 npm run install:global      # install globally
@@ -80,8 +90,8 @@ Installing all 174 makes the `@` menu long and dilutes automated selection. Pres
 practical choice:
 
 ```bash
-node tools/install.mjs --list-presets     # list presets
-node tools/install.mjs --preset=minimal   # install the 10 most common
+node install.mjs --list-presets     # list presets
+node install.mjs --preset=minimal   # install the 10 most common
 ```
 
 | Preset | Count | Contents |
@@ -123,6 +133,7 @@ they can be regenerated cleanly when upstream changes.
 To regenerate after an upstream update:
 
 ```bash
+cd awesome-codex-subagents-opencode      # repository root
 git clone --depth 1 https://github.com/VoltAgent/awesome-codex-subagents.git ../src
 node tools/codex-subagents-to-opencode.mjs ../src/categories agents
 ```
@@ -145,16 +156,19 @@ translation table matches**:
 4. Fallback → English
 
 ```bash
-node tools/install.mjs                    # zh on a Chinese system, en elsewhere
-node tools/install.mjs --lang=en          # force English
-node tools/install.mjs --only=reviewer,debugger   # install a subset
+node install.mjs                          # zh on a Chinese system, en elsewhere
+node install.mjs --lang=en                # force English
+node install.mjs --only=reviewer,debugger # install a subset
 ```
 
 Measured behavior: `zh-CN` → zh; `en_US` → en; `ko_KR` (no table) → en.
 
 ### Switching later
 
+`--dir` defaults to `./.opencode/agents`:
+
 ```bash
+cd awesome-codex-subagents-opencode      # repository root
 node tools/switch-lang.mjs --list                                   # available languages
 node tools/switch-lang.mjs --to=zh                                  # switch to Chinese
 node tools/switch-lang.mjs --to=en                                  # switch back
@@ -219,6 +233,7 @@ calling agent's model — documented OpenCode behavior, and provider-agnostic.
 To pin a model for specific agents:
 
 ```bash
+cd awesome-codex-subagents-opencode      # repository root
 node tools/codex-subagents-to-opencode.mjs <src> agents \
   --model-map=gpt-6.1-sol=anthropic/claude-sonnet-5,gpt-6-luna=anthropic/claude-haiku-5
 ```

@@ -11,7 +11,9 @@ PR 级代码审查、一份能落地的威胁建模、一次跨文件的架构�
 这个仓库把它变成了开箱即用的东西：
 
 ```bash
-node tools/install.mjs
+git clone https://github.com/He-Xun/awesome-codex-subagents-opencode.git
+cd awesome-codex-subagents-opencode
+node install.mjs --global
 ```
 
 装完重启 OpenCode，敲 `@reviewer` 就能让一个只读的审查者独立跑完整个 diff，只把结论
@@ -49,20 +51,28 @@ node tools/install.mjs
 
 ## 快速开始
 
+下面所有命令都假定你**已经在仓库目录内**。先 clone 一次：
+
 ```bash
 git clone https://github.com/He-Xun/awesome-codex-subagents-opencode.git
 cd awesome-codex-subagents-opencode
+```
 
-# 安装到当前项目（会自动按系统语言选择 description 语言）
-node tools/install.mjs
+然后装到当前项目，或装到全局：
 
-# 或安装到全局
-node tools/install.mjs --global
+```bash
+node install.mjs            # -> 在运行命令的项目里创建 ./.opencode/agents
+node install.mjs --global   # -> ~/.config/opencode/agents（所有项目生效）
 ```
 
 重启 OpenCode 后即可用 `@agent名` 调用。零依赖，只需 Node 18+。
 
+> 脚本会自己解析路径，所以从任意目录执行 `node /path/to/repo/install.mjs --global` 也可以，
+> 不需要先 `cd`。
+
 ### 用 npm 脚本
+
+在仓库根目录执行：
 
 ```bash
 npm run install:global      # 装到全局
@@ -77,8 +87,8 @@ npm run presets             # 查看可用预设
 174 个全装会让 `@` 菜单很长，也会稀释模型的自动选择。推荐用预设：
 
 ```bash
-node tools/install.mjs --list-presets     # 查看预设
-node tools/install.mjs --preset=minimal   # 只装 10 个最高频的
+node install.mjs --list-presets     # 查看预设
+node install.mjs --preset=minimal   # 只装 10 个最高频的
 ```
 
 | 预设 | 数量 | 内容 |
@@ -116,6 +126,7 @@ node tools/install.mjs --preset=minimal   # 只装 10 个最高频的
 上游更新后重新生成：
 
 ```bash
+cd awesome-codex-subagents-opencode      # 切到仓库根目录
 git clone --depth 1 https://github.com/VoltAgent/awesome-codex-subagents.git ../src
 node tools/codex-subagents-to-opencode.mjs ../src/categories agents
 ```
@@ -136,21 +147,24 @@ node tools/codex-subagents-to-opencode.mjs ../src/categories agents
 4. 回退 → 英语
 
 ```bash
-node tools/install.mjs                    # 中文系统装 zh，其他装 en
-node tools/install.mjs --lang=en          # 强制英文
-node tools/install.mjs --only=reviewer,debugger   # 只装部分
+node install.mjs                          # 中文系统装 zh，其他装 en
+node install.mjs --lang=en                # 强制英文
+node install.mjs --only=reviewer,debugger # 只装部分
 ```
 
 实测行为：`zh-CN` → zh；`en_US` → en；`ko_KR`（无译表）→ en。
 
 ### 随时切换
 
+`--dir` 默认是 `./.opencode/agents`：
+
 ```bash
-node tools/switch-lang.mjs --list                              # 查看可用语言
-node tools/switch-lang.mjs --to=zh                             # 切中文
-node tools/switch-lang.mjs --to=en                             # 切回英文
-node tools/switch-lang.mjs --to=zh --dir=~/.config/opencode/agents   # 指定目录
-node tools/switch-lang.mjs --to=zh --dry                       # 预演
+cd awesome-codex-subagents-opencode      # 切到仓库根目录
+node tools/switch-lang.mjs --list                                   # 查看可用语言
+node tools/switch-lang.mjs --to=zh                                  # 切中文
+node tools/switch-lang.mjs --to=en                                  # 切回英文
+node tools/switch-lang.mjs --to=zh --dir=~/.config/opencode/agents  # 指定目录
+node tools/switch-lang.mjs --to=zh --dry                            # 预演
 ```
 
 切换器**只改写 frontmatter 里的 description 那一行**，正文和权限原样保留，并保持原有的
@@ -206,6 +220,7 @@ node tools/switch-lang.mjs --to=zh --dry                       # 预演
 需要给特定 agent 钉死模型时：
 
 ```bash
+cd awesome-codex-subagents-opencode      # 切到仓库根目录
 node tools/codex-subagents-to-opencode.mjs <src> agents \
   --model-map=gpt-6.1-sol=anthropic/claude-sonnet-5,gpt-6-luna=anthropic/claude-haiku-5
 ```

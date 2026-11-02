@@ -154,6 +154,16 @@ if (existingReadmes.length > 1) {
         add("error", `${f}: does not link to ${other}`);
       }
     }
+    // A bare `node tools/...` line reads like a standalone command, but it only
+    // works from the repository root. Flag blocks that never establish it.
+    for (const block of s.split(/^```/m).filter((_, i) => i % 2 === 1)) {
+      if (/^cd /m.test(block)) continue;
+      for (const line of block.split("\n")) {
+        if (/^\s*node tools\//.test(line)) {
+          add("warn", `${f}: "node tools/..." without a preceding cd in the same block: ${line.trim()}`);
+        }
+      }
+    }
   }
   if (!quiet) console.log(`readmes: ${existingReadmes.join(", ")} (structure aligned)`);
 }
