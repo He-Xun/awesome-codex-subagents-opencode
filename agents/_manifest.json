@@ -1,0 +1,2632 @@
+{
+  "generatedAt": "2026-11-02T08:25:22.810Z",
+  "source": "C:\\Users\\harrison\\AppData\\Local\\Temp\\opencode\\awesome-codex-subagents\\categories",
+  "total": 174,
+  "agents": [
+    {
+      "name": "api-designer",
+      "category": "01-core-development",
+      "description": "Use when a task needs API contract design, evolution planning, or compatibility review before implementation starts.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1678
+    },
+    {
+      "name": "backend-developer",
+      "category": "01-core-development",
+      "description": "Use when a task needs scoped backend implementation or backend bug fixes after the owning path is known.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1542
+    },
+    {
+      "name": "code-mapper",
+      "category": "01-core-development",
+      "description": "Use when the parent agent needs a high-confidence map of code paths, ownership boundaries, and execution flow before changes are made.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1094
+    },
+    {
+      "name": "design-bridge",
+      "category": "01-core-development",
+      "description": "Use when a task needs a DESIGN.md (e.g. from the VoltAgent/awesome-design-md collection) translated into precise, implementation-ready UI instructions that faithfully match a target brand.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2062
+    },
+    {
+      "name": "electron-pro",
+      "category": "01-core-development",
+      "description": "Use when a task needs Electron-specific implementation or debugging across main/renderer/preload boundaries, packaging, and desktop runtime behavior.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1381
+    },
+    {
+      "name": "frontend-developer",
+      "category": "01-core-development",
+      "description": "Use when a task needs scoped frontend implementation or UI bug fixes with production-level behavior and quality.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1286
+    },
+    {
+      "name": "fullstack-developer",
+      "category": "01-core-development",
+      "description": "Use when one bounded feature or bug spans frontend and backend and a single worker should own the entire path.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1227
+    },
+    {
+      "name": "graphql-architect",
+      "category": "01-core-development",
+      "description": "Use when a task needs GraphQL schema evolution, resolver architecture, federation design, or distributed graph performance/security review.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1718
+    },
+    {
+      "name": "microservices-architect",
+      "category": "01-core-development",
+      "description": "Use when a task needs service-boundary design, inter-service contract review, or distributed-system architecture decisions.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1493
+    },
+    {
+      "name": "mobile-developer",
+      "category": "01-core-development",
+      "description": "Use when a task needs mobile implementation or debugging across app lifecycle, API integration, and device/platform-specific UX constraints.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1121
+    },
+    {
+      "name": "ui-designer",
+      "category": "01-core-development",
+      "description": "Use when a task needs concrete UI decisions, interaction design, and implementation-ready design guidance before or during development.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1133
+    },
+    {
+      "name": "ui-fixer",
+      "category": "01-core-development",
+      "description": "Use when a UI issue is already reproduced and the parent agent wants the smallest safe patch.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 975
+    },
+    {
+      "name": "websocket-engineer",
+      "category": "01-core-development",
+      "description": "Use when a task needs real-time transport and state work across WebSocket lifecycle, message contracts, and reconnect/failure behavior.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1185
+    },
+    {
+      "name": "angular-architect",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Angular-specific help for component architecture, dependency injection, routing, signals, or enterprise application structure.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2001
+    },
+    {
+      "name": "cpp-pro",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs C++ work involving performance-sensitive code, memory ownership, concurrency, or systems-level integration.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2001
+    },
+    {
+      "name": "csharp-developer",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs C# or .NET application work involving services, APIs, async flows, or application architecture.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1949
+    },
+    {
+      "name": "django-developer",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Django-specific work across models, views, forms, ORM behavior, or admin and middleware flows.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1984
+    },
+    {
+      "name": "dotnet-core-expert",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs modern .NET and ASP.NET Core expertise for APIs, hosting, middleware, or cross-platform application behavior.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1874
+    },
+    {
+      "name": "dotnet-framework-4.8-expert",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs .NET Framework 4.8 expertise for legacy enterprise applications, compatibility constraints, or Windows-bound integrations.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1904
+    },
+    {
+      "name": "elixir-expert",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Elixir and OTP expertise for processes, supervision, fault tolerance, or Phoenix application behavior.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1888
+    },
+    {
+      "name": "erlang-expert",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Erlang/OTP and rebar3 expertise for BEAM processes, testing, releases, upgrades, or distributed runtime behavior.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2629
+    },
+    {
+      "name": "expo-react-native-expert",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Expo / React Native mobile work — navigation, native modules, performance, EAS builds, or store deployment.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1987
+    },
+    {
+      "name": "fastapi-developer",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs FastAPI implementation — async endpoints, Pydantic v2 contracts, dependency injection, or ASGI deployment behavior.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1987
+    },
+    {
+      "name": "flutter-expert",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Flutter expertise for widget behavior, state management, rendering issues, or mobile cross-platform implementation.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1914
+    },
+    {
+      "name": "golang-pro",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Go expertise for concurrency, service implementation, interfaces, tooling, or performance-sensitive backend paths.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1852
+    },
+    {
+      "name": "java-architect",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Java application or service architecture help across framework boundaries, JVM behavior, or large codebase structure.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1883
+    },
+    {
+      "name": "javascript-pro",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs JavaScript-focused work for runtime behavior, browser or Node execution, or application-level code that is not TypeScript-led.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1848
+    },
+    {
+      "name": "kotlin-specialist",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Kotlin expertise for JVM applications, Android code, coroutines, or modern strongly typed service logic.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1900
+    },
+    {
+      "name": "laravel-specialist",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Laravel-specific work across routing, Eloquent, queues, validation, or application structure.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1894
+    },
+    {
+      "name": "nextjs-developer",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Next.js-specific work across routing, rendering modes, server actions, data fetching, or deployment-sensitive frontend behavior.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1903
+    },
+    {
+      "name": "node-specialist",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Node.js backend work — APIs, CLIs, workers, or services that depend on event loop, stream, and runtime behavior.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1932
+    },
+    {
+      "name": "php-pro",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs PHP expertise for application logic, framework integration, runtime debugging, or server-side code evolution.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1893
+    },
+    {
+      "name": "powershell-5.1-expert",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Windows PowerShell 5.1 expertise for legacy automation, full .NET Framework interop, or Windows administration scripts.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1917
+    },
+    {
+      "name": "powershell-7-expert",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs modern PowerShell 7 expertise for cross-platform automation, scripting, or .NET-based operational tooling.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1920
+    },
+    {
+      "name": "python-pro",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs a Python-focused subagent for runtime behavior, packaging, typing, testing, or framework-adjacent implementation.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1888
+    },
+    {
+      "name": "rails-expert",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Ruby on Rails expertise for models, controllers, jobs, callbacks, or convention-driven application changes.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1898
+    },
+    {
+      "name": "react-specialist",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs a React-focused agent for component behavior, state flow, rendering bugs, or modern React patterns.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1905
+    },
+    {
+      "name": "rust-engineer",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Rust expertise for ownership-heavy systems code, async runtime behavior, or performance-sensitive implementation.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1891
+    },
+    {
+      "name": "spring-boot-engineer",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Spring Boot expertise for service behavior, configuration, data access, or enterprise API implementation.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1879
+    },
+    {
+      "name": "sql-pro",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs SQL query design, query review, schema-aware debugging, or database migration analysis.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1840
+    },
+    {
+      "name": "swift-expert",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Swift expertise for iOS or macOS code, async flows, Apple platform APIs, or strongly typed application logic.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1799
+    },
+    {
+      "name": "symfony-specialist",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Symfony-specific work across routing, controllers, services, Doctrine, security, and application structure.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1956
+    },
+    {
+      "name": "typescript-pro",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs strong TypeScript help for types, interfaces, refactors, or compiler-driven fixes.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1834
+    },
+    {
+      "name": "vue-expert",
+      "category": "02-language-specialists",
+      "description": "Use when a task needs Vue expertise for component behavior, Composition API patterns, routing, or state and rendering issues.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1877
+    },
+    {
+      "name": "azure-infra-engineer",
+      "category": "03-infrastructure",
+      "description": "Use when a task needs Azure-specific infrastructure review or implementation across resources, networking, identity, or automation.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2203
+    },
+    {
+      "name": "cloud-architect",
+      "category": "03-infrastructure",
+      "description": "Use when a task needs cloud architecture review across compute, storage, networking, reliability, or multi-service design.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2108
+    },
+    {
+      "name": "database-administrator",
+      "category": "03-infrastructure",
+      "description": "Use when a task needs operational database administration review for availability, backups, recovery, permissions, or runtime health.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2095
+    },
+    {
+      "name": "deployment-engineer",
+      "category": "03-infrastructure",
+      "description": "Use when a task needs deployment workflow changes, release strategy updates, or rollout and rollback safety analysis.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2089
+    },
+    {
+      "name": "devops-engineer",
+      "category": "03-infrastructure",
+      "description": "Use when a task needs CI, deployment pipeline, release automation, or environment configuration work.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2078
+    },
+    {
+      "name": "devops-incident-responder",
+      "category": "03-infrastructure",
+      "description": "Use when a task needs rapid operational triage across CI, deployments, infrastructure automation, and service delivery failures.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2078
+    },
+    {
+      "name": "docker-expert",
+      "category": "03-infrastructure",
+      "description": "Use when a task needs Dockerfile review, image optimization, multi-stage build fixes, or container runtime debugging.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2089
+    },
+    {
+      "name": "incident-responder",
+      "category": "03-infrastructure",
+      "description": "Use when a task needs broad production incident triage, containment planning, or evidence-driven root cause analysis.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2045
+    },
+    {
+      "name": "kubernetes-specialist",
+      "category": "03-infrastructure",
+      "description": "Use when a task needs Kubernetes manifest review, rollout safety analysis, or cluster workload debugging.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2063
+    },
+    {
+      "name": "network-engineer",
+      "category": "03-infrastructure",
+      "description": "Use when a task needs network-path analysis, service connectivity debugging, load-balancer review, or infrastructure network design input.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2108
+    },
+    {
+      "name": "platform-engineer",
+      "category": "03-infrastructure",
+      "description": "Use when a task needs internal platform, golden-path, or self-service infrastructure design for developers.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2010
+    },
+    {
+      "name": "security-engineer",
+      "category": "03-infrastructure",
+      "description": "Use when a task needs infrastructure and platform security engineering across IAM, secrets, network controls, or hardening work.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2113
+    },
+    {
+      "name": "sre-engineer",
+      "category": "03-infrastructure",
+      "description": "Use when a task needs reliability engineering work involving SLOs, alerting, error budgets, operational safety, or service resilience.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2066
+    },
+    {
+      "name": "terraform-engineer",
+      "category": "03-infrastructure",
+      "description": "Use when a task needs Terraform module design, plan review, state-aware change analysis, or IaC refactoring.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2005
+    },
+    {
+      "name": "terragrunt-expert",
+      "category": "03-infrastructure",
+      "description": "Use when a task needs Terragrunt-specific help for module orchestration, environment layering, dependency wiring, or DRY infrastructure structure.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1993
+    },
+    {
+      "name": "windows-infra-admin",
+      "category": "03-infrastructure",
+      "description": "Use when a task needs Windows infrastructure administration across Active Directory, DNS, DHCP, GPO, or Windows automation.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2093
+    },
+    {
+      "name": "accessibility-tester",
+      "category": "04-quality-security",
+      "description": "Use when a task needs an accessibility audit of UI changes, interaction flows, or component behavior.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2019
+    },
+    {
+      "name": "ad-security-reviewer",
+      "category": "04-quality-security",
+      "description": "Use when a task needs Active Directory security review across identity boundaries, delegation, GPO exposure, or directory hardening.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2081
+    },
+    {
+      "name": "ai-writing-auditor",
+      "category": "04-quality-security",
+      "description": "Use when a task needs prose to be checked for AI writing patterns and rewritten to sound natural and human.",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2110
+    },
+    {
+      "name": "anti-ui-slop-reviewer",
+      "category": "04-quality-security",
+      "description": "Use when a web or iOS interface needs a product-specific finish-gate review for generic AI patterns, hierarchy, interaction states, responsive behavior, accessibility signals, or design-system drift.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2189
+    },
+    {
+      "name": "architect-reviewer",
+      "category": "04-quality-security",
+      "description": "Use when a task needs architectural review for coupling, system boundaries, long-term maintainability, or design coherence.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1928
+    },
+    {
+      "name": "browser-debugger",
+      "category": "04-quality-security",
+      "description": "Use when a task needs browser-based reproduction, UI evidence gathering, or client-side debugging through a browser MCP server.",
+      "needsMcp": true,
+      "mcpServers": [
+        {
+          "name": "chrome_devtools",
+          "url": "http://localhost:3000/mcp",
+          "startupTimeoutSec": 20,
+          "kind": "external",
+          "note": "Must be configured in opencode.json before this agent is used."
+        }
+      ],
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1954
+    },
+    {
+      "name": "chaos-engineer",
+      "category": "04-quality-security",
+      "description": "Use when a task needs resilience analysis for dependency failure, degraded modes, recovery behavior, or controlled fault-injection planning.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1949
+    },
+    {
+      "name": "code-reviewer",
+      "category": "04-quality-security",
+      "description": "Use when a task needs a broader code-health review covering maintainability, design clarity, and risky implementation choices in addition to correctness.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1862
+    },
+    {
+      "name": "compliance-auditor",
+      "category": "04-quality-security",
+      "description": "Use when a task needs compliance-oriented review of controls, auditability, policy alignment, or evidence gaps in a regulated workflow.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1989
+    },
+    {
+      "name": "debugger",
+      "category": "04-quality-security",
+      "description": "Use when a task needs deep bug isolation across code paths, stack traces, runtime behavior, or failing tests.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1959
+    },
+    {
+      "name": "error-detective",
+      "category": "04-quality-security",
+      "description": "Use when a task needs log, exception, or stack-trace analysis to identify the most probable failure source quickly.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1888
+    },
+    {
+      "name": "gdpr-ccpa-compliance",
+      "category": "04-quality-security",
+      "description": "Use when a task needs GDPR or CCPA/CPRA compliance review of data practices, consent flows, or data-subject rights handling.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2314
+    },
+    {
+      "name": "penetration-tester",
+      "category": "04-quality-security",
+      "description": "Use when a task needs adversarial review of an application path for exploitability, abuse cases, or practical attack surface analysis.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2032
+    },
+    {
+      "name": "performance-engineer",
+      "category": "04-quality-security",
+      "description": "Use when a task needs performance investigation for slow requests, hot paths, rendering regressions, or scalability bottlenecks.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1948
+    },
+    {
+      "name": "ponder-reviewer",
+      "category": "04-quality-security",
+      "description": "Use when a pull request, module, security boundary, or product flow needs a coverage-gated, multi-pass deliberative review where every unit is graded and false positives are retracted before reporting.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 3178
+    },
+    {
+      "name": "powershell-security-hardening",
+      "category": "04-quality-security",
+      "description": "Use when a task needs PowerShell-focused hardening across script safety, admin automation, execution controls, or Windows security posture.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2008
+    },
+    {
+      "name": "qa-expert",
+      "category": "04-quality-security",
+      "description": "Use when a task needs test strategy, acceptance coverage planning, or risk-based QA guidance for a feature or release.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1952
+    },
+    {
+      "name": "reviewer",
+      "category": "04-quality-security",
+      "description": "Use when a task needs PR-style review focused on correctness, security, behavior regressions, and missing tests.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1837
+    },
+    {
+      "name": "security-auditor",
+      "category": "04-quality-security",
+      "description": "Use when a task needs focused security review of code, auth flows, secrets handling, input validation, or infrastructure configuration.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1900
+    },
+    {
+      "name": "test-automator",
+      "category": "04-quality-security",
+      "description": "Use when a task needs implementation of automated tests, test harness improvements, or targeted regression coverage.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1916
+    },
+    {
+      "name": "ui-ux-tester",
+      "category": "04-quality-security",
+      "description": "Use when a task needs exhaustive UI and UX functional testing driven by documented user flows, with structured defect reporting.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2274
+    },
+    {
+      "name": "ai-engineer",
+      "category": "05-data-ai",
+      "description": "Use when a task needs implementation or debugging of model-backed application features, agent flows, or evaluation hooks.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2063
+    },
+    {
+      "name": "azure-databricks-platform-architect",
+      "category": "05-data-ai",
+      "description": "Use when a task needs end-to-end Azure Databricks platform architecture across lakehouse design, governance, compute, security, networking, reliability, cost, Lakebase, and Databricks Apps.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 5570
+    },
+    {
+      "name": "data-analyst",
+      "category": "05-data-ai",
+      "description": "Use when a task needs data interpretation, metric breakdown, trend explanation, or decision support from existing analytics outputs.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1856
+    },
+    {
+      "name": "data-engineer",
+      "category": "05-data-ai",
+      "description": "Use when a task needs ETL, ingestion, transformation, warehouse, or data-pipeline implementation and debugging.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1850
+    },
+    {
+      "name": "data-scientist",
+      "category": "05-data-ai",
+      "description": "Use when a task needs statistical reasoning, experiment interpretation, feature analysis, or model-oriented data exploration.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1804
+    },
+    {
+      "name": "database-optimizer",
+      "category": "05-data-ai",
+      "description": "Use when a task needs database performance analysis for query plans, schema design, indexing, or data access patterns.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1735
+    },
+    {
+      "name": "llm-architect",
+      "category": "05-data-ai",
+      "description": "Use when a task needs architecture review for prompts, tool use, retrieval, evaluation, or multi-step LLM workflows.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1816
+    },
+    {
+      "name": "machine-learning-engineer",
+      "category": "05-data-ai",
+      "description": "Use when a task needs ML system implementation work across training pipelines, feature flow, model serving, or inference integration.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1806
+    },
+    {
+      "name": "ml-engineer",
+      "category": "05-data-ai",
+      "description": "Use when a task needs practical machine learning implementation across feature engineering, inference wiring, and model-backed application logic.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1827
+    },
+    {
+      "name": "mlops-engineer",
+      "category": "05-data-ai",
+      "description": "Use when a task needs model deployment, registry, pipeline, monitoring, or environment orchestration for machine learning systems.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1848
+    },
+    {
+      "name": "nlp-engineer",
+      "category": "05-data-ai",
+      "description": "Use when a task needs NLP-specific implementation or analysis involving text processing, embeddings, ranking, or language-model-adjacent pipelines.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1871
+    },
+    {
+      "name": "postgres-pro",
+      "category": "05-data-ai",
+      "description": "Use when a task needs PostgreSQL-specific expertise for schema design, performance behavior, locking, or operational database features.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1859
+    },
+    {
+      "name": "prompt-engineer",
+      "category": "05-data-ai",
+      "description": "Use when a task needs prompt revision, instruction design, eval-oriented prompt comparison, or prompt-output contract tightening.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1779
+    },
+    {
+      "name": "reinforcement-learning-engineer",
+      "category": "05-data-ai",
+      "description": "Use when a task needs RL environment design, policy training, reward engineering, or deployment of decision-making agents.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2409
+    },
+    {
+      "name": "build-engineer",
+      "category": "06-developer-experience",
+      "description": "Use when a task needs build-graph debugging, bundling fixes, compiler pipeline work, or CI build stabilization.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1819
+    },
+    {
+      "name": "cli-developer",
+      "category": "06-developer-experience",
+      "description": "Use when a task needs a command-line interface feature, UX review, argument parsing change, or shell-facing workflow improvement.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1816
+    },
+    {
+      "name": "dependency-manager",
+      "category": "06-developer-experience",
+      "description": "Use when a task needs dependency upgrades, package graph analysis, version-policy cleanup, or third-party library risk assessment.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1786
+    },
+    {
+      "name": "documentation-engineer",
+      "category": "06-developer-experience",
+      "description": "Use when a task needs technical documentation that must stay faithful to current code, tooling, and operator workflows.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1810
+    },
+    {
+      "name": "dx-optimizer",
+      "category": "06-developer-experience",
+      "description": "Use when a task needs developer-experience improvements in setup time, local workflows, feedback loops, or day-to-day tooling friction.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1843
+    },
+    {
+      "name": "git-workflow-manager",
+      "category": "06-developer-experience",
+      "description": "Use when a task needs help with branching strategy, merge flow, release branching, or repository collaboration conventions.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1776
+    },
+    {
+      "name": "legacy-modernizer",
+      "category": "06-developer-experience",
+      "description": "Use when a task needs a modernization path for older code, frameworks, or architecture without losing behavioral safety.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1798
+    },
+    {
+      "name": "mcp-developer",
+      "category": "06-developer-experience",
+      "description": "Use when a task needs work on MCP servers, MCP clients, tool wiring, or protocol-aware integrations.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1793
+    },
+    {
+      "name": "powershell-module-architect",
+      "category": "06-developer-experience",
+      "description": "Use when a task needs PowerShell module structure, command design, packaging, or profile architecture work.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1801
+    },
+    {
+      "name": "powershell-ui-architect",
+      "category": "06-developer-experience",
+      "description": "Use when a task needs PowerShell-based UI work for terminals, forms, WPF, or admin-oriented interactive tooling.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1863
+    },
+    {
+      "name": "readme-generator",
+      "category": "06-developer-experience",
+      "description": "Use when a task needs a maintainer-ready README built from exact repository reality, with zero hallucinated commands, flags, or config keys.",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2280
+    },
+    {
+      "name": "refactoring-specialist",
+      "category": "06-developer-experience",
+      "description": "Use when a task needs a low-risk structural refactor that preserves behavior while improving readability, modularity, or maintainability.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1745
+    },
+    {
+      "name": "slack-expert",
+      "category": "06-developer-experience",
+      "description": "Use when a task needs Slack platform work involving bots, interactivity, events, workflows, or Slack-specific integration behavior.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1779
+    },
+    {
+      "name": "tooling-engineer",
+      "category": "06-developer-experience",
+      "description": "Use when a task needs internal developer tooling, scripts, automation glue, or workflow support utilities.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1819
+    },
+    {
+      "name": "visual-asset-generator",
+      "category": "06-developer-experience",
+      "description": "Use when a project needs production-ready visual assets: app icons, favicons, OG images, logos, or wordmarks. Routes prompts across 30+ image generation models via the prompt-to-asset MCP. Zero API key required for first run via free tiers.",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1876
+    },
+    {
+      "name": "api-documenter",
+      "category": "07-specialized-domains",
+      "description": "Use when a task needs consumer-facing API documentation generated from the real implementation, schema, and examples.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1842
+    },
+    {
+      "name": "blockchain-developer",
+      "category": "07-specialized-domains",
+      "description": "Use when a task needs blockchain or Web3 implementation and review across smart-contract integration, wallet flows, or transaction lifecycle handling.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1893
+    },
+    {
+      "name": "embedded-systems",
+      "category": "07-specialized-domains",
+      "description": "Use when a task needs embedded or hardware-adjacent work involving device constraints, firmware boundaries, timing, or low-level integration.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1856
+    },
+    {
+      "name": "fintech-engineer",
+      "category": "07-specialized-domains",
+      "description": "Use when a task needs financial systems engineering across ledgers, reconciliation, transfers, settlement, or compliance-sensitive transactional flows.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1857
+    },
+    {
+      "name": "game-developer",
+      "category": "07-specialized-domains",
+      "description": "Use when a task needs game-specific implementation or debugging involving gameplay systems, rendering loops, asset flow, or player-state behavior.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1856
+    },
+    {
+      "name": "healthcare-admin",
+      "category": "07-specialized-domains",
+      "description": "Use when a task involves healthcare administration: revenue cycle management, HIPAA/compliance auditing, medical coding (ICD-10, CPT, DRGs), CMS cost reports, payer contract analysis, quality improvement, clinical operations, health IT/interoperability, population health, or pharmacy benefits.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2412
+    },
+    {
+      "name": "hipaa-compliance",
+      "category": "07-specialized-domains",
+      "description": "Use when a task needs HIPAA compliance review for a healthcare product — Business Associate scope, BAA needs, PHI handling, safeguards, or breach response.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2509
+    },
+    {
+      "name": "iot-engineer",
+      "category": "07-specialized-domains",
+      "description": "Use when a task needs IoT system work involving devices, telemetry, edge communication, or cloud-device coordination.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1899
+    },
+    {
+      "name": "m365-admin",
+      "category": "07-specialized-domains",
+      "description": "Use when a task needs Microsoft 365 administration help across Exchange Online, Teams, SharePoint, identity, or tenant-level automation.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1829
+    },
+    {
+      "name": "mobile-app-developer",
+      "category": "07-specialized-domains",
+      "description": "Use when a task needs app-level mobile product work across screens, state, API integration, and release-sensitive mobile behavior.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1828
+    },
+    {
+      "name": "payment-integration",
+      "category": "07-specialized-domains",
+      "description": "Use when a task needs payment-flow review or implementation for checkout, idempotency, webhooks, retries, or settlement state handling.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1867
+    },
+    {
+      "name": "quant-analyst",
+      "category": "07-specialized-domains",
+      "description": "Use when a task needs quantitative analysis of models, strategies, simulations, or numeric decision logic.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1807
+    },
+    {
+      "name": "risk-manager",
+      "category": "07-specialized-domains",
+      "description": "Use when a task needs explicit risk analysis for product, operational, financial, or architectural decisions.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1828
+    },
+    {
+      "name": "seo-specialist",
+      "category": "07-specialized-domains",
+      "description": "Use when a task needs search-focused technical review across crawlability, metadata, rendering, information architecture, or content discoverability.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1909
+    },
+    {
+      "name": "assumption-mapping",
+      "category": "08-business-product",
+      "description": "Use when a task needs to surface and prioritize risky assumptions in a product idea, feature, or strategy before engineering invests in building it.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2311
+    },
+    {
+      "name": "backlog-grooming",
+      "category": "08-business-product",
+      "description": "Use when a task needs a product backlog groomed, refined, or cleaned up — sprint readiness, estimation, and zombie-story cleanup.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2248
+    },
+    {
+      "name": "business-analyst",
+      "category": "08-business-product",
+      "description": "Use when a task needs requirements clarified, scope normalized, or acceptance criteria extracted from messy inputs before engineering work starts.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1765
+    },
+    {
+      "name": "content-marketer",
+      "category": "08-business-product",
+      "description": "Use when a task needs product-adjacent content strategy or messaging that still has to stay grounded in real technical capabilities.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1746
+    },
+    {
+      "name": "content-quality-editor",
+      "category": "08-business-product",
+      "description": "Use before publishing AI-generated content — blog posts, READMEs, release notes, commit messages, PR descriptions, docs, or social posts. Strips AI patterns and applies a final quality pass.",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2245
+    },
+    {
+      "name": "customer-success-manager",
+      "category": "08-business-product",
+      "description": "Use when a task needs support-pattern synthesis, adoption risk analysis, or customer-facing operational guidance from engineering context.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1840
+    },
+    {
+      "name": "growth-loops",
+      "category": "08-business-product",
+      "description": "Use when a task needs growth loop design, PLG mechanics analysis, or diagnosis of why acquisition is linear instead of compounding.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2271
+    },
+    {
+      "name": "legal-advisor",
+      "category": "08-business-product",
+      "description": "Use when a task needs legal-risk spotting in product or engineering behavior, especially around terms, data handling, or externally visible commitments.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1787
+    },
+    {
+      "name": "license-engineer",
+      "category": "08-business-product",
+      "description": "Use when a task needs software licensing architecture — OSI selection, dependency compliance, dual-licensing, or risk and liability strategy.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2598
+    },
+    {
+      "name": "product-manager",
+      "category": "08-business-product",
+      "description": "Use when a task needs product framing, prioritization, or feature-shaping based on engineering reality and user impact.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1734
+    },
+    {
+      "name": "project-manager",
+      "category": "08-business-product",
+      "description": "Use when a task needs dependency mapping, milestone planning, sequencing, or delivery-risk coordination across multiple workstreams.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1634
+    },
+    {
+      "name": "resume-refiner",
+      "category": "08-business-product",
+      "description": "Use when a task needs a professional resume, CV, or LinkedIn profile reviewed, refined, or optimized for clarity, impact, and role alignment.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2186
+    },
+    {
+      "name": "sales-engineer",
+      "category": "08-business-product",
+      "description": "Use when a task needs technically accurate solution positioning, customer-question handling, or implementation tradeoff explanation for pre-sales contexts.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1795
+    },
+    {
+      "name": "scrum-master",
+      "category": "08-business-product",
+      "description": "Use when a task needs process facilitation, iteration planning, or workflow friction analysis for an engineering team.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1689
+    },
+    {
+      "name": "technical-writer",
+      "category": "08-business-product",
+      "description": "Use when a task needs release notes, migration notes, onboarding material, or developer-facing prose derived from real code changes.",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1680
+    },
+    {
+      "name": "ux-researcher",
+      "category": "08-business-product",
+      "description": "Use when a task needs UI feedback synthesized into actionable product and implementation guidance.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1676
+    },
+    {
+      "name": "wordpress-master",
+      "category": "08-business-product",
+      "description": "Use when a task needs WordPress-specific implementation or debugging across themes, plugins, content architecture, or operational site behavior.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "allow",
+        "bash": "allow",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1722
+    },
+    {
+      "name": "agent-organizer",
+      "category": "09-meta-orchestration",
+      "description": "Use when the parent agent needs help choosing subagents and dividing a larger task into clean delegated threads.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1732
+    },
+    {
+      "name": "codebase-orchestrator",
+      "category": "09-meta-orchestration",
+      "description": "Use when a task needs repository-wide refactor governance with weighted risk prioritization, diff previews, and explicit approval gates before execution.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2299
+    },
+    {
+      "name": "context-manager",
+      "category": "09-meta-orchestration",
+      "description": "Use when a task needs a compact project context summary that other subagents can rely on before deeper work begins.",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1714
+    },
+    {
+      "name": "error-coordinator",
+      "category": "09-meta-orchestration",
+      "description": "Use when multiple errors or symptoms need to be grouped, prioritized, and assigned to the right debugging or review agents.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1608
+    },
+    {
+      "name": "it-ops-orchestrator",
+      "category": "09-meta-orchestration",
+      "description": "Use when a task needs coordinated operational planning across infrastructure, incident response, identity, endpoint, and admin workflows.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1695
+    },
+    {
+      "name": "knowledge-synthesizer",
+      "category": "09-meta-orchestration",
+      "description": "Use when multiple agents have returned findings and the parent agent needs a distilled, non-redundant synthesis.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1655
+    },
+    {
+      "name": "multi-agent-coordinator",
+      "category": "09-meta-orchestration",
+      "description": "Use when a task needs a concrete multi-agent plan with clear role separation, dependencies, and result integration.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1727
+    },
+    {
+      "name": "performance-monitor",
+      "category": "09-meta-orchestration",
+      "description": "Use when a task needs ongoing performance-signal interpretation across build, runtime, or operational metrics before deeper optimization starts.",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1690
+    },
+    {
+      "name": "task-distributor",
+      "category": "09-meta-orchestration",
+      "description": "Use when a broad task needs to be broken into concrete sub-tasks with clear boundaries for multiple agents or contributors.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1686
+    },
+    {
+      "name": "ab-test-analysis",
+      "category": "10-research-analysis",
+      "description": "Use when a task needs analysis of A/B test results, interpretation of p-values and confidence intervals, statistical significance checks, or a principled ship/no-ship decision.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2085
+    },
+    {
+      "name": "cohort-analysis",
+      "category": "10-research-analysis",
+      "description": "Use when a task needs retention analysis, cohort behavior comparison, activation-metric discovery, or diagnosis of how user groups perform over time.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1965
+    },
+    {
+      "name": "competitive-analyst",
+      "category": "10-research-analysis",
+      "description": "Use when a task needs a grounded comparison of tools, products, libraries, or implementation options.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1674
+    },
+    {
+      "name": "data-researcher",
+      "category": "10-research-analysis",
+      "description": "Use when a task needs source gathering and synthesis around datasets, metrics, data pipelines, or evidence-backed quantitative questions.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1598
+    },
+    {
+      "name": "docs-researcher",
+      "category": "10-research-analysis",
+      "description": "Use when a task needs documentation-backed verification of APIs, version-specific behavior, or framework options.",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1600
+    },
+    {
+      "name": "first-principles-thinking",
+      "category": "10-research-analysis",
+      "description": "Use when a task needs assumptions challenged, a complex problem broken down to fundamentals, or a solution rebuilt from scratch rather than from convention or analogy.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1894
+    },
+    {
+      "name": "market-researcher",
+      "category": "10-research-analysis",
+      "description": "Use when a task needs market landscape, positioning, or demand-side research tied to a technical product or category.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1660
+    },
+    {
+      "name": "project-idea-validator",
+      "category": "10-research-analysis",
+      "description": "Use when a task needs an idea pressure-tested with brutal honesty — competitor teardown, market validation, fatal-flaw hunting, and clear go or no-go guidance before building.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2683
+    },
+    {
+      "name": "research-analyst",
+      "category": "10-research-analysis",
+      "description": "Use when a task needs a structured investigation of a technical topic, implementation approach, or design question.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1561
+    },
+    {
+      "name": "scientific-literature-researcher",
+      "category": "10-research-analysis",
+      "description": "Use when a task needs evidence-grounded answers from published research, including methods, results, sample sizes, and quality-weighted synthesis.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 2163
+    },
+    {
+      "name": "search-specialist",
+      "category": "10-research-analysis",
+      "description": "Use when a task needs fast, high-signal searching of the codebase or external sources before deeper analysis begins.",
+      "model": null,
+      "sourceModel": "gpt-6-luna",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1543
+    },
+    {
+      "name": "trend-analyst",
+      "category": "10-research-analysis",
+      "description": "Use when a task needs trend synthesis across technology shifts, adoption patterns, or emerging implementation directions.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1589
+    },
+    {
+      "name": "ai-governance-auditor",
+      "category": "11-ai-governance-safety",
+      "description": "Use when a task needs an AI governance review covering controls, accountability, risk ownership, and deployment readiness.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1448
+    },
+    {
+      "name": "model-risk-manager",
+      "category": "11-ai-governance-safety",
+      "description": "Use when a task needs model risk analysis, failure mode prioritization, and mitigation planning for AI behavior.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1401
+    },
+    {
+      "name": "policy-guardrail-designer",
+      "category": "11-ai-governance-safety",
+      "description": "Use when a task needs enforceable prompt, tool, workflow, or approval guardrails for AI systems.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1369
+    },
+    {
+      "name": "responsible-ai-reviewer",
+      "category": "11-ai-governance-safety",
+      "description": "Use when a task needs review of fairness, transparency, misuse risk, and human-oversight design in AI features.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1402
+    },
+    {
+      "name": "backstage-specialist",
+      "category": "12-platform-engineering-idp",
+      "description": "Use when a task needs Backstage architecture, catalog, plugin, template, or adoption guidance for an internal developer platform.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1453
+    },
+    {
+      "name": "golden-path-designer",
+      "category": "12-platform-engineering-idp",
+      "description": "Use when a task needs an opinionated, low-friction golden path for service creation, deployment, or operations.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1456
+    },
+    {
+      "name": "idp-architect",
+      "category": "12-platform-engineering-idp",
+      "description": "Use when a task needs internal developer platform architecture, service boundaries, and self-service control-plane design.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1466
+    },
+    {
+      "name": "platform-product-manager",
+      "category": "12-platform-engineering-idp",
+      "description": "Use when a task needs platform roadmap, adoption strategy, success metrics, and stakeholder alignment for internal platform work.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1404
+    },
+    {
+      "name": "ai-observability-engineer",
+      "category": "13-llmops-evals-observability",
+      "description": "Use when a task needs AI-native traces, metrics, logging, and debugging signals for LLM or agent systems in production.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1627
+    },
+    {
+      "name": "eval-engineer",
+      "category": "13-llmops-evals-observability",
+      "description": "Use when a task needs evaluation design for prompts, retrieval, tools, or multi-step agent workflows.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1353
+    },
+    {
+      "name": "hallucination-investigator",
+      "category": "13-llmops-evals-observability",
+      "description": "Use when a task needs root-cause analysis for factuality failures, unsupported claims, or context breakdowns in AI outputs.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1443
+    },
+    {
+      "name": "prompt-regression-tester",
+      "category": "13-llmops-evals-observability",
+      "description": "Use when a task needs regression coverage for prompt, model, tool, or workflow changes in an AI system.",
+      "model": null,
+      "sourceModel": "gpt-6.1-sol",
+      "permission": {
+        "edit": "deny",
+        "bash": "deny",
+        "webfetch": "allow",
+        "websearch": "allow",
+        "task": "allow"
+      },
+      "bodyLength": 1336
+    }
+  ],
+  "errors": [],
+  "skipped": [
+    "agent-installer",
+    "workflow-orchestrator"
+  ]
+}

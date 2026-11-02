@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Generated locally
+_analysis.json
+_agents.tsv
+models.txt
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local OpenCode state
+.opencode/agents/
