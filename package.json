@@ -1,0 +1,22 @@
+{
+  "name": "awesome-codex-subagents-opencode",
+  "version": "1.0.0",
+  "description": "174 Codex subagent definitions adapted for OpenCode, with locale-aware descriptions",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "install:global": "node tools/install.mjs --global",
+    "install:local": "node tools/install.mjs",
+    "switch": "node tools/switch-lang.mjs",
+    "presets": "node tools/install.mjs --list-presets",
+    "verify": "node tools/validate.mjs",
+    "convert": "node tools/codex-subagents-to-opencode.mjs",
+    "analyze": "node tools/analyze-subagents.mjs",
+    "cost": "node tools/compare-lang.mjs",
+    "check:load": "node tools/verify-load.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

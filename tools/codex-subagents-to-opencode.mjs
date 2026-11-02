@@ -219,14 +219,22 @@ const REASONING_MAP = {
 
 /**
  * sandbox_mode -> OpenCode permissions.
- * read-only: no edits, no shell mutations, no external dirs.
+ * read-only: no edits, no shell by default.
  * workspace-write: edits allowed, shell allowed.
+ *
+ * Some read-only agents cannot do their job without running commands: a
+ * debugger needs stack traces and failing tests, a performance engineer needs
+ * measurements. Those get `bash: ask` instead of `deny`, so the shell is
+ * available but every command still needs the user's approval — the agent
+ * stays read-only in effect without being rendered useless.
  */
-function permissionFor(sandboxMode) {
+const READ_ONLY_NEEDS_SHELL = new Set(["debugger", "performance-engineer", "security-auditor"]);
+
+function permissionFor(sandboxMode, agentName) {
   if (sandboxMode === "read-only") {
     return {
       edit: "deny",
-      bash: "deny",
+      bash: READ_ONLY_NEEDS_SHELL.has(agentName) ? "ask" : "deny",
       webfetch: "allow",
       websearch: "allow",
       task: "allow",
@@ -403,7 +411,7 @@ function convertOne(file, opts) {
     model: mappedModel,
     reasoningEffort,
     color: CATEGORY_COLORS[category] ?? undefined,
-    permission: permissionFor(toml.sandbox_mode),
+    permission: permissionFor(toml.sandbox_mode, name),
   };
 
   const md = `${frontmatter(meta)}\n\n${applyMcpReplacements(body, mcpServers)}\n`;
@@ -488,9 +496,13 @@ function main() {
   };
   walk(src);
 
-  // Resolve the description language: explicit --lang wins, otherwise follow the
-  // system locale and fall back to English when no table matches.
-  const lang = detectLanguage(flags.lang ?? process.env.OPENCODE_SUBAGENTS_LANG);
+  // Resolve the description language. The committed agents/ tree is the English
+  // baseline used by install/switch/CI, so regeneration defaults to English;
+  // pass --lang explicitly (or set OPENCODE_SUBAGENTS_LANG) for another language.
+  const requestedLang = flags.lang ?? process.env.OPENCODE_SUBAGENTS_LANG;
+  const lang = requestedLang
+    ? detectLanguage(requestedLang)
+    : { lang: "en", reason: "default for regenerating the baseline", detected: null };
 
   const opts = {
     outDir: path.resolve(outDir),

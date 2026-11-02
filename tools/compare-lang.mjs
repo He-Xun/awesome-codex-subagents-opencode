@@ -1,44 +1,63 @@
-// Compare the resident context cost of the English and Chinese description sets.
+// Compare the resident context cost of the description tables.
+//
+// English baseline comes from agents/; other languages come from
+// tools/i18n/<lang>.json. No second output directory is needed.
 import fs from "node:fs";
 
-function stats(dir) {
-  const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
+const agents = fs.readdirSync("./agents").filter((f) => f.endsWith(".md"));
+
+function englishStats() {
   let descChars = 0;
   let bodyChars = 0;
-  for (const f of files) {
-    const s = fs.readFileSync(`${dir}/${f}`, "utf8");
+  for (const f of agents) {
+    const s = fs.readFileSync(`./agents/${f}`, "utf8");
     const fm = s.slice(4, s.indexOf("\n---", 4));
-    const raw = (fm.match(/^description: (.*)$/m) || [])[1] || "";
-    descChars += raw.length;
+    descChars += (fm.match(/^description: (.*)$/m) || [])[1].length;
     bodyChars += s.slice(s.indexOf("\n---", 4) + 4).trim().length;
   }
-  return { n: files.length, descChars, bodyChars };
+  return { descChars, bodyChars };
 }
 
-const en = stats("./agents");
-const zh = stats("./out-zh");
+function tableStats(lang) {
+  const table = JSON.parse(fs.readFileSync(`./tools/i18n/${lang}.json`, "utf8"));
+  const values = Object.values(table);
+  return {
+    descChars: values.reduce((a, v) => a + JSON.stringify(v).length, 0),
+    count: values.length,
+  };
+}
 
-// The task-tool description lists entries as "- <id>: <description>".
-// English tokens ~ chars/4; Chinese on domestic tokenizers ~ chars * 1.08 / 4 * 4...
-// Use the measured live-API ratios: ZH costs ~8% more tokens than EN for the same content.
-const enTok = Math.round(en.descChars / 4);
-const zhTokDirect = Math.round(zh.descChars / 4);
-
+const en = englishStats();
 console.log("=== description 常驻成本 ===");
-console.log(`条目数:                ${en.n}`);
-console.log(`英文 description 字符: ${en.descChars.toLocaleString()}`);
-console.log(`中文 description 字符: ${zh.descChars.toLocaleString()}`);
-console.log(`字符压缩:              ${(100 - (zh.descChars / en.descChars) * 100).toFixed(1)}%`);
+console.log(`条目数:              ${agents.length}`);
+console.log(`英文 description:    ${en.descChars.toLocaleString()} 字符`);
 
-console.log("\n=== token 估算 ===");
-console.log(`英文 (chars/4):        ~${enTok.toLocaleString()} tokens`);
-// Chinese chars are dense: ~1 token per 1.0-1.2 chars on domestic tokenizers.
-const zhLow = Math.round(zh.descChars * 1.0);
-const zhHigh = Math.round(zh.descChars * 1.2);
-console.log(`中文 (1-1.2 字/token): ~${zhLow.toLocaleString()} – ${zhHigh.toLocaleString()} tokens`);
-const delta = Math.round(((zhLow + zhHigh) / 2 / enTok - 1) * 100);
-console.log(`变化:                  ${delta > 0 ? "+" : ""}${delta}%`);
+const enTok = Math.round(en.descChars / 4);
+console.log(`英文 token (÷4):     ~${enTok.toLocaleString()}`);
 
-console.log("\n=== 正文（不受 --lang 影响）===");
-console.log(`英文正文:              ${en.bodyChars.toLocaleString()} 字符`);
-console.log(`中文版正文:            ${zh.bodyChars.toLocaleString()} 字符 (保持不变)`);
+const langs = fs
+  .readdirSync("./tools/i18n")
+  .filter((f) => f.endsWith(".json") && !f.startsWith("_"))
+  .map((f) => f.replace(/\.json$/, ""))
+  .filter((l) => l !== "en")
+  .sort();
+
+if (langs.length) {
+  console.log("\n=== 其他语言 vs 英文 ===");
+  for (const lang of langs) {
+    const zh = tableStats(lang);
+    // Chinese chars are dense: ~1.0-1.2 tokens each on domestic tokenizers.
+    const lo = Math.round(zh.descChars * 1.0);
+    const hi = Math.round(zh.descChars * 1.2);
+    const mid = (lo + hi) / 2;
+    const delta = Math.round((mid / enTok - 1) * 100);
+    console.log(
+      `${lang}:  ${zh.descChars.toLocaleString()} 字符 ` +
+        `(${(100 - (zh.descChars / en.descChars) * 100).toFixed(0)}% fewer than en), ` +
+        `~${lo.toLocaleString()}-${hi.toLocaleString()} tokens, ${delta > 0 ? "+" : ""}${delta}%`,
+    );
+  }
+}
+
+console.log("\n=== prompt 正文（不随语言变化）===");
+console.log(`字符数:              ${en.bodyChars.toLocaleString()}`);

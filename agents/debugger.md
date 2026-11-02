@@ -4,7 +4,7 @@ mode: subagent
 color: error
 permission:
   edit: deny
-  bash: deny
+  bash: ask
   webfetch: allow
   websearch: allow
   task: allow

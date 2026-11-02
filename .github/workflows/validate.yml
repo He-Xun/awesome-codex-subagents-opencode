@@ -1,0 +1,55 @@
+name: validate
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Validate agents, translations and presets
+        run: node tools/validate.mjs
+
+      # The generated output must be reproducible: if regenerating from the
+      # upstream source ever produces a different tree, the committed agents/
+      # are stale or were edited by hand.
+      - name: Verify conversion is reproducible
+        run: |
+          git clone --depth 1 https://github.com/VoltAgent/awesome-codex-subagents.git /tmp/upstream
+          node tools/codex-subagents-to-opencode.mjs /tmp/upstream/categories /tmp/generated > /dev/null
+          diff -r /tmp/generated agents --exclude=_manifest.json \
+            || (echo "::error::agents/ is out of date relative to upstream; re-run the converter" && exit 1)
+
+      - name: Check install and language switching
+        run: |
+          node tools/install.mjs --dir=/tmp/installed --lang=en > /dev/null
+          test "$(ls /tmp/installed/*.md | wc -l)" -eq "$(ls agents/*.md | wc -l)"
+
+          node tools/install.mjs --dir=/tmp/installed-zh --lang=zh > /dev/null
+          grep -q "description:" /tmp/installed-zh/reviewer.md
+
+          # Switching en -> zh -> en must round-trip with no diff.
+          node tools/switch-lang.mjs --to=en --dir=/tmp/installed > /dev/null
+          diff -r /tmp/installed agents --exclude=_manifest.json \
+            || (echo "::error::en round-trip differs from committed agents" && exit 1)
+
+      - name: Check presets install cleanly
+        run: |
+          for p in presets/*.txt; do
+            name=$(basename "$p" .txt)
+            node tools/install.mjs --preset="$name" --dir="/tmp/preset-$name" --lang=en > /dev/null
+            test "$(ls "/tmp/preset-$name"/*.md | wc -l)" -gt 0
+          done

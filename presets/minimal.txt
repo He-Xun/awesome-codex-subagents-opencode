@@ -1,0 +1,13 @@
+# minimal — 10 个最高频
+# 适合绝大多数仓库：审查、定位、改代码、写测试。
+# 常驻成本约 300 token。
+reviewer
+debugger
+code-mapper
+code-reviewer
+test-automator
+refactoring-specialist
+typescript-pro
+python-pro
+sql-pro
+security-auditor

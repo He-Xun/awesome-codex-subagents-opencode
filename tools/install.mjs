@@ -34,12 +34,51 @@ function parseArgs(argv) {
   for (const a of argv) {
     if (a === "--global" || a === "-g") flags.global = true;
     else if (a === "--dry") flags.dry = true;
+    else if (a === "--list-presets") flags.listPresets = true;
     else if (a.startsWith("--lang=")) flags.lang = a.slice(7).trim();
     else if (a.startsWith("--dir=")) flags.dir = a.slice(6).trim();
+    else if (a.startsWith("--preset=")) flags.preset = a.slice(9).trim();
     else if (a.startsWith("--only=")) flags.only = a.slice(7).split(",").map((s) => s.trim()).filter(Boolean);
     else if (a.startsWith("--skip=")) flags.skip = a.slice(7).split(",").map((s) => s.trim()).filter(Boolean);
   }
   return flags;
+}
+
+const PRESET_DIR = path.join(REPO, "presets");
+
+/**
+ * Read a preset file: one agent name per line, `#` starts a comment.
+ * Returns undefined when no preset was requested.
+ */
+function loadPreset(name) {
+  const file = path.join(PRESET_DIR, `${name}.txt`);
+  if (!fs.existsSync(file)) {
+    const available = fs.existsSync(PRESET_DIR)
+      ? fs
+          .readdirSync(PRESET_DIR)
+          .filter((f) => f.endsWith(".txt"))
+          .map((f) => f.replace(/\.txt$/, ""))
+          .join(", ")
+      : "(none)";
+    throw new Error(`Unknown preset "${name}". Available: ${available}`);
+  }
+  return fs
+    .readFileSync(file, "utf8")
+    .split(/\r?\n/)
+    .map((l) => l.replace(/#.*$/, "").trim())
+    .filter(Boolean);
+}
+
+function listPresets() {
+  if (!fs.existsSync(PRESET_DIR)) return [];
+  return fs
+    .readdirSync(PRESET_DIR)
+    .filter((f) => f.endsWith(".txt"))
+    .sort()
+    .map((f) => {
+      const names = loadPreset(f.replace(/\.txt$/, ""));
+      return { name: f.replace(/\.txt$/, ""), count: names.length };
+    });
 }
 
 /** Only the description line differs between languages; everything else is copied. */
@@ -61,6 +100,17 @@ function applyDescription(content, desc) {
 function main() {
   const flags = parseArgs(process.argv.slice(2));
 
+  if (flags.listPresets) {
+    const presets = listPresets();
+    if (!presets.length) {
+      console.log("No presets found in presets/");
+      return;
+    }
+    console.log("Available presets:");
+    for (const p of presets) console.log(`  ${p.name.padEnd(10)} ${p.count} agents`);
+    return;
+  }
+
   if (!fs.existsSync(SRC)) {
     console.error(`Agents directory missing: ${SRC}`);
     console.error("Run tools/codex-subagents-to-opencode.mjs first to generate it.");
@@ -78,13 +128,35 @@ function main() {
 
   const skip = new Set(flags.skip ?? []);
   let files = fs.readdirSync(SRC).filter((f) => f.endsWith(".md")).sort();
-  if (flags.only) files = files.filter((f) => flags.only.includes(f.replace(/\.md$/, "")));
+
+  // A preset and --only are both allow-lists; --only wins if both are given.
+  let allow = flags.only ?? null;
+  if (!allow && flags.preset) {
+    try {
+      allow = loadPreset(flags.preset);
+    } catch (err) {
+      console.error(err.message);
+      process.exit(2);
+    }
+  }
+  if (allow) files = files.filter((f) => allow.includes(f.replace(/\.md$/, "")));
   files = files.filter((f) => !skip.has(f.replace(/\.md$/, "")));
+
+  if (allow && files.length === 0) {
+    console.error("Selection matched no agents. Check the names in the preset.");
+    process.exit(2);
+  }
+
+  const known = new Set(fs.readdirSync(SRC).filter((f) => f.endsWith(".md")).map((f) => f.replace(/\.md$/, "")));
+  const unknown = (allow ?? []).filter((n) => !known.has(n));
+  if (unknown.length) console.log(`Warning: unknown agent name(s) in selection: ${unknown.join(", ")}`);
 
   console.log(`Source:    ${SRC}`);
   console.log(`Target:    ${target}`);
   console.log(`Language:  ${lang.lang} (${lang.reason}${lang.detected ? `, detected "${lang.detected}"` : ""})`);
-  console.log(`Agents:    ${files.length}${flags.only ? " (filtered)" : ""}`);
+  console.log(
+    `Agents:    ${files.length}${flags.preset ? ` (preset "${flags.preset}")` : flags.only ? " (filtered)" : ""}`,
+  );
   console.log(`Available: ${availableLanguages().join(", ")}`);
 
   if (flags.dry) {

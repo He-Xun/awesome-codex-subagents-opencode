@@ -60,6 +60,33 @@ node tools/install.mjs --global
 
 重启 OpenCode 后即可用 `@agent名` 调用。零依赖，只需 Node 18+。
 
+### 用 npm 脚本
+
+```bash
+npm run install:global      # 装到全局
+npm run install:local       # 装到当前项目
+npm run verify              # 校验所有产物
+npm run switch -- --to=en   # 切换描述语言
+npm run presets             # 查看可用预设
+```
+
+### 只装需要的子集
+
+174 个全装会让 `@` 菜单很长，也会稀释模型的自动选择。推荐用预设：
+
+```bash
+node tools/install.mjs --list-presets     # 查看预设
+node tools/install.mjs --preset=minimal   # 只装 10 个最高频的
+```
+
+| 预设 | 数量 | 内容 |
+| --- | --- | --- |
+| `minimal` | 10 | 审查、定位、改代码、写测试 |
+| `web` | 15 | 前端 / UI / 可访问性 |
+| `backend` | 17 | 服务端 / 数据库 / 基础设施 |
+
+预设就是纯文本名单（`presets/*.txt`），可以直接改或加新的。
+
 ## 三个设计取舍
 
 这三点决定了它和"直接把文件复制过来"的差别：
@@ -202,8 +229,12 @@ Codex 的 `sandbox_mode` 是沙箱级强制，OpenCode 的 `permission` 是 allo
 | `read-only` | `edit: deny`, `bash: deny` |
 | `workspace-write` | `edit: allow`, `bash: allow` |
 
-当前 174 个 agent 中 99 个只读、75 个可写。**注意**：只读 agent 被设为 `bash: deny`，
-连 `git diff`、`rg` 都无法执行。若希望它们能跑只读命令，改 `bash: ask` 更实用。
+174 个 agent 中 99 个只读、75 个可写。
+
+**例外**：有 3 个只读 agent 的核心工作离不开执行命令 —— `debugger` 要看 stack trace 和
+失败测试、`performance-engineer` 要跑测量、`security-auditor` 要复现问题。它们设成
+`bash: ask`（每条命令仍需你批准），既保持只读语义，又不至于完全不可用。
+名单在 `READ_ONLY_NEEDS_SHELL` 常量里。
 
 ---
 
@@ -275,20 +306,37 @@ Codex 的 `sandbox_mode` 是沙箱级强制，OpenCode 的 `permission` 是 allo
 ```
 .
 ├── tools/
-│   ├── install.mjs                       # 安装（按系统语言选 description 语言）
+│   ├── install.mjs                       # 安装（系统语言 + 预设）
 │   ├── switch-lang.mjs                   # 随时切换 description 语言
 │   ├── detect-lang.mjs                   # 语言检测（含回退到英语）
+│   ├── validate.mjs                      # 校验产物、译表、预设（CI 用）
 │   ├── i18n/{en,zh}.json                 # description 译表，加语言只需加文件
 │   ├── codex-subagents-to-opencode.mjs   # 从上游 TOML 重新生成 agents/
 │   ├── analyze-subagents.mjs             # 产物分析
 │   ├── compare-lang.mjs                  # 中英文 token 成本对比
 │   └── verify-load.mjs                   # 验证 OpenCode 能否正确加载
-├── agents/                                # 174 个 OpenCode agent（英文 description）
+├── presets/{minimal,web,backend}.txt     # 装哪些 agent 的预设名单
+├── agents/                                # 174 个 OpenCode agent（英文基准）
+├── .github/workflows/validate.yml         # CI
+├── package.json
 ├── README.md
 └── LICENSE
 ```
 
-`agents/` 目录可以直接复制到任意 OpenCode 项目使用，无需运行转换器。
+`agents/` 是英文基准版本，可以直接复制到任意 OpenCode 项目使用。
+想换描述语言用 `switch-lang.mjs`，不要手动改。
+
+## 校验
+
+```bash
+npm run verify
+```
+
+检查 frontmatter 合法性、`mode: subagent`、无硬编码 model、权限键有效、prompt 完整且无
+`Codex` 残留、译表与 agent 一一对应、预设引用的 agent 都存在。
+
+CI 在 Node 18 / 20 / 22 上运行，并额外验证「从上游重新生成的结果与提交版本一致」，
+防止产物悄悄漂移。
 
 ---
 
