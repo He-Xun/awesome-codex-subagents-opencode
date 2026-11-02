@@ -216,6 +216,23 @@ if (existingReadmes.length > 1) {
     if (s.tables !== base.tables) add("error", `${s.file}: ${s.tables} tables but ${base.file} has ${base.tables}`);
     if (s.fences !== base.fences) add("error", `${s.file}: ${s.fences} code fences but ${base.file} has ${base.fences}`);
   }
+
+  // Images must exist on disk and be referenced by every README.
+  for (const f of existingReadmes) {
+    const s = fs.readFileSync(f, "utf8");
+    for (const m of s.matchAll(/!\[[^\]]*\]\((\.\/[^)]+)\)/g)) {
+      if (!fs.existsSync(m[1])) add("error", `${f}: image not found: ${m[1]}`);
+    }
+  }
+  const images = existingReadmes.map((f) => ({
+    file: f,
+    src: [...fs.readFileSync(f, "utf8").matchAll(/!\[[^\]]*\]\((\.\/[^)]+)\)/g)].map((m) => m[1]).join(","),
+  }));
+  for (const i of images.slice(1)) {
+    if (i.src !== images[0].src) {
+      add("error", `${i.file}: images differ from ${images[0].file}`);
+    }
+  }
   // Every README must link to the others.
   for (const f of existingReadmes) {
     const s = fs.readFileSync(f, "utf8");

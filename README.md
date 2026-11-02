@@ -4,6 +4,8 @@
 
 > **174 expert agents, installed into OpenCode with one command.**
 
+![The OpenCode @ menu showing reviewer, debugger and other agents with their permissions](./docs/menu-preview.svg)
+
 OpenCode ships with only two built-in subagents: `general` and `explore`. When you need a
 thorough PR-level code review, a threat model that holds up, or a cross-file refactoring
 plan, you are left improvising inside the main agent — burning context and producing

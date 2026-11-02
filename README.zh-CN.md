@@ -4,6 +4,8 @@
 
 > **174 个专家 agent，一条命令装进 OpenCode。**
 
+![OpenCode 的 @ 菜单，显示 reviewer、debugger 等 agent 及其权限](./docs/menu-preview.svg)
+
 OpenCode 自带的 subagent 只有 `general` 和 `explore` 两个。当你需要一次真正到位的
 PR 级代码审查、一份能落地的威胁建模、一次跨文件的架构重构规划，往往只能靠主 agent
 一边读上下文一边现编 —— 既占上下文，质量也不稳定。
