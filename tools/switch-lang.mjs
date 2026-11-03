@@ -86,7 +86,11 @@ function availableLanguages() {
 function loadTable(lang) {
   const file = path.join(I18N_DIR, `${lang}.json`);
   if (!fs.existsSync(file)) {
-    throw new Error(`No translation table for "${lang}". Available: ${availableLanguages().join(", ")}`);
+    // Exit cleanly with a usable message instead of dumping a stack trace, and
+    // with a non-zero status so scripts and CI notice the failure.
+    console.error(`No translation table for "${lang}".`);
+    console.error(`Available languages: ${availableLanguages().join(", ")}`);
+    process.exit(2);
   }
   return JSON.parse(fs.readFileSync(file, "utf8"));
 }

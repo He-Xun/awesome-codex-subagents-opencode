@@ -62,8 +62,20 @@ function normalize(code) {
  */
 export function detectLanguage(override, available = availableLanguages()) {
   if (override) {
-    if (available.includes(override)) return { lang: override, reason: "explicit override", detected: override };
-    return { lang: FALLBACK, reason: `override "${override}" has no table`, detected: override };
+    const wanted = String(override).trim().toLowerCase();
+    // Accept a regional form too (fr-FR -> fr) since users paste locales.
+    for (const code of normalize(wanted)) {
+      if (available.includes(code)) return { lang: code, reason: "explicit override", detected: override };
+    }
+    // An explicit request that cannot be honoured is an error, not a silent
+    // fallback: the user asked for a specific language and would otherwise get
+    // English without noticing.
+    return {
+      lang: FALLBACK,
+      reason: `no table for "${override}"`,
+      detected: override,
+      invalidOverride: true,
+    };
   }
 
   // Environment hints win over Intl: an explicit LANG/LC_ALL is the user telling

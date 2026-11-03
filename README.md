@@ -62,6 +62,9 @@ npx awesome-codex-subagents-opencode --global
 That installs all 174 agents into `~/.config/opencode/agents`. Restart OpenCode, then invoke
 them with `@agent-name`.
 
+> The package name is the command. Shortcuts such as `npx ocagents` do **not** work — npm
+> would look for a package with that name and fail. Always use the full package name above.
+
 Prefer a focused subset? 174 agents make the `@` menu long and dilute automated selection:
 
 ```bash

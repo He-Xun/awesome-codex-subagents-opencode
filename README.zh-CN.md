@@ -59,6 +59,9 @@ npx awesome-codex-subagents-opencode --global
 
 把 174 个 agent 装进 `~/.config/opencode/agents`，重启 OpenCode 后即可用 `@agent名` 调用。
 
+> **包名就是命令。** `npx ocagents` 这类简写不能用 —— npm 会去找同名包并失败。
+> 请始终使用上面的完整包名。
+
 只想装一部分？174 个会让 `@` 菜单很长，也会稀释模型的自动选择：
 
 ```bash

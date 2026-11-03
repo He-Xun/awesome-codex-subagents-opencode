@@ -78,9 +78,15 @@ jobs:
 
           # The switch hint the installer prints must itself be runnable.
           ./node_modules/.bin/awesome-codex-subagents-opencode --dir /tmp/hint > /tmp/hint.log
-          HINT=$(grep 'Switch language later' /tmp/hint.log | sed 's/^Switch language later:  //' | sed 's/<lang>/en/')
+          HINT=$(grep 'To change the description language later' /tmp/hint.log | sed 's/^.*later:  //' | sed 's/<lang>/en/')
           test -n "$HINT" || (echo "::error::no switch hint printed" && exit 1)
           eval "$HINT" > /dev/null || (echo "::error::printed hint does not run: $HINT" && exit 1)
+
+          # An unsupported --lang must fail loudly, not silently fall back.
+          if ./node_modules/.bin/awesome-codex-subagents-opencode --lang fr --dir /tmp/nope --dry > /dev/null 2>&1; then
+            echo "::error::--lang fr should have failed"
+            exit 1
+          fi
 
       # Both argument styles must work, since the README advertises both.
       - name: Check flag parsing accepts space and equals forms

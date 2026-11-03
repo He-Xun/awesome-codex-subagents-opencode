@@ -193,6 +193,12 @@ function main() {
       : path.resolve(".opencode", "agents");
 
   const lang = detectLanguage(flags.lang ?? process.env.OPENCODE_SUBAGENTS_LANG, availableLanguages());
+  if (lang.invalidOverride) {
+    console.error(`No translation table for "${lang.detected}".`);
+    console.error(`Available languages: ${availableLanguages().join(", ")}`);
+    console.error(`Use --lang=<code> with one of the above, or omit it to follow your system locale.`);
+    process.exit(2);
+  }
   const table = lang.lang === "en" ? {} : JSON.parse(fs.readFileSync(path.join(I18N, `${lang.lang}.json`), "utf8"));
 
   const skip = new Set(flags.skip ?? []);
@@ -271,8 +277,13 @@ function main() {
   const switchCmd = inPackage
     ? `npx --package awesome-codex-subagents-opencode awesome-codex-subagents-opencode-lang --to=<lang> ${dirArg}`
     : `node tools/switch-lang.mjs --to=<lang> ${dirArg}`;
-  console.log(`Switch language later:  ${switchCmd}`);
-  console.log("Restart OpenCode to pick up the change.");
+
+  console.log("");
+  console.log("Next steps:");
+  console.log("  1. Restart OpenCode so it picks up the new agents.");
+  console.log("  2. In a session, type @ and pick an agent, e.g. @reviewer or @debugger.");
+  console.log("");
+  console.log(`To change the description language later:  ${switchCmd}`);
 }
 
 main();
