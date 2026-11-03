@@ -244,10 +244,21 @@ function main() {
 
   console.log(`\nInstalled ${written} agent(s).`);
 
-  // The right follow-up command depends on how this script was reached:
-  // inside a published package there is no tools/ directory for the user to call.
+  // The right follow-up command depends on how this script was reached. Only a
+  // checkout has tools/ on disk; an installed copy (node_modules, or the npx
+  // cache) must be driven through its bin instead. Detect that by walking up
+  // for a node_modules directory rather than matching the path as a string,
+  // which differs between npm versions and platforms.
   const relative = path.relative(process.cwd(), target) || ".";
-  const inPackage = REPO.includes(`${path.sep}node_modules${path.sep}`);
+  let inPackage = false;
+  for (let dir = REPO; ; dir = path.dirname(dir)) {
+    if (fs.existsSync(path.join(dir, "node_modules"))) {
+      inPackage = true;
+      break;
+    }
+    if (path.dirname(dir) === dir) break;
+  }
+
   const switchCmd = inPackage
     ? `npx --package awesome-codex-subagents-opencode awesome-codex-subagents-opencode-lang --to=<lang> --dir=${relative}`
     : `node tools/switch-lang.mjs --to=<lang> --dir=${relative}`;
