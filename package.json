@@ -1,9 +1,10 @@
 {
   "name": "awesome-codex-subagents-opencode",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "174 Codex subagent definitions adapted for OpenCode, with locale-aware descriptions in 5 languages",
   "type": "module",
   "bin": {
+    "awesome-codex-subagents-opencode": "bin/cli.mjs",
     "ocagents": "bin/cli.mjs",
     "ocagents-lang": "bin/lang.mjs"
   },
