@@ -243,7 +243,15 @@ function main() {
   }
 
   console.log(`\nInstalled ${written} agent(s).`);
-  console.log(`Switch language later:  node tools/switch-lang.mjs --to=<lang> --dir=${path.relative(process.cwd(), target) || "."}`);
+
+  // The right follow-up command depends on how this script was reached:
+  // inside a published package there is no tools/ directory for the user to call.
+  const relative = path.relative(process.cwd(), target) || ".";
+  const inPackage = REPO.includes(`${path.sep}node_modules${path.sep}`);
+  const switchCmd = inPackage
+    ? `npx --package awesome-codex-subagents-opencode awesome-codex-subagents-opencode-lang --to=<lang> --dir=${relative}`
+    : `node tools/switch-lang.mjs --to=<lang> --dir=${relative}`;
+  console.log(`Switch language later:  ${switchCmd}`);
   console.log("Restart OpenCode to pick up the change.");
 }
 
