@@ -54,7 +54,7 @@ jobs:
           done
 
       # The npm package is the primary install path, so prove it works:
-      # pack it, install into a clean project, and run both bins.
+      # pack it, install into a clean project, and exercise every bin.
       - name: Verify the npm package installs and runs
         run: |
           npm pack --pack-destination /tmp
@@ -62,14 +62,25 @@ jobs:
           npm init -y > /dev/null
           npm install --no-audit --no-fund /tmp/awesome-codex-subagents-opencode-*.tgz > /dev/null
 
-          ./node_modules/.bin/ocagents --dir /tmp/npm-agents --lang en --preset minimal > /dev/null
+          # Every advertised entry point must exist.
+          for b in awesome-codex-subagents-opencode awesome-codex-subagents-opencode-lang ocagents ocagents-lang; do
+            test -x "./node_modules/.bin/$b" || (echo "::error::missing bin $b" && exit 1)
+          done
+
+          ./node_modules/.bin/awesome-codex-subagents-opencode --dir /tmp/npm-agents --lang en --preset minimal > /dev/null
           test "$(ls /tmp/npm-agents/*.md | wc -l)" -eq 10
 
-          ./node_modules/.bin/ocagents-lang --to zh --dir /tmp/npm-agents > /dev/null
+          ./node_modules/.bin/awesome-codex-subagents-opencode-lang --to zh --dir /tmp/npm-agents > /dev/null
           grep -qP '[\x{4e00}-\x{9fff}]' /tmp/npm-agents/reviewer.md
 
           ./node_modules/.bin/ocagents-lang --to en --dir /tmp/npm-agents > /dev/null
           ./node_modules/.bin/ocagents --help > /dev/null
+
+          # The switch hint the installer prints must itself be runnable.
+          ./node_modules/.bin/awesome-codex-subagents-opencode --dir /tmp/hint > /tmp/hint.log
+          HINT=$(grep 'Switch language later' /tmp/hint.log | sed 's/^Switch language later:  //' | sed 's/<lang>/en/')
+          test -n "$HINT" || (echo "::error::no switch hint printed" && exit 1)
+          eval "$HINT" > /dev/null || (echo "::error::printed hint does not run: $HINT" && exit 1)
 
       # Both argument styles must work, since the README advertises both.
       - name: Check flag parsing accepts space and equals forms
