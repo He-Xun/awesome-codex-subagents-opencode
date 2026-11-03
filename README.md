@@ -343,7 +343,8 @@ copying files into `~/.codex/agents/`, which is meaningless after the port.
 
 - `reasoningEffort` is an OpenAI-style request parameter that GLM / DeepSeek / Qwen / MiMo
   generally ignore. It is **no longer emitted by default**; restore it with `--keep-reasoning`.
-- To pin a model for specific agents, use `--model-map`, e.g.
+- To pin a model for specific agents, use `--model-map`. The value is always
+  `provider/model-id`, with the provider prefix coming from your own `opencode.json`:
   `--model-map=gpt-6.1-sol=<provider>/<model-id>`.
 
 ---

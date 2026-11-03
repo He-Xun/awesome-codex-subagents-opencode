@@ -327,8 +327,8 @@ Codex 的 `sandbox_mode` 是沙箱级强制，OpenCode 的 `permission` 是 allo
 
 - `reasoningEffort` 是 OpenAI 系请求参数，GLM / DeepSeek / Qwen / MiMo 通常忽略。
   **默认不再输出**，需要时用 `--keep-reasoning` 恢复。
-- 若给特定 agent 钉模型，用 `--model-map`，例如
-  `--model-map=gpt-6.1-sol=<provider>/<model-id>`。
+- 若给特定 agent 钉模型，用 `--model-map`。值的形式是 `provider/model-id`，provider
+  前缀取自你自己的 `opencode.json`：`--model-map=gpt-6.1-sol=<provider>/<model-id>`。
 
 ---
 
