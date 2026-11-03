@@ -1,6 +1,6 @@
 {
   "name": "awesome-codex-subagents-opencode",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "174 Codex subagent definitions adapted for OpenCode, with locale-aware descriptions in 5 languages",
   "type": "module",
   "bin": {
