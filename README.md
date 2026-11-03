@@ -14,14 +14,12 @@ inconsistent results.
 This repository turns that into something you can just install:
 
 ```bash
-git clone https://github.com/He-Xun/awesome-codex-subagents-opencode.git
-cd awesome-codex-subagents-opencode
-node install.mjs --global
+npx awesome-codex-subagents-opencode --global
 ```
 
 Restart OpenCode, type `@reviewer`, and a read-only reviewer works through the entire diff
 in its own session and brings back only the conclusions. It won't fill your context, and it
-can't touch your files.
+can't touch your files. No clone, no dependencies to install first.
 
 ## What it solves
 
@@ -55,28 +53,56 @@ See [`agents/`](./agents) for the full list.
 
 ## Quick start
 
-Every command below assumes you are **inside the cloned repository**. Clone it once:
+The fastest way needs no checkout:
+
+```bash
+npx awesome-codex-subagents-opencode --global
+```
+
+That installs all 174 agents into `~/.config/opencode/agents`. Restart OpenCode, then invoke
+them with `@agent-name`.
+
+Prefer a focused subset? 174 agents make the `@` menu long and dilute automated selection:
+
+```bash
+npx awesome-codex-subagents-opencode --global --preset minimal
+```
+
+### Or from the repository
+
+Useful if you want to read the source or customise it. Every command below assumes you are
+**inside the cloned repository**:
 
 ```bash
 git clone https://github.com/He-Xun/awesome-codex-subagents-opencode.git
 cd awesome-codex-subagents-opencode
-```
 
-Then install into the current project, or globally:
-
-```bash
 node install.mjs            # -> ./.opencode/agents in the project you run it from
 node install.mjs --global   # -> ~/.config/opencode/agents (all projects)
 ```
 
-Restart OpenCode, then invoke agents with `@agent-name`. Zero dependencies, Node 18+.
+Zero dependencies, Node 18+.
 
 > The scripts resolve their own paths, so `node /path/to/repo/install.mjs --global` also works
 > from any directory without `cd`.
 
-### Using npm scripts
+### Options
 
-Run from the repository root:
+```
+-g, --global          install into ~/.config/opencode/agents
+    --dir <path>      install into a specific directory
+    --lang <code>     description language (default: from system locale)
+    --preset <name>   install a curated subset (minimal, web, backend)
+    --only <a,b>      install only the named agents
+    --skip <a,b>      exclude the named agents
+    --list-presets    show available presets
+    --dry             show what would happen, write nothing
+-h, --help            show help
+```
+
+Both `--flag value` and `--flag=value` work.
+
+### Using npm scripts (from the repository)
 
 ```bash
 npm run install:global      # install globally
@@ -86,15 +112,7 @@ npm run switch -- --to=en   # switch description language
 npm run presets             # list available presets
 ```
 
-### Installing only what you need
-
-Installing all 174 makes the `@` menu long and dilutes automated selection. Presets are the
-practical choice:
-
-```bash
-node install.mjs --list-presets     # list presets
-node install.mjs --preset=minimal   # install the 10 most common
-```
+### Presets
 
 | Preset | Count | Contents |
 | --- | --- | --- |
@@ -356,6 +374,7 @@ copying files into `~/.codex/agents/`, which is meaningless after the port.
 
 ```
 .
+├── bin/{cli,lang}.mjs                    # npm entry points (ocagents / ocagents-lang)
 ├── tools/
 │   ├── install.mjs                       # install (locale + presets)
 │   ├── switch-lang.mjs                   # switch description language on demand

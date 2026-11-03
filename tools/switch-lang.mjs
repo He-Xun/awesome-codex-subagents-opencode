@@ -31,14 +31,47 @@ function expandHome(p) {
 
 function parseArgs(argv) {
   const flags = {};
-  for (const a of argv) {
-    if (a.startsWith("--to=")) flags.to = a.slice(5).trim();
-    else if (a.startsWith("--dir=")) flags.dir = a.slice(6).trim();
-    else if (a === "--dry") flags.dry = true;
+  const VALUE_FLAGS = new Set(["--to", "--dir", "--i18n"]);
+
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+
+    // `--flag value` form, for people who type it that way.
+    if (VALUE_FLAGS.has(a)) {
+      const next = argv[i + 1];
+      if (next === undefined || next.startsWith("-")) {
+        console.error(`Missing value for ${a}`);
+        process.exit(2);
+      }
+      i++;
+      assign(flags, a, next);
+      continue;
+    }
+
+    if (a === "--dry") flags.dry = true;
     else if (a === "--list") flags.list = true;
-    else if (a.startsWith("--i18n=")) flags.i18n = a.slice(7).trim();
+    else if (a === "--help" || a === "-h") flags.help = true;
+    else if (a.startsWith("--") && a.includes("=")) {
+      const eq = a.indexOf("=");
+      const name = a.slice(0, eq);
+      if (!VALUE_FLAGS.has(name)) {
+        console.error(`Unknown option: ${name}`);
+        process.exit(2);
+      }
+      assign(flags, name, a.slice(eq + 1));
+    } else if (a.startsWith("--")) {
+      console.error(`Unknown option: ${a}`);
+      process.exit(2);
+    }
   }
   return flags;
+}
+
+function assign(flags, name, value) {
+  const v = String(value).trim();
+  if (name === "--to") flags.to = v;
+  else if (name === "--dir") flags.dir = v;
+  else if (name === "--i18n") flags.i18n = v;
 }
 
 function availableLanguages() {
@@ -86,8 +119,30 @@ function replaceDescription(content, newDesc) {
   return head.replace(/^description: .*$/m, `description: ${value}`) + tail;
 }
 
+const USAGE = `Switch the description language of installed agents.
+
+Usage:
+  ocagents-lang --to <code> [options]
+
+Options:
+  --to <code>     Target language (en, zh, es, ru, ko, ...)
+  --dir <path>    Agents directory (default: ./.opencode/agents)
+  --list          Show available languages and exit
+  --dry           Show what would change without writing files
+  -h, --help      Show this help
+
+Examples:
+  ocagents-lang --list
+  ocagents-lang --to zh --dir ~/.config/opencode/agents
+  ocagents-lang --to en`;
+
 function main() {
   const flags = parseArgs(process.argv.slice(2));
+
+  if (flags.help) {
+    console.log(USAGE);
+    return;
+  }
 
   if (flags.list) {
     const langs = availableLanguages();
@@ -104,7 +159,7 @@ function main() {
   }
 
   if (!flags.to) {
-    console.error("Usage: node tools/switch-lang.mjs --to=<lang> [--dir=<agents dir>] [--dry] [--list]");
+    console.error(USAGE);
     process.exit(2);
   }
 

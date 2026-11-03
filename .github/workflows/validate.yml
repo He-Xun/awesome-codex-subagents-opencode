@@ -52,3 +52,28 @@ jobs:
             node tools/install.mjs --preset="$name" --dir="/tmp/preset-$name" --lang=en > /dev/null
             test "$(ls "/tmp/preset-$name"/*.md | wc -l)" -gt 0
           done
+
+      # The npm package is the primary install path, so prove it works:
+      # pack it, install into a clean project, and run both bins.
+      - name: Verify the npm package installs and runs
+        run: |
+          npm pack --pack-destination /tmp
+          mkdir -p /tmp/consumer && cd /tmp/consumer
+          npm init -y > /dev/null
+          npm install --no-audit --no-fund /tmp/awesome-codex-subagents-opencode-*.tgz > /dev/null
+
+          ./node_modules/.bin/ocagents --dir /tmp/npm-agents --lang en --preset minimal > /dev/null
+          test "$(ls /tmp/npm-agents/*.md | wc -l)" -eq 10
+
+          ./node_modules/.bin/ocagents-lang --to zh --dir /tmp/npm-agents > /dev/null
+          grep -qP '[\x{4e00}-\x{9fff}]' /tmp/npm-agents/reviewer.md
+
+          ./node_modules/.bin/ocagents-lang --to en --dir /tmp/npm-agents > /dev/null
+          ./node_modules/.bin/ocagents --help > /dev/null
+
+      # Both argument styles must work, since the README advertises both.
+      - name: Check flag parsing accepts space and equals forms
+        run: |
+          node install.mjs --dir /tmp/a1 --lang en --dry > /dev/null
+          node install.mjs --dir=/tmp/a2 --lang=en --dry > /dev/null
+          test "$(node install.mjs --dir /tmp/a1 --lang en --dry | grep -c 'Target')" -eq 1

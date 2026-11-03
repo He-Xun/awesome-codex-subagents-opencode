@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# npm pack artifacts
+*.tgz
+
 # Generated locally
 _analysis.json
 _agents.tsv

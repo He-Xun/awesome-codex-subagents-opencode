@@ -13,13 +13,11 @@ PR 级代码审查、一份能落地的威胁建模、一次跨文件的架构�
 这个仓库把它变成了开箱即用的东西：
 
 ```bash
-git clone https://github.com/He-Xun/awesome-codex-subagents-opencode.git
-cd awesome-codex-subagents-opencode
-node install.mjs --global
+npx awesome-codex-subagents-opencode --global
 ```
 
 装完重启 OpenCode，敲 `@reviewer` 就能让一个只读的审查者独立跑完整个 diff，只把结论
-带回你的对话。它不会污染主上下文，也不会顺手改你的文件。
+带回你的对话。它不会污染主上下文，也不会顺手改你的文件。不需要 clone，也不需要先装依赖。
 
 ## 它解决什么问题
 
@@ -53,28 +51,54 @@ node install.mjs --global
 
 ## 快速开始
 
-下面所有命令都假定你**已经在仓库目录内**。先 clone 一次：
+最快的方式不需要 clone：
+
+```bash
+npx awesome-codex-subagents-opencode --global
+```
+
+把 174 个 agent 装进 `~/.config/opencode/agents`，重启 OpenCode 后即可用 `@agent名` 调用。
+
+只想装一部分？174 个会让 `@` 菜单很长，也会稀释模型的自动选择：
+
+```bash
+npx awesome-codex-subagents-opencode --global --preset minimal
+```
+
+### 或者从仓库安装
+
+想读源码或自己改的话。下面所有命令都假定你**已经在仓库目录内**：
 
 ```bash
 git clone https://github.com/He-Xun/awesome-codex-subagents-opencode.git
 cd awesome-codex-subagents-opencode
-```
 
-然后装到当前项目，或装到全局：
-
-```bash
 node install.mjs            # -> 在运行命令的项目里创建 ./.opencode/agents
 node install.mjs --global   # -> ~/.config/opencode/agents（所有项目生效）
 ```
 
-重启 OpenCode 后即可用 `@agent名` 调用。零依赖，只需 Node 18+。
+零依赖，只需 Node 18+。
 
 > 脚本会自己解析路径，所以从任意目录执行 `node /path/to/repo/install.mjs --global` 也可以，
 > 不需要先 `cd`。
 
-### 用 npm 脚本
+### 参数
 
-在仓库根目录执行：
+```
+-g, --global          装到 ~/.config/opencode/agents
+    --dir <path>      装到指定目录
+    --lang <code>     描述语言（默认跟随系统）
+    --preset <name>   只装预设子集（minimal / web / backend）
+    --only <a,b>      只装指定 agent
+    --skip <a,b>      排除指定 agent
+    --list-presets    查看预设
+    --dry             只预览，不写文件
+-h, --help            查看帮助
+```
+
+`--flag value` 和 `--flag=value` 两种写法都支持。
+
+### 用 npm 脚本（在仓库根目录）
 
 ```bash
 npm run install:global      # 装到全局
@@ -84,14 +108,7 @@ npm run switch -- --to=en   # 切换描述语言
 npm run presets             # 查看可用预设
 ```
 
-### 只装需要的子集
-
-174 个全装会让 `@` 菜单很长，也会稀释模型的自动选择。推荐用预设：
-
-```bash
-node install.mjs --list-presets     # 查看预设
-node install.mjs --preset=minimal   # 只装 10 个最高频的
-```
+### 预设
 
 | 预设 | 数量 | 内容 |
 | --- | --- | --- |
@@ -337,6 +354,7 @@ Codex 的 `sandbox_mode` 是沙箱级强制，OpenCode 的 `permission` 是 allo
 
 ```
 .
+├── bin/{cli,lang}.mjs                    # npm 包入口（ocagents / ocagents-lang）
 ├── tools/
 │   ├── install.mjs                       # 安装（系统语言 + 预设）
 │   ├── switch-lang.mjs                   # 随时切换 description 语言

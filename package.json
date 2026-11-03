@@ -1,22 +1,57 @@
 {
   "name": "awesome-codex-subagents-opencode",
   "version": "1.0.0",
-  "description": "174 Codex subagent definitions adapted for OpenCode, with locale-aware descriptions",
-  "private": true,
+  "description": "174 Codex subagent definitions adapted for OpenCode, with locale-aware descriptions in 5 languages",
   "type": "module",
+  "bin": {
+    "ocagents": "bin/cli.mjs",
+    "ocagents-lang": "bin/lang.mjs"
+  },
+  "files": [
+    "bin/",
+    "agents/",
+    "presets/",
+    "tools/install.mjs",
+    "tools/detect-lang.mjs",
+    "tools/switch-lang.mjs",
+    "tools/i18n/",
+    "install.mjs",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "install:global": "node tools/install.mjs --global",
-    "install:local": "node tools/install.mjs",
+    "install:global": "node install.mjs --global",
+    "install:local": "node install.mjs",
     "switch": "node tools/switch-lang.mjs",
-    "presets": "node tools/install.mjs --list-presets",
+    "presets": "node install.mjs --list-presets",
     "verify": "node tools/validate.mjs",
     "convert": "node tools/codex-subagents-to-opencode.mjs",
     "analyze": "node tools/analyze-subagents.mjs",
     "cost": "node tools/compare-lang.mjs",
-    "check:load": "node tools/verify-load.mjs"
+    "check:load": "node tools/verify-load.mjs",
+    "pack:check": "npm pack --dry-run"
   },
-  "engines": {
-    "node": ">=18"
+  "keywords": [
+    "opencode",
+    "subagents",
+    "ai-agents",
+    "codex",
+    "claude-code",
+    "coding-agent",
+    "developer-tools",
+    "prompts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/He-Xun/awesome-codex-subagents-opencode.git"
+  },
+  "homepage": "https://github.com/He-Xun/awesome-codex-subagents-opencode#readme",
+  "bugs": {
+    "url": "https://github.com/He-Xun/awesome-codex-subagents-opencode/issues"
   },
   "license": "MIT"
 }

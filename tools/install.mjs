@@ -29,19 +29,57 @@ function expandHome(p) {
   return p;
 }
 
+/**
+ * Parse CLI arguments. Accepts both `--flag=value` and `--flag value`, since
+ * people type both and a silently ignored flag is worse than an error.
+ */
 function parseArgs(argv) {
   const flags = {};
-  for (const a of argv) {
+  const VALUE_FLAGS = new Set(["--lang", "--dir", "--preset", "--only", "--skip"]);
+
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+
+    // `--flag value` form: only when the flag takes a value and one follows.
+    if (VALUE_FLAGS.has(a)) {
+      const next = argv[i + 1];
+      if (next === undefined || next.startsWith("-")) {
+        console.error(`Missing value for ${a}`);
+        process.exit(2);
+      }
+      i++;
+      applyValueFlag(flags, a, next);
+      continue;
+    }
+
     if (a === "--global" || a === "-g") flags.global = true;
     else if (a === "--dry") flags.dry = true;
     else if (a === "--list-presets") flags.listPresets = true;
-    else if (a.startsWith("--lang=")) flags.lang = a.slice(7).trim();
-    else if (a.startsWith("--dir=")) flags.dir = a.slice(6).trim();
-    else if (a.startsWith("--preset=")) flags.preset = a.slice(9).trim();
-    else if (a.startsWith("--only=")) flags.only = a.slice(7).split(",").map((s) => s.trim()).filter(Boolean);
-    else if (a.startsWith("--skip=")) flags.skip = a.slice(7).split(",").map((s) => s.trim()).filter(Boolean);
+    else if (a === "--help" || a === "-h") flags.help = true;
+    else if (a.startsWith("--")) {
+      const eq = a.indexOf("=");
+      if (eq === -1) {
+        console.error(`Unknown option: ${a}`);
+        process.exit(2);
+      }
+      const name = a.slice(0, eq);
+      if (!VALUE_FLAGS.has(name)) {
+        console.error(`Unknown option: ${name}`);
+        process.exit(2);
+      }
+      applyValueFlag(flags, name, a.slice(eq + 1));
+    }
   }
   return flags;
+}
+
+function applyValueFlag(flags, name, value) {
+  const v = String(value).trim();
+  if (name === "--lang") flags.lang = v;
+  else if (name === "--dir") flags.dir = v;
+  else if (name === "--preset") flags.preset = v;
+  else if (name === "--only") flags.only = v.split(",").map((s) => s.trim()).filter(Boolean);
+  else if (name === "--skip") flags.skip = v.split(",").map((s) => s.trim()).filter(Boolean);
 }
 
 const PRESET_DIR = path.join(REPO, "presets");
@@ -81,6 +119,32 @@ function listPresets() {
     });
 }
 
+const USAGE = `Install OpenCode subagents.
+
+Usage:
+  ocagents [options]
+
+Options:
+  -g, --global          Install into ~/.config/opencode/agents (all projects)
+      --dir <path>      Install into a specific directory
+      --lang <code>     Description language (default: from system locale)
+      --preset <name>   Install a curated subset instead of all 174
+      --only <a,b>      Install only the named agents
+      --skip <a,b>      Exclude the named agents
+      --list-presets    Show available presets and exit
+      --dry             Show what would happen without writing files
+  -h, --help            Show this help
+
+Examples:
+  ocagents --global
+  ocagents --preset minimal
+  ocagents --global --lang en
+  ocagents --dir ./.opencode/agents --only reviewer,debugger`;
+
+function printUsage() {
+  console.log(USAGE);
+}
+
 /** Only the description line differs between languages; everything else is copied. */
 function applyDescription(content, desc) {
   if (desc === undefined) return content;
@@ -99,6 +163,11 @@ function applyDescription(content, desc) {
 
 function main() {
   const flags = parseArgs(process.argv.slice(2));
+
+  if (flags.help) {
+    printUsage();
+    return;
+  }
 
   if (flags.listPresets) {
     const presets = listPresets();
