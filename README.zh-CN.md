@@ -323,10 +323,11 @@ Codex 的 `sandbox_mode` 是沙箱级强制，OpenCode 的 `permission` 是 allo
 
 ---
 
-## 对国产模型的额外调整
+## 对非 GPT 与开源模型的说明
 
-- `reasoningEffort` 是 OpenAI 系请求参数，GLM / DeepSeek / Qwen / MiMo 通常忽略。
-  **默认不再输出**，需要时用 `--keep-reasoning` 恢复。
+- **`reasoningEffort` 是 GPT 系专属参数。** 只有 OpenAI 风格的接口认识它；Claude、Llama、
+  Mistral、Gemma、GLM、DeepSeek、Qwen 以及多数开源权重模型都会忽略。
+  **默认不再输出**，如果你的 provider 支持，再用 `--keep-reasoning` 恢复。
 - 若给特定 agent 钉模型，用 `--model-map`。值的形式是 `provider/model-id`，provider
   前缀取自你自己的 `opencode.json`：`--model-map=gpt-6.1-sol=<provider>/<model-id>`。
 
