@@ -77,3 +77,12 @@ jobs:
           node install.mjs --dir /tmp/a1 --lang en --dry > /dev/null
           node install.mjs --dir=/tmp/a2 --lang=en --dry > /dev/null
           test "$(node install.mjs --dir /tmp/a1 --lang en --dry | grep -c 'Target')" -eq 1
+
+      # The manifest must not carry timestamps or absolute paths, otherwise the
+      # "reproducible" claim above only passes by accident on the same machine.
+      - name: Check generated output is deterministic
+        run: |
+          node tools/codex-subagents-to-opencode.mjs /tmp/upstream/categories /tmp/det1 > /dev/null
+          (cd /tmp && node "$GITHUB_WORKSPACE/tools/codex-subagents-to-opencode.mjs" /tmp/upstream/categories /tmp/det2 > /dev/null)
+          diff -r /tmp/det1 /tmp/det2 \
+            || (echo "::error::generation is not deterministic" && exit 1)

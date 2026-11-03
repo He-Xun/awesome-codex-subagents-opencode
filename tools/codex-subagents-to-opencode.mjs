@@ -618,9 +618,13 @@ function main() {
   console.log("\nBy category:");
   for (const [c, n] of Object.entries(byCategory).sort()) console.log(`  ${c}: ${n}`);
 
+  // Deterministic manifest: no timestamps and no absolute paths, so that
+  // regenerating from the same upstream produces an identical file. This is
+  // what makes "the committed tree is reproducible" a real guarantee rather
+  // than a claim; an absolute source path would also leak the builder's
+  // filesystem layout into a public repository.
   const manifest = {
-    generatedAt: new Date().toISOString(),
-    source: src,
+    source: "awesome-codex-subagents/categories",
     total: results.length,
     agents: results.map((r) => ({
       name: r.name,
