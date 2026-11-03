@@ -177,17 +177,32 @@ translation table matches**:
 
 Available out of the box: **English (en) · 简体中文 (zh) · Español (es) · Русский (ru) · 한국어 (ko)**.
 
+`--lang` takes a **language code** — the short ISO 639-1 tag (`zh`, `es`, `ru`, `ko`, `en`).
+That is also the name of the translation table in `tools/i18n/`, so the two never drift apart.
+Full system locales (`zh-CN`, `es_ES`, `pt_BR`) are only ever *input* to detection, never a
+value you pass to `--lang`.
+
 > When `LANG` or `LC_ALL` is set but has no table, the result is English — not a second-guessed
 > locale derived from `Intl`. An explicit environment hint is treated as intent.
 
 ```bash
-node install.mjs                          # zh on a Chinese system, en elsewhere
+node install.mjs                          # follows your system locale
 node install.mjs --lang=en                # force English
+node install.mjs --lang=zh                # force Chinese
 node install.mjs --only=reviewer,debugger # install a subset
 ```
 
-Measured behavior: `zh-CN` → zh; `es_ES` → es; `ru_RU` → ru; `ko_KR` → ko; `en_US` → en;
-`de_DE` (no table) → en.
+How a system locale maps to a language code — the regional part is dropped, then matched
+against the available tables:
+
+| System locale | Resolves to | Why |
+| --- | --- | --- |
+| `zh-CN`, `zh-TW` | `zh` | base `zh` has a table |
+| `es_ES`, `es-MX` | `es` | base `es` has a table |
+| `ru_RU` | `ru` | base `ru` has a table |
+| `ko_KR` | `ko` | base `ko` has a table |
+| `en_US` | `en` | base `en` has a table |
+| `de_DE` | `en` | no `de` table → fall back to English |
 
 ### Switching later
 
@@ -208,7 +223,8 @@ no spurious diff (verified: 174 files, zero differences).
 
 ### Adding a language
 
-Create `tools/i18n/<code>.json`, keyed by agent name:
+Create `tools/i18n/<lang>.json`, where `<lang>` is the ISO 639-1 code — the same value you
+would pass to `--lang` (e.g. `fr.json` for French, `de.json` for German). Keyed by agent name:
 
 ```json
 {
@@ -217,8 +233,10 @@ Create `tools/i18n/<code>.json`, keyed by agent name:
 }
 ```
 
-No code changes needed — `install.mjs` and `switch-lang.mjs` pick it up automatically.
-Agents missing an entry keep their English description.
+No code changes needed — `install.mjs` and `switch-lang.mjs` pick it up automatically, and it
+becomes selectable with `--lang=fr`. Agents missing an entry keep their English description.
+Use the base code only, not a regional variant: the file must be `fr.json`, not `fr-FR.json`,
+because detection strips the region before matching.
 
 Translation conventions used by the bundled tables (keep them if you contribute one):
 

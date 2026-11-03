@@ -167,17 +167,30 @@ node tools/codex-subagents-to-opencode.mjs ../src/categories agents
 
 内置语言：**English (en) · 简体中文 (zh) · Español (es) · Русский (ru) · 한국어 (ko)**。
 
+`--lang` 接收的是**语言代码**，也就是 ISO 639-1 的两位标签（`zh`、`es`、`ru`、`ko`、`en`）。
+它同时也是 `tools/i18n/` 下译表的文件名，所以两者不会对不上。
+完整的系统 locale（`zh-CN`、`es_ES`、`pt_BR`）只是检测时的**输入**，不是传给 `--lang` 的值。
+
 > 当 `LANG` 或 `LC_ALL` 已设置但没有对应译表时，结果是英语，而不是再从 `Intl` 推断另一个
 > locale。显式设置了环境变量，就按用户意图处理。
 
 ```bash
-node install.mjs                          # 中文系统装 zh，其他装 en
+node install.mjs                          # 跟随系统 locale
 node install.mjs --lang=en                # 强制英文
+node install.mjs --lang=zh                # 强制中文
 node install.mjs --only=reviewer,debugger # 只装部分
 ```
 
-实测行为：`zh-CN` → zh；`es_ES` → es；`ru_RU` → ru；`ko_KR` → ko；`en_US` → en；
-`de_DE`（无译表）→ en。
+系统 locale 的映射规则：先去掉地区部分，再与已有译表匹配。
+
+| 系统 locale | 解析为 | 原因 |
+| --- | --- | --- |
+| `zh-CN`、`zh-TW` | `zh` | 基础 `zh` 有译表 |
+| `es_ES`、`es-MX` | `es` | 基础 `es` 有译表 |
+| `ru_RU` | `ru` | 基础 `ru` 有译表 |
+| `ko_KR` | `ko` | 基础 `ko` 有译表 |
+| `en_US` | `en` | 基础 `en` 有译表 |
+| `de_DE` | `en` | 没有 `de` 译表 → 回退英语 |
 
 ### 随时切换
 
@@ -197,7 +210,8 @@ node tools/switch-lang.mjs --to=zh --dry                            # 预演
 
 ### 添加新语言
 
-在 `tools/i18n/` 下新建 `<语言码>.json`，键为 agent 名：
+在 `tools/i18n/` 下新建 `<lang>.json`，`<lang>` 是 ISO 639-1 语言代码，也就是你传给
+`--lang` 的值（法语用 `fr.json`，德语用 `de.json`）。键为 agent 名：
 
 ```json
 {
@@ -206,7 +220,11 @@ node tools/switch-lang.mjs --to=zh --dry                            # 预演
 }
 ```
 
-无需改代码，`install.mjs` / `switch-lang.mjs` 会自动发现。缺条目时该 agent 保留英文。
+无需改代码，`install.mjs` / `switch-lang.mjs` 会自动发现，随后即可用 `--lang=fr` 选择。
+缺条目时该 agent 保留英文。
+
+只用基础语言码，不要带地区：文件名必须是 `fr.json` 而不是 `fr-FR.json`，因为检测时会先
+去掉地区部分再匹配。
 
 内置译表遵循的敬语规范（贡献新语言时请沿用）：
 

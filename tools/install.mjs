@@ -249,7 +249,6 @@ function main() {
   // cache) must be driven through its bin instead. Detect that by walking up
   // for a node_modules directory rather than matching the path as a string,
   // which differs between npm versions and platforms.
-  const relative = path.relative(process.cwd(), target) || ".";
   let inPackage = false;
   for (let dir = REPO; ; dir = path.dirname(dir)) {
     if (fs.existsSync(path.join(dir, "node_modules"))) {
@@ -259,9 +258,19 @@ function main() {
     if (path.dirname(dir) === dir) break;
   }
 
+  // Prefer a path that still works after the user changes directory. A relative
+  // path is only valid from where the install ran, so use ~ for anything under
+  // the home directory and an absolute path otherwise.
+  const home = os.homedir();
+  const inHome = target === home || target.startsWith(home + path.sep);
+  const printable = inHome
+    ? "~" + target.slice(home.length).split(path.sep).join("/")
+    : target.split(path.sep).join("/");
+  const dirArg = `--dir=${printable}`;
+
   const switchCmd = inPackage
-    ? `npx --package awesome-codex-subagents-opencode awesome-codex-subagents-opencode-lang --to=<lang> --dir=${relative}`
-    : `node tools/switch-lang.mjs --to=<lang> --dir=${relative}`;
+    ? `npx --package awesome-codex-subagents-opencode awesome-codex-subagents-opencode-lang --to=<lang> ${dirArg}`
+    : `node tools/switch-lang.mjs --to=<lang> ${dirArg}`;
   console.log(`Switch language later:  ${switchCmd}`);
   console.log("Restart OpenCode to pick up the change.");
 }

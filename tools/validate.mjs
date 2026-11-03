@@ -193,6 +193,58 @@ for (const name of agents) {
   }
 }
 
+// --- documented language behaviour matches the detector ------------------
+// The README publishes a locale table. Parse that table and check each row
+// against the real detector, so documentation cannot lie about behaviour.
+{
+  const { execFileSync } = await import("node:child_process");
+
+  for (const f of ["README.md", "README.zh-CN.md"].filter((x) => fs.existsSync(x))) {
+    const src = fs.readFileSync(f, "utf8");
+    // Table rows look like: | `zh-CN`, `zh-TW` | `zh` | reason |
+    // Split on pipes so no regex can accidentally span several rows.
+    let checked = 0;
+    for (const line of src.split("\n")) {
+      if (!line.startsWith("|")) continue;
+      const cells = line.split("|").map((c) => c.trim());
+      // cells[0] is empty (leading pipe); need at least 3 populated columns.
+      if (cells.length < 4) continue;
+      const localeCell = cells[1];
+      const targetCell = cells[2];
+      // Accept one or more backticked locale codes separated by ", " or "、".
+      // Codes may contain a hyphen or underscore (zh-CN, es_ES), so the
+      // character class must include both; omitting "_" silently skipped rows.
+      const locales = [...localeCell.matchAll(/`([A-Za-z_-]+)`/g)].map((m) => m[1]);
+      if (locales.length === 0) continue;
+      // Require the cell to contain nothing but the codes and separators.
+      const residue = localeCell.replace(/`[A-Za-z_-]+`/g, "").replace(/[,、\s]/g, "");
+      if (residue !== "") continue;
+      const expected = (targetCell.match(/^`([a-zA-Z-]+)`$/) ?? [])[1];
+      if (!expected) continue;
+
+      for (const locale of locales) {
+        // Only regional codes are testable; bare language codes are the outputs.
+        if (!/^[a-z]{2}[-_][A-Z]{2}$/.test(locale)) continue;
+        checked++;
+        let got;
+        try {
+          const out = execFileSync(process.execPath, ["tools/detect-lang.mjs"], {
+            encoding: "utf8",
+            env: { ...process.env, LANG: locale, LC_ALL: "", LC_MESSAGES: "", LANGUAGE: "" },
+          });
+          got = (out.match(/language:\s+(\S+)/) ?? [])[1];
+        } catch (err) {
+          add("error", `${f}: detect-lang failed for ${locale}: ${err.message}`);
+          continue;
+        }
+        if (got !== expected) add("error", `${f}: documents ${locale} -> ${expected}, but it resolves to ${got}`);
+      }
+    }
+    if (checked === 0) add("warn", `${f}: no locale mapping table found to verify`);
+    else if (!quiet) console.log(`${f}: verified ${checked} locale mapping(s)`);
+  }
+}
+
 // --- README translations stay structurally aligned -----------------------
 const READMES = ["README.md", "README.zh-CN.md"];
 const existingReadmes = READMES.filter((f) => fs.existsSync(f));
