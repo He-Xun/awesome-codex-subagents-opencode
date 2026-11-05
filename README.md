@@ -119,11 +119,19 @@ npm run presets             # list available presets
 
 | Preset | Count | Contents |
 | --- | --- | --- |
-| `minimal` | 10 | review, debug, edit, test |
-| `web` | 15 | frontend / UI / accessibility |
-| `backend` | 17 | server / database / infrastructure |
+| `minimal` | 10 | review, debug, edit, test — a sensible default |
+| `web` | 15 | frontend, UI, accessibility |
+| `backend` | 17 | server, database, infrastructure |
+| `data-ai` | 11 | ETL, analysis, modelling, MLOps, experiment design |
+| `llm-ai` | 11 | prompts, evals, observability, agent orchestration |
+| `security` | 10 | security audit, compliance, licensing, QA |
+| `devops` | 10 | CI/CD, Kubernetes, IaC, incident response |
+| `mobile` | 7 | iOS, Android, Flutter, React Native |
+| `docs` | 6 | technical writing, API docs, README, prose quality |
+| `product` | 8 | requirements, backlog, planning, market analysis |
 
-Presets are plain text lists under `presets/` — edit them or add your own.
+Presets are plain text lists under `presets/` — edit them or add your own. A name in a
+preset that no longer exists fails `npm run verify`.
 
 ## Three design decisions
 
@@ -178,9 +186,9 @@ translation table matches**:
 3. The locale reported by `Intl`
 4. Fallback → English
 
-Available out of the box: **English (en) · 简体中文 (zh) · Español (es) · Русский (ru) · 한국어 (ko)**.
+Available out of the box: **English (en) · 简体中文 (zh) · 日本語 (ja) · Português (pt) · Español (es) · Русский (ru) · 한국어 (ko)**.
 
-`--lang` takes a **language code** — the short ISO 639-1 tag (`zh`, `es`, `ru`, `ko`, `en`).
+`--lang` takes a **language code** — the short ISO 639-1 tag (`zh`, `ja`, `pt`, `es`, `ru`, `ko`, `en`).
 That is also the name of the translation table in `tools/i18n/`, so the two never drift apart.
 Full system locales (`zh-CN`, `es_ES`, `pt_BR`) are only ever *input* to detection, never a
 value you pass to `--lang`.
@@ -201,6 +209,8 @@ against the available tables:
 | System locale | Resolves to | Why |
 | --- | --- | --- |
 | `zh-CN`, `zh-TW` | `zh` | base `zh` has a table |
+| `ja-JP` | `ja` | base `ja` has a table |
+| `pt-BR`, `pt-PT` | `pt` | base `pt` has a table |
 | `es_ES`, `es-MX` | `es` | base `es` has a table |
 | `ru_RU` | `ru` | base `ru` has a table |
 | `ko_KR` | `ko` | base `ko` has a table |
@@ -245,9 +255,14 @@ Translation conventions used by the bundled tables (keep them if you contribute 
 
 | Language | Form | Pattern |
 | --- | --- | --- |
+| `ja` | polite `です・ます`, never plain `だ・である` | `…ときに使用します。` |
+| `pt` | neutral professional, `você` only — never `tu` or slang | `Use quando …` |
 | `es` | formal `usted` only — never `tú`/`vosotros` | `Úselo cuando …` |
 | `ru` | formal `вы` — never `ты` | `Используйте, когда …` |
 | `ko` | formal `-십시오` / `-합니다`, never `반말` | `…할 때 사용하십시오.` |
+
+`validate.mjs` enforces these registers, so a contribution that slips into informal
+speech fails CI rather than shipping.
 
 ---
 

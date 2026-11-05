@@ -1,0 +1,11 @@
+# devops — 基础设施、部署与运维
+reviewer
+debugger
+devops-engineer
+deployment-engineer
+sre-engineer
+kubernetes-specialist
+docker-expert
+terraform-engineer
+cloud-architect
+incident-responder

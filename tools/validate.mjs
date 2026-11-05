@@ -130,6 +130,22 @@ if (fs.existsSync(I18N_DIR)) {
         [/(?<!컨테이)너(?![가-힣])/, "informal pronoun"],
         [/(한다|이다)\.\s*$/, "plain form ending"],
       ],
+      ja: [
+        // Japanese descriptions use です・ます. Plain (だ/である) endings and
+        // casual sentence-final particles read as inconsistent in a menu.
+        // Matching fixed phrases alone missed forms like 「〜けるよ」, so the
+        // sentence ending itself is what gets checked.
+        [/(だ|である)。\s*$/, "plain form ending"],
+        [/[よねぞわ]。(?:\s*$)/, "casual sentence ending"],
+        [/(だよ|だぞ|じゃん|してね)/, "casual speech"],
+      ],
+      pt: [
+        // Brazilian Portuguese with "você" and neutral, professional address.
+        // Lookarounds replace \b here: in JS \b is ASCII-only, so \btá\b can
+        // never match a word containing an accented letter.
+        [/(?<!\p{L})(tu|te|ti|contigo|vós)(?!\p{L})/u, "second-person pronoun"],
+        [/(?<!\p{L})(né|pra|tá|vc|beleza)(?!\p{L})/iu, "colloquial form"],
+      ],
     };
     for (const [re, label] of INFORMAL[lang] ?? []) {
       const hits = Object.entries(table).filter(([, v]) => re.test(v));

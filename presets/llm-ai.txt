@@ -1,0 +1,13 @@
+# llm-ai — 构建和运营 LLM / agent 系统
+# 覆盖 prompt、评估、可观测性、治理与多 agent 编排。
+reviewer
+llm-architect
+prompt-engineer
+prompt-regression-tester
+eval-engineer
+mcp-developer
+ai-engineer
+ai-observability-engineer
+hallucination-investigator
+agent-organizer
+knowledge-synthesizer

@@ -1,0 +1,12 @@
+# security — 安全与质量把关
+# 只读为主，适合需要严格审查的场景。
+reviewer
+code-reviewer
+ponder-reviewer
+security-auditor
+security-engineer
+penetration-tester
+compliance-auditor
+license-engineer
+qa-expert
+test-automator

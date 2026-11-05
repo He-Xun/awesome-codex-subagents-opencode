@@ -115,11 +115,19 @@ npm run presets             # 查看可用预设
 
 | 预设 | 数量 | 内容 |
 | --- | --- | --- |
-| `minimal` | 10 | 审查、定位、改代码、写测试 |
+| `minimal` | 10 | 审查、定位、改代码、写测试 —— 通用默认 |
 | `web` | 15 | 前端 / UI / 可访问性 |
 | `backend` | 17 | 服务端 / 数据库 / 基础设施 |
+| `data-ai` | 11 | ETL、分析、建模、MLOps、实验设计 |
+| `llm-ai` | 11 | prompt、评估、可观测性、agent 编排 |
+| `security` | 10 | 安全审计、合规、许可证、质量 |
+| `devops` | 10 | CI/CD、Kubernetes、IaC、事故响应 |
+| `mobile` | 7 | iOS、Android、Flutter、React Native |
+| `docs` | 6 | 技术写作、API 文档、README、文案质量 |
+| `product` | 8 | 需求、backlog、规划、市场分析 |
 
-预设就是纯文本名单（`presets/*.txt`），可以直接改或加新的。
+预设就是纯文本名单（`presets/*.txt`），可以直接改或加新的。预设里如果引用了不存在的
+agent，`npm run verify` 会直接失败。
 
 ## 三个设计取舍
 
@@ -168,9 +176,9 @@ node tools/codex-subagents-to-opencode.mjs ../src/categories agents
 3. `Intl` 报告的系统 locale
 4. 回退 → 英语
 
-内置语言：**English (en) · 简体中文 (zh) · Español (es) · Русский (ru) · 한국어 (ko)**。
+内置语言：**English (en) · 简体中文 (zh) · 日本語 (ja) · Português (pt) · Español (es) · Русский (ru) · 한국어 (ko)**。
 
-`--lang` 接收的是**语言代码**，也就是 ISO 639-1 的两位标签（`zh`、`es`、`ru`、`ko`、`en`）。
+`--lang` 接收的是**语言代码**，也就是 ISO 639-1 的两位标签（`zh`、`ja`、`pt`、`es`、`ru`、`ko`、`en`）。
 它同时也是 `tools/i18n/` 下译表的文件名，所以两者不会对不上。
 完整的系统 locale（`zh-CN`、`es_ES`、`pt_BR`）只是检测时的**输入**，不是传给 `--lang` 的值。
 
@@ -189,6 +197,8 @@ node install.mjs --only=reviewer,debugger # 只装部分
 | 系统 locale | 解析为 | 原因 |
 | --- | --- | --- |
 | `zh-CN`、`zh-TW` | `zh` | 基础 `zh` 有译表 |
+| `ja-JP` | `ja` | 基础 `ja` 有译表 |
+| `pt-BR`、`pt-PT` | `pt` | 基础 `pt` 有译表 |
 | `es_ES`、`es-MX` | `es` | 基础 `es` 有译表 |
 | `ru_RU` | `ru` | 基础 `ru` 有译表 |
 | `ko_KR` | `ko` | 基础 `ko` 有译表 |
@@ -233,9 +243,13 @@ node tools/switch-lang.mjs --to=zh --dry                            # 预演
 
 | 语言 | 体裁 | 句式 |
 | --- | --- | --- |
+| `ja` | 仅用 `です・ます` 礼貌体，不用 `だ・である` 简体 | `…ときに使用します。` |
+| `pt` | 中性专业体，用 `você`，不用 `tu` 或口语 | `Use quando …` |
 | `es` | 仅用正式体 `usted`，不用 `tú`/`vosotros` | `Úselo cuando …` |
 | `ru` | 仅用 `вы` 敬语，不用 `ты` | `Используйте, когда …` |
 | `ko` | 仅用 `-십시오` / `-합니다` 正式体，不用 반말 | `…할 때 사용하십시오.` |
+
+`validate.mjs` 会自动强制这些体裁规范：混入口语的译文会直接让 CI 失败，而不是被发出去。
 
 ---
 

@@ -1,0 +1,9 @@
+# product — 产品、项目与业务分析
+product-manager
+business-analyst
+project-manager
+backlog-grooming
+assumption-mapping
+project-idea-validator
+competitive-analyst
+scrum-master

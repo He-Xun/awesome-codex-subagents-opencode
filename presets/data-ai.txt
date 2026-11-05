@@ -1,0 +1,13 @@
+# data-ai — 数据工程与机器学习
+# 覆盖 ETL、分析、建模、MLOps、实验设计。
+reviewer
+data-engineer
+data-analyst
+data-scientist
+ml-engineer
+machine-learning-engineer
+mlops-engineer
+ab-test-analysis
+cohort-analysis
+sql-pro
+python-pro
